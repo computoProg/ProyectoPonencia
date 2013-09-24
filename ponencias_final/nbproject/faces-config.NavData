@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="index.html" x="400" y="300" zoom="true"/>
+        <Node id="login.jsp" x="232" y="312" zoom="true"/>
+        <Node id="welcomeAdmin.jsp" x="400" y="1050" zoom="true"/>
+        <Node id="recuperaContraseña.jsp" x="1900" y="300" zoom="true"/>
+        <Node id="welcomeJSF.jsp" x="132" y="530" zoom="true"/>
+        <Node id="welcomeUser.jsp" x="75" y="423" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

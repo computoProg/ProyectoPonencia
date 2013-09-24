@@ -1,0 +1,541 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="2.0"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+    <application>
+        <locale-config>
+            <default-locale>es</default-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+        <el-resolver>beans.util.JsfCrudELResolver</el-resolver>
+        <view-handler>org.ajax4jsf.application.AjaxViewHandler</view-handler>
+
+    </application>
+  <exception class="javax.faces.application.ViewExpiredException">
+    <redirect view-id="/faces/login.jsp">
+       <message>Your session has timed out, please try again</message>
+    </redirect>
+  </exception>
+
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>welcome_user</from-outcome>
+            <to-view-id>/welcomeUser.jsp</to-view-id>
+        </navigation-case>
+         <navigation-case>
+            <from-outcome>participantes_change</from-outcome>
+            <to-view-id>/participantes/ChangePassword.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>welcome_admin</from-outcome>
+            <to-view-id>/welcomeAdmin.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>participante_inactivo</from-outcome>
+            <to-view-id>/participantes/participante_inactivo.jsp</to-view-id>
+        </navigation-case>
+         <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>recupera</from-outcome>
+            <to-view-id>/recuperaContraseña.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+ 
+  
+  
+    <converter>
+        <converter-for-class>beans.GrupoInvestigacion</converter-for-class>
+        <converter-class>jsf.GrupoInvestigacionConverter</converter-class>
+    </converter>
+
+
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>participantes_editAdm</from-outcome>
+            <to-view-id>/participantes/EditAdm.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <managed-bean>
+        <managed-bean-name>apoyo</managed-bean-name>
+        <managed-bean-class>jsf.ApoyoController</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>apoyoJpa</managed-bean-name>
+        <managed-bean-class>beans.ApoyoFacade</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <converter>
+        <converter-for-class>beans.Apoyo</converter-for-class>
+        <converter-class>jsf.ApoyoConverter</converter-class>
+    </converter>
+
+
+    <managed-bean>
+        <managed-bean-name>participantes</managed-bean-name>
+        <managed-bean-class>jsf.ParticipantesController</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>participantesJpa</managed-bean-name>
+        <managed-bean-class>beans.ParticipantesFacade</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <converter>
+        <converter-for-class>beans.Participantes</converter-for-class>
+        <converter-class>jsf.ParticipantesConverter</converter-class>
+    </converter>
+
+
+    <navigation-rule>
+        <!-- =========== la pagina New.jsp no la voy a usar, esta era solo para usarla
+        con el administrador, pero como este no va a crear creo que esta página se puede quitar
+        mirar dependencias para quitarla
+        ================================== -->
+        <navigation-case>
+            <from-outcome>participantes_createA</from-outcome>
+            <to-view-id>/participantes/New.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>participantes_createU</from-outcome>
+            <to-view-id>/participantes/NewUser.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>participantes_list</from-outcome>
+            <to-view-id>/participantes/List.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>participantes_edit_user</from-outcome>
+            <to-view-id>/participantes/EditUser.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>participantes_edit</from-outcome>
+            <to-view-id>/participantes/Edit.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>participantes_detail</from-outcome>
+            <to-view-id>/participantes/Detail.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>apoyo_list</from-outcome>
+            <to-view-id>/apoyo/List.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>apoyo_edit</from-outcome>
+            <to-view-id>/apoyo/Edit.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>apoyo_detail</from-outcome>
+            <to-view-id>/apoyo/Detail.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>apoyo_create</from-outcome>
+            <to-view-id>/apoyo/New.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <managed-bean>
+        <managed-bean-name>proyecto</managed-bean-name>
+        <managed-bean-class>jsf.ProyectoController</managed-bean-class>    
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>proyectoJpa</managed-bean-name>
+        <managed-bean-class>beans.ProyectoFacade</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <converter>
+        <converter-for-class>beans.Proyecto</converter-for-class>
+        <converter-class>jsf.ProyectoConverter</converter-class>
+    </converter>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>proyecto_create</from-outcome>
+            <to-view-id>/proyecto/New.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>proyecto_list</from-outcome>
+            <to-view-id>/proyecto/List.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+     <navigation-rule>
+        <navigation-case>
+            <from-outcome>proyecto_prorroga</from-outcome>
+            <to-view-id>/proyecto/List_prorroga.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>proyecto_edit</from-outcome>
+            <to-view-id>/proyecto/Edit.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>proyecto_detail</from-outcome>
+            <to-view-id>/proyecto/Detail.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>rol</managed-bean-name>
+        <managed-bean-class>jsf.RolController</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
+    <managed-bean>
+        <managed-bean-name>rolJpa</managed-bean-name>
+        <managed-bean-class>beans.RolFacade</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <converter>
+        <converter-for-class>beans.Rol</converter-for-class>
+        <converter-class>jsf.RolConverter</converter-class>
+    </converter>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>rol_create</from-outcome>
+            <to-view-id>/rol/New.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>rol_list</from-outcome>
+            <to-view-id>/rol/List.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>rol_edit</from-outcome>
+            <to-view-id>/rol/Edit.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>rol_detail</from-outcome>
+            <to-view-id>/rol/Detail.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <managed-bean>
+        <managed-bean-name>vinculacion</managed-bean-name>
+        <managed-bean-class>jsf.VinculacionController</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
+    <managed-bean>
+        <managed-bean-name>vinculacionJpa</managed-bean-name>
+        <managed-bean-class>beans.VinculacionFacade</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <converter>
+        <converter-for-class>beans.Vinculacion</converter-for-class>
+        <converter-class>jsf.VinculacionConverter</converter-class>
+    </converter>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>vinculacion_create</from-outcome>
+            <to-view-id>/vinculacion/New.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>vinculacion_list</from-outcome>
+            <to-view-id>/vinculacion/List.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>vinculacion_edit</from-outcome>
+            <to-view-id>/vinculacion/Edit.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>vinculacion_detail</from-outcome>
+            <to-view-id>/vinculacion/Detail.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>GrupoInvestigacion</managed-bean-name>
+        <managed-bean-class>jsf.GrupoInvestigacionController</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
+    <managed-bean>
+        <managed-bean-name>GrupoInvestigacionJpa</managed-bean-name>
+        <managed-bean-class>beans.GrupoInvestigacionFacade</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>grupoInvestigacion_detail</from-outcome>
+            <to-view-id>/grupoinvestigacion/Detail.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>grupoInvestigacion_list</from-outcome>
+            <to-view-id>/grupoinvestigacion/List.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>grupoInvestigacion_edit</from-outcome>
+            <to-view-id>/grupoinvestigacion/Edit.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>grupoInvestigacion_create</from-outcome>
+            <to-view-id>/grupoinvestigacion/New.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+
+
+    <managed-bean>
+        <managed-bean-name>Ciudad</managed-bean-name>
+        <managed-bean-class>jsf.CiudadController</managed-bean-class>    
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>ciudadJpa</managed-bean-name>
+        <managed-bean-class>beans.CiudadFacade</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <converter>
+        <converter-for-class>beans.Ciudad</converter-for-class>
+        <converter-class>jsf.CiudadConverter</converter-class>
+    </converter>
+    
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>ciudad_list</from-outcome>
+            <to-view-id>/ciudad/List.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>ciudad_create</from-outcome>
+            <to-view-id>/ciudad/New.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    
+    <managed-bean>
+        <managed-bean-name>Departamento</managed-bean-name>
+        <managed-bean-class>jsf.DepartamentoController</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
+    <managed-bean>
+        <managed-bean-name>departamentoJpa</managed-bean-name>
+        <managed-bean-class>beans.DepartamentoFacade</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <converter>
+        <converter-for-class>beans.Departamento</converter-for-class>
+        <converter-class>jsf.DepartamentoConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-for-class>beans.Pais</converter-for-class>
+        <converter-class>jsf.PaisConverter</converter-class>
+    </converter>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>departamento_list</from-outcome>
+            <to-view-id>/departamento/List.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>departamento_detail</from-outcome>
+            <to-view-id>/departamento/Detail.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>ciudad_detail</from-outcome>
+            <to-view-id>/ciudad/Detail.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>departamento_create</from-outcome>
+            <to-view-id>/departamento/New.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>Pais</managed-bean-name>
+        <managed-bean-class>jsf.PaisController</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
+    <managed-bean>
+        <managed-bean-name>paisJpa</managed-bean-name>
+        <managed-bean-class>beans.PaisFacade</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>pais_list</from-outcome>
+            <to-view-id>/pais/List.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>pais_detail</from-outcome>
+            <to-view-id>/pais/Detail.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>ciudad_edit</from-outcome>
+            <to-view-id>/ciudad/Edit.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>pais_edit</from-outcome>
+            <to-view-id>/pais/Edit.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>departamento_edit</from-outcome>
+            <to-view-id>/departamento/Edit.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>pais_create</from-outcome>
+            <to-view-id>/pais/New.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>TipoPonencia</managed-bean-name>
+        <managed-bean-class>jsf.TipoPonenciaController</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
+    <managed-bean>
+        <managed-bean-name>TipoPonenciaJpa</managed-bean-name>
+        <managed-bean-class>beans.TipoPonenciaFacade</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ponencia</managed-bean-name>
+        <managed-bean-class>jsf.PonenciaController</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
+    <managed-bean>
+        <managed-bean-name>ponenciaJpa</managed-bean-name>
+        <managed-bean-class>beans.PonenciaFacade</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <converter>
+        <converter-for-class>beans.Ponencia</converter-for-class>
+        <converter-class>jsf.PonenciaConverter</converter-class>
+    </converter>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>ponencia_list</from-outcome>
+            <to-view-id>/ponencia/List.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>ponencia_detail</from-outcome>
+            <to-view-id>/ponencia/Detail.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>ponencia_create</from-outcome>
+            <to-view-id>/ponencia/New.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>ponencia_edit</from-outcome>
+            <to-view-id>/ponencia/Edit.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>tipoponencia_list</from-outcome>
+            <to-view-id>/tipoponencia/List.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>tipoponencia_create</from-outcome>
+            <to-view-id>/tipoponencia/New.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>tipoponencia_edit</from-outcome>
+            <to-view-id>/tipoponencia/Edit.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>tipoponencia_detail</from-outcome>
+            <to-view-id>/tipoponencia/Detail.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <converter>
+        <converter-for-class>beans.TipoPonencia</converter-for-class>
+        <converter-class>jsf.TipoPonenciaConverter</converter-class>
+    </converter>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>welcome</from-outcome>
+            <to-view-id>/welcomeJSF.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <!--<navigation-rule>
+        <from-view-id>/ponencia/List.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>welcome_user</from-outcome>
+            <to-view-id>/welcomeUser.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/login.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>welcome_user</from-outcome>
+            <to-view-id>/welcomeUser.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>-->
+</faces-config>
