@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<document>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+  <properties>
+    <title>Shale Documentation</title>
+  </properties>
+
+  <body>
+
+    <a name="documentation"/>
+    <section name="Shale Documentation">
+
+      <p>Services provided by the Shale Framework are available as a set
+      of loosely coupled modules. Documentation for each module is
+      available via the navigation menu on the left.</p>
+
+    </section>
+
+    <a name="javadocs"/>
+    <section name="Shale Javadocs">
+
+      <p>Online Javadocs for the Shale Framework and Sample Applications
+      are listed below for ready reference (based on the SVN trunk).</p>
+
+      <p>Framework modules:</p>
+      <ul>
+      <li><a href="shale-application/apidocs/index.html" target="_blank">
+          Application Controller</a>.</li>
+      <li><a href="shale-clay/apidocs/index.html" target="_blank">
+          Clay</a>.</li>
+      <li><a href="shale-core/apidocs/index.html" target="_blank">
+          Core Library</a>.</li>
+      <li><a href="shale-dialog/apidocs/index.html" target="_blank">
+          Dialog Manager</a>.</li>
+      <li><a href="shale-dialog-basic/apidocs/index.html" target="_blank">
+          Dialog Manager - Basic Implementation</a>.</li>
+      <li><a href="shale-dialog-scxml/apidocs/index.html" target="_blank">
+          Dialog Manager - SCXML Implementation</a>.</li>
+      <li><a href="shale-remoting/apidocs/index.html" target="_blank">
+          Remoting</a>.</li>
+      <li><a href="shale-spring/apidocs/index.html" target="_blank">
+          Spring Integration</a>.</li>
+      <li><a href="shale-test/apidocs/index.html" target="_blank">
+          Test Framework</a>.</li>
+      <li><a href="shale-tiger/apidocs/index.html" target="_blank">
+          Tiger Extensions</a>.</li>
+      <li><a href="shale-validator/apidocs/index.html" target="_blank">
+          Validator Integration</a>.</li>
+      <li><a href="shale-view/apidocs/index.html" target="_blank">
+          View Controller</a>.</li>
+      </ul>
+
+      <p>Sample applications:</p>
+      <ul>
+      <li><a href="shale-apps/shale-blank/apidocs/index.html" target="_blank">
+          Blank Example App</a>.</li>
+      <li><a href="shale-apps/shale-clay-usecases/apidocs/index.html" target="_blank">
+          Clay Use Cases Sample App</a>.</li>
+      <li><a href="shale-apps/shale-mailreader/apidocs/index.html" target="_blank">
+          Mailreader Example App</a>.</li>
+      <li><a href="shale-apps/shale-sql-browser/apidocs/index.html" target="_blank">
+          SQL Browser Example App</a>.</li>
+      <li><a href="shale-apps/shale-usecases/apidocs/index.html" target="_blank">
+          Use Cases Sample App</a>.</li>
+      </ul>
+
+    </section>
+
+  </body>
+
+</document>

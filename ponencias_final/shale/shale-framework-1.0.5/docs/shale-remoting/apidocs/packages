@@ -1,0 +1,4 @@
+org.apache.shale.remoting
+org.apache.shale.remoting.faces
+org.apache.shale.remoting.impl
+org.apache.shale.remoting.logger

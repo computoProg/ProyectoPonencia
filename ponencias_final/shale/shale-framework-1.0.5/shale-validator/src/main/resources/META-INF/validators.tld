@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<!DOCTYPE taglib PUBLIC
+ "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+ "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib>
+
+
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>1.2</jsp-version>
+    <short-name>validate</short-name>
+    <uri>http://shale.apache.org/validators</uri>
+    <display-name>Shale Validator JSF Tags</display-name>
+    <description>
+      This tag library contains tags for the JSF validators supported by
+      the Shale Framework for integration with Commons Validator.
+    </description>
+
+
+    <!-- =================== Servlet Listeners ============================= -->
+
+
+    <listener>
+        <listener-class>
+            org.apache.shale.validator.faces.ValidatorLifecycleListener
+        </listener-class>
+    </listener>
+
+
+    <!-- ================= JSF Validator Tags ============================== -->
+
+
+    <tag>
+
+        <name>double</name>
+        <tag-class>org.apache.shale.validator.tag.DoubleValidatorTag</tag-class>
+        <body-content>empty</body-content>
+        <display-name>Double Validator</display-name>
+        <description>
+            Validates double input for both format and range restrictions.
+        </description>
+    
+        <attribute>
+            <name>client</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Flag indicating whether this validation should be enforced
+                on the client side as well as the server side.  If not
+                specified, the default is "true".
+            </description>
+        </attribute>
+
+        <attribute>
+            <name>maximum</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Upper limit on legal values for this component.  If not
+                specified, no upper limit is enforced.
+            </description>
+        </attribute>
+
+        <attribute>
+            <name>message</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Error message template for reporting validation errors.  If not
+                specified, the default value from either the application
+                message resource bundle, or the default resource bundle,
+                will be used.
+            </description>
+        </attribute>
+
+        <attribute>
+            <name>minimum</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Lower limit on legal values for this component.  If not
+                specified, no lower limit is enforced.
+            </description>
+        </attribute>
+
+    </tag>
+
+
+    <tag>
+
+        <name>float</name>
+        <tag-class>org.apache.shale.validator.tag.FloatValidatorTag</tag-class>
+        <body-content>empty</body-content>
+        <display-name>Float Validator</display-name>
+        <description>
+            Validates float input for both format and range restrictions.
+        </description>
+    
+        <attribute>
+            <name>client</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Flag indicating whether this validation should be enforced
+                on the client side as well as the server side.  If not
+                specified, the default is "true".
+            </description>
+        </attribute>
+
+        <attribute>
+            <name>maximum</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Upper limit on legal values for this component.  If not
+                specified, no upper limit is enforced.
+            </description>
+        </attribute>
+
+        <attribute>
+            <name>message</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Error message template for reporting validation errors.  If not
+                specified, the default value from either the application
+                message resource bundle, or the default resource bundle,
+                will be used.
+            </description>
+        </attribute>
+
+        <attribute>
+            <name>minimum</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Lower limit on legal values for this component.  If not
+                specified, no lower limit is enforced.
+            </description>
+        </attribute>
+
+    </tag>
+
+
+    <tag>
+
+        <name>integer</name>
+        <tag-class>org.apache.shale.validator.tag.IntegerValidatorTag</tag-class>
+        <body-content>empty</body-content>
+        <display-name>Integer Validator</display-name>
+        <description>
+            Validates integer input for both format and range restrictions.
+        </description>
+    
+        <attribute>
+            <name>client</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Flag indicating whether this validation should be enforced
+                on the client side as well as the server side.  If not
+                specified, the default is "true".
+            </description>
+        </attribute>
+
+        <attribute>
+            <name>maximum</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Upper limit on legal values for this component.  If not
+                specified, no upper limit is enforced.
+            </description>
+        </attribute>
+
+        <attribute>
+            <name>message</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Error message template for reporting validation errors.  If not
+                specified, the default value from either the application
+                message resource bundle, or the default resource bundle,
+                will be used.
+            </description>
+        </attribute>
+
+        <attribute>
+            <name>minimum</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Lower limit on legal values for this component.  If not
+                specified, no lower limit is enforced.
+            </description>
+        </attribute>
+
+    </tag>
+
+
+    <tag>
+
+        <name>long</name>
+        <tag-class>org.apache.shale.validator.tag.LongValidatorTag</tag-class>
+        <body-content>empty</body-content>
+        <display-name>Long Validator</display-name>
+        <description>
+            Validates long input for both format and range restrictions.
+        </description>
+    
+        <attribute>
+            <name>client</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Flag indicating whether this validation should be enforced
+                on the client side as well as the server side.  If not
+                specified, the default is "true".
+            </description>
+        </attribute>
+
+        <attribute>
+            <name>maximum</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Upper limit on legal values for this component.  If not
+                specified, no upper limit is enforced.
+            </description>
+        </attribute>
+
+        <attribute>
+            <name>message</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Error message template for reporting validation errors.  If not
+                specified, the default value from either the application
+                message resource bundle, or the default resource bundle,
+                will be used.
+            </description>
+        </attribute>
+
+        <attribute>
+            <name>minimum</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Lower limit on legal values for this component.  If not
+                specified, no lower limit is enforced.
+            </description>
+        </attribute>
+
+    </tag>
+
+
+    <tag>
+
+        <name>short</name>
+        <tag-class>org.apache.shale.validator.tag.ShortValidatorTag</tag-class>
+        <body-content>empty</body-content>
+        <display-name>Short Validator</display-name>
+        <description>
+            Validates short input for both format and range restrictions.
+        </description>
+    
+        <attribute>
+            <name>client</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Flag indicating whether this validation should be enforced
+                on the client side as well as the server side.  If not
+                specified, the default is "true".
+            </description>
+        </attribute>
+
+        <attribute>
+            <name>maximum</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Upper limit on legal values for this component.  If not
+                specified, no upper limit is enforced.
+            </description>
+        </attribute>
+
+        <attribute>
+            <name>message</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Error message template for reporting validation errors.  If not
+                specified, the default value from either the application
+                message resource bundle, or the default resource bundle,
+                will be used.
+            </description>
+        </attribute>
+
+        <attribute>
+            <name>minimum</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                Lower limit on legal values for this component.  If not
+                specified, no lower limit is enforced.
+            </description>
+        </attribute>
+
+    </tag>
+
+
+</taglib>

@@ -1,0 +1,6 @@
+org.apache.shale.test.base
+org.apache.shale.test.cargo
+org.apache.shale.test.el
+org.apache.shale.test.htmlunit
+org.apache.shale.test.jmock
+org.apache.shale.test.mock

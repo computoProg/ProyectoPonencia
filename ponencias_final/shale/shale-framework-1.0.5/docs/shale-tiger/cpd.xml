@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="20" tokens="109">
+<file line="124" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-tiger/src/main/java/org/apache/shale/tiger/managed/rules/ManagedBeanRule.java"/>
+<file line="112" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-tiger/src/main/java/org/apache/shale/tiger/managed/rules/ManagedPropertyRule.java"/>
+<codefragment>
+<![CDATA[
+        }
+        if (config.getListEntries() != null) {
+            if (previous.getListEntries() != null) {
+                ListEntriesRule.merge(config.getListEntries(), previous.getListEntries());
+            } else {
+                previous.setListEntries(config.getListEntries());
+            }
+        }
+        if (config.getMapEntries() != null) {
+            if (previous.getMapEntries() != null) {
+                MapEntriesRule.merge(config.getMapEntries(), previous.getMapEntries());
+            } else {
+                previous.setMapEntries(config.getMapEntries());
+            }
+        }
+
+    }
+
+
+}
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

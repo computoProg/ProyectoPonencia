@@ -1,0 +1,4 @@
+org.apache.shale.dialog.scxml
+org.apache.shale.dialog.scxml.action
+org.apache.shale.dialog.scxml.config
+org.apache.shale.dialog.scxml.impl

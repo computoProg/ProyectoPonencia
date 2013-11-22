@@ -1,0 +1,497 @@
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>
+    Shale Dialog Manager (Basic Implementation)</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  </head>
+  <body class="composite">
+    <div id="banner">
+                          <a href="http://www.apache.org" id="bannerLeft">
+    
+                                    <img src="http://www.apache.org/images/asf-logo.gif" alt="" />
+    
+            </a>
+                          <a href="http://shale.apache.org" id="bannerRight">
+    
+                                            <img src="../images/shale-logo.jpg" alt="" />
+    
+            </a>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+      <div class="xleft">Last Published: Mon Jun 02 11:03:55 CDT 2008</div>
+      <div class="xright">  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn"><div id="navcolumn">      <h5>Sub-Project Documentation</h5>
+    <ul>
+              
+    <li class="none">
+          <a href="../shale-application/index.html">Application Controller</a>
+        </li>
+              
+    <li class="none">
+          <a href="../shale-clay/index.html">Clay Plug-In</a>
+        </li>
+              
+    <li class="none">
+          <a href="../shale-core/index.html">Core Library</a>
+        </li>
+              
+    <li class="none">
+          <a href="../shale-dialog/index.html">Dialog Manager</a>
+        </li>
+              
+    <li class="none">
+          <a href="../shale-dialog-basic/index.html">Dialog Manager (Basic Implementation)</a>
+        </li>
+              
+    <li class="none">
+          <a href="../shale-dialog-scxml/index.html">Dialog Manager (SCXML Implementation)</a>
+        </li>
+              
+    <li class="none">
+          <a href="../shale-remoting/index.html">Remoting</a>
+        </li>
+              
+    <li class="none">
+          <a href="../shale-spring/index.html">Spring Integration</a>
+        </li>
+              
+    <li class="none">
+          <a href="../shale-test/index.html">Test Framework</a>
+        </li>
+              
+    <li class="none">
+          <a href="../shale-tiger/index.html">Tiger Extensions</a>
+        </li>
+              
+    <li class="none">
+          <a href="../shale-validator/index.html">Validator Support</a>
+        </li>
+              
+    <li class="none">
+          <a href="../shale-view/index.html">View Controller</a>
+        </li>
+          </ul>
+      <h5>Sample Apps Documentation</h5>
+    <ul>
+              
+    <li class="none">
+          <a href="../shale-apps/shale-blank/index.html">Blank Starter</a>
+        </li>
+              
+    <li class="none">
+          <a href="../shale-apps/shale-clay-usecases/index.html">Clay Use Cases</a>
+        </li>
+              
+    <li class="none">
+          <a href="../shale-apps/shale-mailreader/index.html">Mail Reader</a>
+        </li>
+              
+    <li class="none">
+          <a href="../shale-apps/shale-sql-browser/index.html">SQL Browser</a>
+        </li>
+              
+    <li class="none">
+          <a href="../shale-apps/shale-usecases/index.html">Use Cases</a>
+        </li>
+          </ul>
+      <h5>Quick Links</h5>
+    <ul>
+              
+    <li class="none">
+          <a href="http://java.sun.com/javaee/javaserverfaces/">JavaServer Faces</a>
+        </li>
+              
+    <li class="none">
+          <a href="http://myfaces.apache.org">MyFaces</a>
+        </li>
+              
+    <li class="none">
+          <a href="http://shale.apache.org">Shale</a>
+        </li>
+              
+    <li class="none">
+          <a href="http://shale.apache.org/sandbox">Shale Sandbox</a>
+        </li>
+              
+    <li class="none">
+          <a href="http://struts.apache.org">Struts</a>
+        </li>
+              
+    <li class="none">
+          <a href="http://struts.apache.org/1.x/struts-faces">Struts-Faces Integration Library</a>
+        </li>
+          </ul>
+      <h5>Project Documentation</h5>
+    <ul>
+              
+    <li class="none">
+          <strong><a href="index.html">About Shale Dialog Manager (Basic Implementation)</a></strong>
+        </li>
+              
+                
+        <li class="collapsed">
+          <a href="project-info.html">Project Info</a>
+                
+            
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+          <ul>
+                  
+    <li class="none">
+          <strong><a href="index.html">About</a></strong>
+        </li>
+                  
+    <li class="none">
+          <a href="integration.html">Continuous Integration</a>
+        </li>
+                  
+    <li class="none">
+          <a href="dependencies.html">Dependencies</a>
+        </li>
+                  
+    <li class="none">
+          <a href="dependency-convergence.html">Dependency Convergence</a>
+        </li>
+                  
+    <li class="none">
+          <a href="issue-tracking.html">Issue Tracking</a>
+        </li>
+                  
+    <li class="none">
+          <a href="mail-lists.html">Mailing Lists</a>
+        </li>
+                  
+    <li class="none">
+          <a href="license.html">Project License</a>
+        </li>
+                  
+    <li class="none">
+          <a href="project-summary.html">Project Summary</a>
+        </li>
+                  
+    <li class="none">
+          <a href="team-list.html">Project Team</a>
+        </li>
+                  
+    <li class="none">
+          <a href="source-repository.html">Source Repository</a>
+        </li>
+              </ul>
+        </li>
+              
+                
+        <li class="collapsed">
+          <a href="maven-reports.html">Project Reports</a>
+                
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        </li>
+          </ul>
+  <a href="http://maven.apache.org/" title="Built by Maven" id="poweredBy">
+              <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+            </a>
+    </div></div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        
+
+  
+
+  
+    
+    <div class="section"><h2>Shale Dialog Manager (Basic Implementation)</h2>
+    <a name="dialog-basic"></a>
+
+      <a name="dialog-basic-introduction"></a>
+      <div class="section"><h3>Introduction</h3>
+
+        <p>The <a href="../shale-dialog/index.html">Shale Dialog Manager</a>
+        defines a generic API by which an application may utilize a
+        Dialog Manager implementation to manage conversations with the
+        user of that application.  A user may have (at most) one active
+        conversation in each window or frame that he or she is using.</p>
+
+        <p>This module contains the <em>Basic Implementation</em> of the
+        Shale Dialog Manager facilities.  It is designed to be as simple
+        as possible to configure and use, while encapsulating advanced
+        state management capabilities.  It is fundamentally similar in
+        configuration and use with the legacy Dialog Manager support in
+        Shale versions up through 1.0.3, but many bugs and limitations of
+        the original code have been corrected.</p>
+
+      </div>
+
+      <a name="dialog-basic-services"></a>
+      <div class="section"><h3>Services Provided</h3>
+
+        <p>Conceptually, a <em>dialog</em> can be thought of as a set of labelled
+        states, connected by labelled transitions between those states.  Indeed,
+        a UML <em>State Diagram</em> is a popular way to represent the
+        architecture of such a dialog.  Each dialog has a specified starting
+        state (with an automatic transition to this state when the dialog is
+        first started), and one or more ending states.</p>
+
+        <a name="dialog-state-types"></a>
+        <p>Shale supports four state types, with specific implementations
+        realized as described below.</p>
+
+        <ul>
+        <li><em>ActionState</em> - Represents a call to a public method, taking
+            no parameters, and returning a String that will be treated as the
+            logical outcome.  The method to be called is configured with a
+            JavaServer Faces <em>method binding expression</em>, which means
+            you can leverage the managed beans facility to instantiate your
+            processing classes on demand.  The logical outcome is used to
+            drive the transition to the next state, as described below.</li>
+        <li><em>ViewState</em> - Represents the rendering of a JavaServer Faces
+            <em>view</em>, followed by a wait for the subsequent form submit.
+            The logical outcome returned by the action method (typically on
+            the <code>ViewController</code> bean that you've associated with
+            the current page) is used to drive the transition to the next
+            state, as described below.</li>
+        <li><em>SubdialogState</em> - Represents pushing the state of the
+            current dialog onto a stack, and starting a specified new dialog
+            at its starting state.  When the subordinate dialog returns, the
+            calling dialog is resumed, with the logical outcome returned by
+            the subordinate dialog is used to drive the transition to the next
+            state, as described below.</li>
+        <li><em>EndState</em> - Terminates the current dialog (popping the
+            stack if we are inside a subdialog), and returns a logical outcome
+            (to drive transition) in one of two ways:
+            <ul>
+            <li>If a view identifier was configured, cause that view to be
+                rendered and return the logical outcome from the application
+                action that is invoked (just like a ViewState, but also
+                terminates the dialog).</li>
+            <li>If no view identifier was configured (meaning that the parent
+                dialog will be responsible for rendering the response to the
+                current request), simply return the logical outcome that
+                caused this EndState to be selected.</li>
+            </ul></li>
+        </ul>
+
+        Transitions between states are performed by consulting the set of
+        <em>Transition</em>s that have been defined (either locally for this
+        State, or globally for the entire Dialog), matching on logical outcome.
+        The matching Transition is then used to select the identifier of the
+        next state to be performed (which can be of any type).
+
+        <p>It is <strong>not</strong> required that all JavaServer Faces
+        interactions be organized into dialogs -- you can have a mix of
+        dialog and standard navigation processing.  Indeed, to enter a
+        dialog in the first place, simply have one of your standard action
+        methods return a logical outcome of <strong>dialog:xxxxx</strong>,
+        which will cause the dialog named <code>xxxxx</code> to be entered
+        at its starting state.  Once that dialog completes, standard
+        JavaServer Faces navigation will resume.</p>
+
+        <p>The configuration of a Dialog is represented as a tree of
+        JavaBeans defined in the <code>org.apache.shale.dialog.model</code>
+        package, rooted at an instance <code>Dialog</code>.  The set of
+        all known <code>Dialog</code> instances is stored in a <code>Map</code>,
+        keyed by dialog identifier, which is stored in an application scope
+        attribute named by symbolic constant <code>Globals.DIALOGS</code>.
+        The <code>Dialog</code> instances may be configured by any desired
+        mechanism; however, the most commonly used will likely be an XML
+        document that conforms to a DTD provided by Shale.</p>
+
+      </div>
+
+      <a name="dialog-basic-using"></a>
+      <div class="section"><h3>Using Dialog Manager (Basic Implementation)</h3>
+
+        <p>To use the Dialog Manager facilities in Shale, take the following
+        steps:</p>
+
+        <ul>
+        <li>Model your dialog as a series of <em>State</em>s with transitions
+            between them labelled with the logical outcome that selects
+            that particular transition.  A UML State Diagram is a very useful
+            mechanism for visualizing such a model.</li>
+        <li>Build the views (and corresponding <code>ViewController</code> beans,
+            if you are also using the <a href="../shale-view/index.html">
+            Shale View Controller Support</a> functionality)
+            that comprise your dialog, using standard JavaServer Faces and
+            (optional) Shale <code>ViewController</code> facilities.</li>
+        <li>Define your dialogs in an XML document, conventionally named
+            <code>/WEB-INF/dialog-config.xml</code>, that conforms to the
+            required DTD, which defines all the state transitions:
+<div class="source"><pre>
+&lt;!DOCTYPE dialogs PUBLIC
+  &quot;-//Apache Software Foundation//DTD Shale Dialog Configuration 1.1//EN&quot;
+  &quot;http://shale.apache.org/dtds/dialog-config_1_1.dtd&quot;&gt;
+
+&lt;dialogs&gt;
+
+  &lt;dialog name=&quot;First Dialog Name&quot; start=&quot;Start State Id&quot;&gt;
+    ... &lt;action/&gt;, &lt;view/&gt;, &lt;subdialog/&gt;, and &lt;exit/&gt; elements for states ...
+  &lt;/dialog&gt;
+
+  &lt;dialog name=&quot;Second Dialog Name&quot; start=&quot;Start State Id&quot;&gt;
+    ... &lt;action/&gt;, &lt;view/&gt;, &lt;subdialog/&gt;, and &lt;exit/&gt; elements for states ...
+  &lt;/dialog&gt;
+
+  ...
+
+&lt;/dialogs&gt;
+</pre></div></li>
+        <li>Note that the <a href="http://shale.apache.org/dtds/dialog-config_1_1.dtd">
+            DTD referenced above</a> has thorough documentation on all of the
+            supported XML elements and attributes.</li>
+        <li>If you have more than one dialog configuration file, or you have
+            defined your only dialog configuration file as a web application
+            resource with a name different than the one described above, use
+            a context initiaization parameter to define a comma-delimited list
+            of context-relative paths to configuration resources to be loaded:
+<div class="source"><pre>
+&lt;context-param&gt;
+  &lt;param-name&gt;org.apache.shale.dialog.basic.CONFIGURATION&lt;/param-name&gt;
+  &lt;param-value&gt;/WEB-INF/foo.xml,/WEB-INF/bar.xml&lt;/param-value&gt;
+&lt;/context-param&gt;
+</pre></div></li>
+        <li>In addition to the dialog configuration resources defined by this
+            context initialization parameter, a resource named
+            <code>/WEB-INF/dialog-config.xml</code> will be automatically
+            processed, if it exists, and has not already been loaded.</li>
+        <li>Alternatively, or in addition to the above, any JAR file in
+            <code>/WEB-INF/lib</code> will be scanned for configuration
+            documents at <code>META-INF/dialog-config.xml</code>.  Such
+            resources will be automatically processed, making it easy to
+            define JAR files with dialog configurations and corresponding
+            Java classes and resources, which are recognized simply by
+            including this JAR file in the application.</li>
+            <li>To initiate a dialog named &quot;xxxxx&quot;, use one of the techniques
+                defined by the <a href="../shale-dialog/index.html#dialog-using">
+            Shale Dialog Manager</a>.</li>
+        </ul>
+
+        In order to address potential issues with the application user using
+        browser navigation buttons (back and forward) within a dialog, it is
+        also possible to configure advanced handling of storing dialog
+        state information across requests, with a context initialization
+        parameter, as follows:
+
+<div class="source"><pre>
+&lt;context-param&gt;
+  &lt;param-name&gt;org.apache.shale.dialog.basic.STRATEGY&lt;/param-name&gt;
+  &lt;param-value&gt;xxxxx&lt;/param-value&gt;
+&lt;/context-param&gt;
+</pre></div>
+
+        <p>The possible strategy values, and the use cases under which they are
+        appropriate, are as follows:</p>
+
+        <ul>
+            <li><strong>none</strong> - Save no extra information.
+                This works best in circumstances when you have users trained to not
+                use back and forward navigation buttons, so no extra overhead is
+                incurred.</li>
+            <li><strong>top</strong> - (Default value) Record the <em>state name</em>
+                of the
+                current state such that, if the user uses the back arrow and
+                then resubmits a previously submitted form, the current state
+                will be reset to the recorded one (so that navigation outcomes
+                work as expected).  The <code>data</code> object associated with
+                this dialog instance is <strong>not</strong> saved and restored.
+                This works best in cases like a multi-page wizard dialog that
+                is collecting data, where resubmitting the same page again only
+                mutates the state within the <code>data</code> object, and does
+                not cause any undesireable changes to the model state of the
+                application (such as submitting a credit card order more than
+                once).  This strategy can not effectively deal with cases where
+                the user has navigated across the start or end of a subdialog,
+                so an exception will be thrown in that scenario.</li>
+            <li><strong>stack</strong> - Record the entire stack of
+                <code>Position</code> information for the current dialog instance,
+                including any changes to the <code>data</code> object.  This
+                strategy is best used when you want, when the user presses the
+                back arrow, to &quot;unwind&quot; any changes that the previous form submit
+                did to the <code>data</code> object.  This strategy stores the
+                maximum amount of information in the JSF component tree state,
+                so it might have significant memory or network traffic impacts
+                if the size of your <code>data</code> object is large.</li>
+        </ul>
+
+        Note that, no matter which strategy you choose, you can optionally
+        use the &quot;token&quot; facility of the <a href="../shale-core/index.html">
+        Shale Core</a> module to detect duplicate submit attempts on the same
+        form.  If you do this, you will also want to provide a &quot;cancel&quot; command
+        of some sort, with the <code>immediate</code> attribute set to
+        <code>true</code>, to allow the user to get out of a dialog where they
+        have mistakenly tried to submit the same form more than once.
+
+      </div>
+
+    </div>
+
+  
+
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2004-2008
+    
+          The Apache Software Foundation
+      </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

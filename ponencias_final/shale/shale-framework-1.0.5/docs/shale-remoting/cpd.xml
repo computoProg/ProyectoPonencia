@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="22" tokens="108">
+<file line="105" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-remoting/src/main/java/org/apache/shale/remoting/faces/ResponseFactory.java"/>
+<file line="158" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-remoting/src/main/java/org/apache/shale/remoting/faces/ResponseFactory.java"/>
+<codefragment>
+<![CDATA[
+    protected ResponseWriter createResponseWriter(FacesContext context, String contentType) {
+
+        Object response = context.getExternalContext().getResponse();
+
+        // Set the content type (if specified)
+        if (contentType != null) {
+            try {
+                Method method =
+                  response.getClass().getMethod("setContentType",
+                                                new Class[] { String.class });
+                method.invoke(response, new Object[] { contentType });
+            } catch (IllegalAccessException e) {
+                throw new FacesException(e);
+            } catch (InvocationTargetException e) {
+                throw new FacesException(e);
+            } catch (NoSuchMethodException e) {
+                throw new FacesException(e);
+            }
+        }
+
+        // Acquire the writer we will be wrapping
+        final Writer writer;
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

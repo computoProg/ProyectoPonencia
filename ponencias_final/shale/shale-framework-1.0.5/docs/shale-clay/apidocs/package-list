@@ -1,0 +1,11 @@
+org.apache.shale.clay.component
+org.apache.shale.clay.component.chain
+org.apache.shale.clay.config
+org.apache.shale.clay.config.beans
+org.apache.shale.clay.convert
+org.apache.shale.clay.faces
+org.apache.shale.clay.parser
+org.apache.shale.clay.parser.builder
+org.apache.shale.clay.parser.builder.chain
+org.apache.shale.clay.taglib
+org.apache.shale.clay.utils

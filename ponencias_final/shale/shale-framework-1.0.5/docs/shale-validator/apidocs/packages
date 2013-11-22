@@ -1,0 +1,6 @@
+org.apache.shale.validator
+org.apache.shale.validator.converter
+org.apache.shale.validator.faces
+org.apache.shale.validator.tag
+org.apache.shale.validator.util
+org.apache.shale.validator.validator

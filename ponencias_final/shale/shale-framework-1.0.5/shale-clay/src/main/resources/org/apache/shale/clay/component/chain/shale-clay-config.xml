@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+  $Id: shale-clay-config.xml 473639 2006-11-11 04:37:07Z gvanmatre $
+
+-->
+
+<catalog           name="clay">
+
+  <chain           name="addComponent">
+
+    <command className   = "org.apache.shale.clay.utils.PluggableLookupCommand"
+             catalogName = "clayCustomization"
+             name        = "preprocessAddComponent"
+             optional    = "true"/>
+
+    <command className   = "org.apache.shale.clay.utils.FalseLookupCommand"
+             catalogName = "clay"
+             name        = "createComponent"
+             optional    = "false"/>
+             
+    <command  className="org.apache.shale.clay.component.chain.AssignChildrenCommand"/>
+    
+     <command className   = "org.apache.shale.clay.utils.PluggableLookupCommand"
+              catalogName = "clayCustomization"
+              name        = "postprocessAddComponent"
+              optional    = "true"/>
+    
+		
+  </chain>
+
+
+  <chain           name="createComponent">
+    <command  className="org.apache.shale.clay.component.chain.AssignViewRootCommand"/>
+    <command  className="org.apache.shale.clay.component.chain.CreateComponentCommand"/>
+    <command  className="org.apache.shale.clay.component.chain.AssignPropertiesCommand"/> 
+    <command  className="org.apache.shale.clay.component.chain.AssignValidatorsCommand"/>
+    <command  className="org.apache.shale.clay.component.chain.AssignValueChangeListenersCommand"/>
+    <command  className="org.apache.shale.clay.component.chain.AssignActionListenersCommand"/>
+    <command  className="org.apache.shale.clay.component.chain.AssignConverterCommand"/>
+
+  </chain>
+
+
+  <chain           name="addConverter">
+
+    <command className   = "org.apache.shale.clay.utils.PluggableLookupCommand"
+             catalogName = "clayCustomization"
+             name        = "preprocessAddConverter"
+             optional    = "true"/>
+
+    <command  className="org.apache.shale.clay.component.chain.CreateConverterCommand"/>
+    <command  className="org.apache.shale.clay.component.chain.AssignPropertiesCommand"/>
+
+    <command className   = "org.apache.shale.clay.utils.PluggableLookupCommand"
+              catalogName = "clayCustomization"
+              name        = "postprocessAddConverter"
+              optional    = "true"/>
+
+  </chain>
+
+
+  <chain           name="addValidator">
+
+    <command className   = "org.apache.shale.clay.utils.PluggableLookupCommand"
+             catalogName = "clayCustomization"
+             name        = "preprocessAddValidator"
+             optional    = "true"/>
+
+    <command  className="org.apache.shale.clay.component.chain.CreateValidatorCommand"/>
+    <command  className="org.apache.shale.clay.component.chain.AssignPropertiesCommand"/>
+
+    <command className   = "org.apache.shale.clay.utils.PluggableLookupCommand"
+             catalogName = "clayCustomization"
+             name        = "postprocessAddValidator"
+             optional    = "true"/>
+
+  </chain>
+
+
+  <chain           name="addValueChangeListener">
+
+    <command className   = "org.apache.shale.clay.utils.PluggableLookupCommand"
+             catalogName = "clayCustomization"
+             name        = "preprocessAddValueChangeListener"
+             optional    = "true"/>
+
+    <command  className="org.apache.shale.clay.component.chain.CreateValueChangeListenerCommand"/>
+    <command  className="org.apache.shale.clay.component.chain.AssignPropertiesCommand"/>
+
+    <command className   = "org.apache.shale.clay.utils.PluggableLookupCommand"
+             catalogName = "clayCustomization"
+             name        = "postprocessAddValueChangeListener"
+             optional    = "true"/>
+
+  </chain>
+
+
+  <chain           name="addActionListener">
+
+    <command className   = "org.apache.shale.clay.utils.PluggableLookupCommand"
+             catalogName = "clayCustomization"
+             name        = "preprocessAddActionListener"
+             optional    = "true"/>
+
+    <command  className="org.apache.shale.clay.component.chain.CreateActionListenerCommand"/>
+    <command  className="org.apache.shale.clay.component.chain.AssignPropertiesCommand"/>
+
+    <command className   = "org.apache.shale.clay.utils.PluggableLookupCommand"
+             catalogName = "clayCustomization"
+             name        = "postprocessAddActionListener"
+             optional    = "true"/>
+
+  </chain>
+
+
+  <chain           name="setAttribute">
+    <command  className="org.apache.shale.clay.component.chain.PropertyValueCommand"/>
+  </chain>
+
+  <chain           name="action">
+    <command  className="org.apache.shale.clay.component.chain.PropertyActionCommand"/>
+  </chain>
+
+  <chain           name="actionListener">
+    <command  className="org.apache.shale.clay.component.chain.PropertyActionListenerCommand"/>
+  </chain>
+
+  <chain           name="validator">
+    <command  className="org.apache.shale.clay.component.chain.PropertyValidatorCommand"/>
+  </chain>
+
+  <chain           name="valueChangeListener">
+    <command  className="org.apache.shale.clay.component.chain.PropertyValueChangeListenerCommand"/>
+  </chain>
+
+  <chain           name="converter">
+    <command  className="org.apache.shale.clay.component.chain.PropertyConverterCommand"/>
+  </chain>
+
+
+</catalog>

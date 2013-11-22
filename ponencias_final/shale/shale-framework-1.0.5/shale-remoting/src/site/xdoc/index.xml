@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<document>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+  <properties>
+    <title>Shale Remoting</title>
+  </properties>
+
+  <body>
+    
+    <section name="Shale Remoting">
+    <a name="remoting"/>
+
+      <a name="remoting-introduction"/>
+      <subsection name="Remoting Introduction">
+
+         <p>Shale lets you map server-side resources, such as JavaScript or
+         managed bean methods, to URLs. Shale turns URLs into resources with
+         <i>processors</i>, which apply a mapping to a URL and take appropriate
+         action. Out of the box, Shale provides the following processors:</p>
+
+          <ul>
+              <li>
+                  <i>Class Resource</i>
+                  : access static resources from your classpath
+              </li>
+              <li>
+                  <i>Web Resource</i>
+                  : access static resources from your web app's document root
+              </li>
+              <li>
+                  <i>Method Binding</i>
+                  : execute a managed bean's methods on the server
+              </li>
+              <li>
+                  <i>Chain</i>
+                  : maps a URL to a Apache Commons Chain (chains are used internally by Shale)
+              </li>
+          </ul>
+
+          <p>Complete information on the functionality provided by Shale Remoting
+          may be found in the
+          <a href="apidocs/org/apache/shale/remoting/package-summary.html">
+          Javadoc package summary</a> for this module.  In particular, you will
+          want to review the mechanisms for conditionally enabling access to
+          resource identifiers for each processor, and what the default
+          persmissions are.</p>
+
+      </subsection>
+
+      <a name="remoting-static"/>
+      <subsection name="Remotely Accessing Static Resources">
+
+          <p>Shale can map URLs to "classpath" resources (those found in
+          <code>/WEB-INF/classes</code>, or in a JAR file found in
+          <code>/WEB-INF/lib</code>.  This makes it very easy, for example,
+          for a JSF component library to embed JavaScript and CSS stylesheet
+          resources required by its components, within the same JAR file,
+          without requiring the application developer to explicitly configure
+          anything, or place component resources at any particular point in
+          the web application's document hierarchy.  In addition, Shale can
+          map directly to webapp resources (equivalent to the static resource
+          serving capability of most servlet containers), if desired.</p>
+
+      </subsection>
+
+
+      <a name="remoting-methods"/>
+      <subsection name="Remotely Calling Managed Bean Methods">
+
+          <p>Shale maps URLs to managed bean methods in your appliation with the
+          Method Binding processor. For example, Shale maps the URL
+          <code>remote/userBean/validateUsername.jsf</code> to a call to
+          <code>userBean.validateUsername()</code> as shown in the following
+          figure (assuming the suffix <code>.jsf</code> is mapped to the JSF
+          servlet). This simple mechanism, among other things, lets you easily
+          implement Ajax (Asynchronous JavaScript and XMLHttpRequest)
+          functionality. </p>
+
+          <p><img src="images/remoting-001.jpg"/></p>
+
+      </subsection>
+
+      <a name="remoting-example"/>
+      <subsection name="An Ajax Example">
+
+          <p>Here's a form that implements realtime validation:</p>
+
+          <p><img src="images/remoting-002.jpg"/></p>
+
+          <p> When the user leaves the <code>username</code> textfield, Shale
+          calls the backing bean's <code>validateUsername</code> method. This
+          application only has one registered user, and his name is Joe, so if
+          the user types anything other than Joe in the username field, we
+          display an error message, like this: </p>
+
+          <p><img src="images/remoting-003.jpg"/></p>
+
+          <p>To implement the Ajax call, we first hook up a client-side event
+          handler to our <code>username</code> textfield:</p>
+
+          <pre>
+          ...
+            &lt;h:panelGroup&gt;
+
+              &lt;h:inputText onfocus="hideMessage();"
+                 <strong>onblur="validateUsername(this.value);"/&gt;</strong>
+
+              &lt;f:verbatim&gt;
+                &lt;div id="message" style="display: none;"&gt;&lt;/div&gt;
+              &lt;/f:verbatim&gt;
+
+            &lt;/h:panelGroup&gt;
+          ...
+          </pre>
+
+          <p>Notice the empty <code>DIV</code>. That's the DIV that we'll fill
+          with an error message as appropriate. When the user enters the
+          username field, we clear out the message DIV, like this:</p>
+
+          <pre>
+          function hideMessage() {
+             $("message").style.display = "none"; // the $ is Prototype's shorthand for window.document.getElementById()
+          }
+          </pre>
+
+          <p>Here's the JavaScript <code>validateUsername</code> function:</p>
+
+          <pre>
+          function <strong>validateUsername</strong>(username) {
+             new Ajax.Request(
+                "<strong>dynamic/userBean/validateUsername.faces</strong>",
+                {
+                   method: "post",
+                   parameters: "username=" + username,
+                   onComplete: showMessage
+                }
+             );
+          }
+          </pre>
+
+          <p>The preceding code fragment uses the <a
+          href="http://prototype.conio.net/">Prototype JavaScript Library</a> to
+          make the Ajax call. You can use whatever framework you like, or you
+          can code the Ajax call yourself. The point here is the URL, which
+          Shale maps to <code>userBean.validateUsername()</code>. Remember, when
+          you invoke the URL <code>dynamic/userBean/validateUsername.jsf</code>
+          Shale thinks <i>invoke <code>userBean.validateUsername()</code></i>.
+          Here's what that Java code looks like:</p>
+
+          <pre>
+          public void validateUsername() {
+              FacesContext context = FacesContext.getCurrentInstance();
+              String username = (String)context
+                  .getExternalContext()
+                  .getRequestParameterMap().get("username");
+
+              if( ! "Joe".equals(username))
+                  writeResponse(context, "Sorry, that's an unathorized username");
+          }
+          private void writeResponse(FacesContext context,
+              ResponseWriter writer =
+                  (new <strong>ResponseFactory</strong>()).getResponseWriter(context, "text/plain");
+              try {
+                  writer.writeText(text, null);
+              }
+              catch (IOException e) {
+                  e.printStackTrace();
+              }
+          }
+          </pre>
+
+          <p>We get the username field's value from the corresponding request
+          parameter and validate that value. After Shale invokes the
+          <code>validateUsername</code> method, it short-circuits the JSF
+          lifecycle so that JSF does not render a response.</p>
+
+          <p><i>Note:</i> The <code>ResponseFactory</code> class is part of the
+          Shale remoting package. See the <a
+          href="apidocs/index.html">javadocs</a>
+          for more information.</p>
+
+          <p>After the call to <code>userBean.validateUsername()</code> returns,
+          Prototype calls our <i>onComplete</i> JavaScript function, which we
+          specified as <code>showMessage</code>. Here's what that JavaScript
+          function looks like:</p>
+
+          <pre>
+          function showMessage(xhr) {
+             var msg = $("message");  
+             msg.style.display = "inline";
+             msg.style.color = "red";
+             msg.innerHTML = xhr.responseText; // set the innerHTML of the message DIV
+          }
+          </pre>
+      </subsection>
+      
+      <subsection name="Resources">
+        <ul>
+          <li>Shale Remoting
+          <a href="apidocs/org/apache/shale/remoting/package-summary.html">
+          Javadoc package summary</a></li>
+          <li><a href="http://wiki.apache.org/shale/ShaleRemoting">
+          ShaleRemoting</a> Wiki page</li>
+        </ul>
+      </subsection>
+
+    </section>
+
+  </body>
+
+</document>

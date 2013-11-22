@@ -35,6 +35,17 @@ public class PaisController {
     private PagingInfo pagingInfo = null;
     private int num_departamentos;
     private boolean boolPais = false;
+    // atrubuto creado el 24/10/2013 para controlar el selectOneMenu, con sus respectivos get 
+    //y set
+    private String idPais = "-1";
+
+    public String getIdPais() {
+        return idPais;
+    }
+
+    public void setIdPais(String idPais) {
+        this.idPais = idPais;
+    }
     @Resource
     private UserTransaction utx = null;
 
@@ -55,6 +66,13 @@ public class PaisController {
     public SelectItem[] getPaisItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(jpaController.findAll(), true);
     }
+    
+     //metodo realizado el 24/1o/2013 obtener SelectItem con los datos de la 
+    // base de datos
+    public SelectItem[] getPaisItemsSelectOne(){
+        return JsfUtil.getSelectItems(jpaController.findAll(),0);
+    }
+    
 
     public SelectItem[] getDepartamentoItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(jpaController.findAll(), false);

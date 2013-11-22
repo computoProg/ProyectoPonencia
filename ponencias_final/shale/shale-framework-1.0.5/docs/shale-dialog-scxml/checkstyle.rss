@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>Shale Dialog Manager (SCXML Implementation) - Checkstyle report</title>
+    <link>http://shale.apache.org/shale-dialog-scxml</link>
+    <description>Shale Dialog Manager (SCXML Implementation) - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2004 - 2008 The Apache Software Foundation</copyright>
+    <item>
+      <title>File: 17,
+             Errors: 4,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://shale.apache.org/shale-dialog-scxml/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.config.ConfigurationParser.java">org/apache/shale/dialog/scxml/config/ConfigurationParser.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.SCXMLDialogManager.java">org/apache/shale/dialog/scxml/SCXMLDialogManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.impl.DefaultDialogStateMapper.java">org/apache/shale/dialog/scxml/impl/DefaultDialogStateMapper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.DialogStateMapper.java">org/apache/shale/dialog/scxml/DialogStateMapper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.impl.package.html">org/apache/shale/dialog/scxml/impl/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.ShaleDialogELEvaluator.java">org/apache/shale/dialog/scxml/ShaleDialogELEvaluator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.SCXMLLifecycleListener.java">org/apache/shale/dialog/scxml/SCXMLLifecycleListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.package.html">org/apache/shale/dialog/scxml/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.DialogProperties.java">org/apache/shale/dialog/scxml/DialogProperties.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.ShaleDialogELContext.java">org/apache/shale/dialog/scxml/ShaleDialogELContext.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.action.package.html">org/apache/shale/dialog/scxml/action/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.action.ViewAction.java">org/apache/shale/dialog/scxml/action/ViewAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.Globals.java">org/apache/shale/dialog/scxml/Globals.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.config.DialogMetadata.java">org/apache/shale/dialog/scxml/config/DialogMetadata.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.SCXMLDialogContext.java">org/apache/shale/dialog/scxml/SCXMLDialogContext.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.config.package.html">org/apache/shale/dialog/scxml/config/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-scxml/checkstyle.html#org.apache.shale.dialog.scxml.action.RedirectAction.java">org/apache/shale/dialog/scxml/action/RedirectAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

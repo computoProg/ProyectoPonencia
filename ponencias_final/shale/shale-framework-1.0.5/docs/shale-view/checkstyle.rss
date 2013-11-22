@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>Shale View Controller - Checkstyle report</title>
+    <link>http://shale.apache.org/shale-view</link>
+    <description>Shale View Controller - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2004 - 2008 The Apache Software Foundation</copyright>
+    <item>
+      <title>File: 24,
+             Errors: 53,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://shale.apache.org/shale-view/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://shale.apache.org/shale-view/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.Constants.java">org/apache/shale/view/Constants.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.faces.ViewControllerCallbacks.java">org/apache/shale/view/faces/ViewControllerCallbacks.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.faces.SubviewComponent.java">org/apache/shale/view/faces/SubviewComponent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.AbstractSessionBean.java">org/apache/shale/view/AbstractSessionBean.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.AbstractRequestBean.java">org/apache/shale/view/AbstractRequestBean.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.impl.DefaultViewControllerMapper.java">org/apache/shale/view/impl/DefaultViewControllerMapper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.ExceptionHandler.java">org/apache/shale/view/ExceptionHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.ViewControllerMapper.java">org/apache/shale/view/ViewControllerMapper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.faces.ViewViewHandler.java">org/apache/shale/view/faces/ViewViewHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.faces.package.html">org/apache/shale/view/faces/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.faces.SubviewTag.java">org/apache/shale/view/faces/SubviewTag.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.faces.ShaleViewRoot.java">org/apache/shale/view/faces/ShaleViewRoot.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.impl.DefaultExceptionHandler.java">org/apache/shale/view/impl/DefaultExceptionHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.faces.ViewPhaseListener.java">org/apache/shale/view/faces/ViewPhaseListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.package.html">org/apache/shale/view/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.AbstractViewController.java">org/apache/shale/view/AbstractViewController.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.AbstractApplicationBean.java">org/apache/shale/view/AbstractApplicationBean.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.impl.package.html">org/apache/shale/view/impl/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.AbstractFacesBean.java">org/apache/shale/view/AbstractFacesBean.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  14
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.faces.ViewActionListener.java">org/apache/shale/view/faces/ViewActionListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.ViewController.java">org/apache/shale/view/ViewController.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.faces.LifecycleListener.java">org/apache/shale/view/faces/LifecycleListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.faces.FacesConstants.java">org/apache/shale/view/faces/FacesConstants.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-view/checkstyle.html#org.apache.shale.view.ApplicationException.java">org/apache/shale/view/ApplicationException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

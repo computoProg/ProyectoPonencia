@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.1" timestamp="2008-06-02T10:59:21.499">
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-application/src/main/java/org/apache/shale/application/AbstractRegExpFilter.java">
+<violation beginline="340" endline="340" begincolumn="17" endcolumn="17" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.application" class="AbstractRegExpFilter" method="precompile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-application/src/main/java/org/apache/shale/application/faces/ShaleApplicationFilter.java">
+<violation beginline="347" endline="347" begincolumn="13" endcolumn="13" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.application.faces" class="ShaleApplicationFilter" method="cleanup" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+</pmd>

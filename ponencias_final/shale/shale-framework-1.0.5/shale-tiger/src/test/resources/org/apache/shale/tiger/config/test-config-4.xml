@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ $Id: test-config-4.xml 464373 2006-10-16 04:21:54Z rahul $
+
+-->
+
+<!DOCTYPE faces-config PUBLIC
+ '-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN'
+ 'http://java.sun.com/dtd/web-facesconfig_1_1.dtd'>
+
+<faces-config>
+
+    <!-- Configure a variety of managed beans that are actually lists -->
+
+    <managed-bean>
+        <managed-bean-name>explicitIntegerList</managed-bean-name>
+        <managed-bean-class>java.util.Vector</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+        <list-entries>
+            <value-class>java.lang.Integer</value-class>
+            <value>123</value>
+            <value>234</value>
+            <null-value/>
+            <value>345</value>
+        </list-entries>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>explicitStringList</managed-bean-name>
+        <managed-bean-class>java.util.LinkedList</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <list-entries>
+            <value-class>java.lang.String</value-class>
+            <value>foo</value>
+            <value>bar</value>
+            <null-value/>
+            <value>baz</value>
+            <value>bop</value>
+        </list-entries>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>implicitStringList</managed-bean-name>
+        <managed-bean-class>java.util.ArrayList</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <list-entries>
+            <value>bop</value>
+            <null-value/>
+            <value>baz</value>
+            <value>bar</value>
+            <value>foo</value>
+        </list-entries>
+    </managed-bean>
+
+
+    <!-- Configure a managed bean with list properties -->
+
+
+    <managed-bean>
+        <managed-bean-name>listPropertiesBean</managed-bean-name>
+        <managed-bean-class>org.apache.shale.tiger.config.TestBean4</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+        <managed-property>
+            <property-name>emptyList</property-name>
+            <list-entries>
+                <value>foo</value>
+                <value>bar</value>
+                <null-value/>
+                <value>baz</value>
+                <value>bop</value>
+            </list-entries>
+        </managed-property>
+        <managed-property>
+            <property-name>fullList</property-name>
+            <list-entries>
+                <value>foo</value>
+                <value>bar</value>
+                <null-value/>
+                <value>baz</value>
+                <value>bop</value>
+            </list-entries>
+        </managed-property>
+    </managed-bean>
+
+</faces-config>

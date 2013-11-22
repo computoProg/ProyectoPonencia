@@ -1,0 +1,104 @@
+<!--
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to you under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
+<!-- $Id: package.html 464373 2006-10-16 04:21:54Z rahul $ -->
+
+<body>
+
+<p>This package contains Java SE 5 <em>annotations</em> that allow you to
+register several types of JavaServer Faces artifacts (components, converters,
+phase listeners, renderers, and validators) without having to define them in
+a configuration resource.  Because the JavaServer Faces runtime does not support
+classes with arbitrary inheritance hierarchies to implement particular features, the
+actual classes themselves must also extend the corresponding JavaServer Faces
+APIs to be usable (with the exception of annotated phase listeners, in which
+case an adapter instance will be interposed if necessary.</p>
+
+<p>To declare a JavaServer Faces <code>UIComponent</code> class:</p>
+<pre>
+    import javax.faces.component.UIComponentBase;
+    import org.apache.shale.tiger.register.FacesComponent;
+    
+    &#64;FacesComponent("com.mycompany.mytypes.MY_COMPONENT_TYPE")
+    public class MyComponent extends UIComponentBase {
+      ...
+    }
+</pre>
+
+<p>To declare a JavaServer Faces by-id <code>Converter</code> class:</p>
+<pre>
+    import javax.faces.convert.Converter;
+    import org.apache.shale.tiger.register.FacesConverter;
+    
+    &#64;FacesConverter("com.mycompany.mytypes.MY_CONVERTER_ID")
+    public class MyConverter implements Converter {
+      ...
+    }
+</pre>
+
+<p>To declare a JavaServer Faces <code>Validator</code> class:</p>
+<pre>
+    import javax.faces.convert.Validator;
+    import org.apache.shale.tiger.register.Validator;
+    
+    &#64;FacesValidator("com.mycompany.mytypes.MY_VALIDATOR_ID")
+    public class MyValidator implements Validator {
+      ...
+    }
+</pre>
+
+<p>To declare a JavaServer Faces <code>PhaseListener</code> class (the
+<code>BeforePhase</code> and <code>AfterPhase</code> event handers are both
+optional, and need only be specified if you are interested in that event):</p>
+<pre>
+    import org.apache.shale.tiger.register.AfterPhase;
+    import org.apache.shale.tiger.register.BeforePhase;
+    import org.apache.shale.tiger.register.FacesPhaseListener;
+    
+    &#64;FacesPhaseListener(phaseId=PhaseId.RENDER_RESPONSE)
+    public class MyPhaseListener {
+      ...
+      @BeforePhase public void myBeforePhase(PhaseEvent event) { ... }
+      ...
+      @AfterPhase public void myAfterPhase(PhaseEvent event) { ... }
+      ...
+    }
+</pre>
+
+<p>To declare a JavaServer Faces <code>Renderer</code> class:</p>
+<pre>
+    import javax.faces.render.Renderer;
+    import org.apache.shale.tiger.register.FacesRenderer;
+    
+    &#64;FacesRenderer(renderKitId="myRenderKitId" rendererType="myRendererType"
+                   componentFamily="javax.faces.Input")
+    public class MyRenderer implements Renderer {
+      ...
+    }
+</pre>
+
+<p>If the <code>renderKitId</code> attribute is not specified, the
+<code>Renderer</code> will be registered in the default HTML Basic
+<code>RenderKit</code>.</p>
+
+<p>API STATUS:  Experimental.</p>
+
+<p>IMPLEMENTATION STATUS:  Implemented, only lightly tested.</p>
+
+@since 1.0.1
+
+</body>

@@ -1,0 +1,365 @@
+<!--
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to you under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
+<!-- $Id: package.html 487133 2006-12-14 08:40:48Z craigmcc $ -->
+
+<body>
+
+<p>This package contains interfaces and APIs to support access for remoting
+(client side components that need to perform server side activities and/or
+retrieve information on a background thread).  A JavaServer Faces
+<code>PhaseListener</code> is used to gain control at the end of the
+<em>Restore View</em> phase of the request processing lifecycle, and
+determine whether or not the <em>view identifier</em> of the requested
+view now matches one of a set of configured patterns.  When a match is
+detected, control of this request is handed over to a configured
+<a href="Processor.html">Processor</a> instance, which can take complete
+responsibility for creating the response for this request (and then
+calling <code>FacesContext.responseComplete()</code> to tell JSF this has been
+done).  In addition, <a href="Processor.html">Processor</a> instances can be
+configured to limit the set of resource identifiers which they provide access
+to, by pattern matching against "include" and "exclude" pattern lists.</p>
+
+<h3>Concrete Processor Implementations</h3>
+
+<p>You can define your own <a href="Processor.html">Processor</a> implementations,
+and map them to requests as shown below.  Alternatively, the following concrete
+implementations are available out of the box for your use:</p>
+<ul>
+    <li><a href="impl/ClassResourceProcessor.html">ClassResourceProcessor</a> -
+        Serves static resources (such as stylesheets or JavaScript source files)
+        from the web application classpath.  In other words, resource files can
+        be packaged inside a JAR file that is included in the
+        <code>/WEB-INF/lib</code> directory, without requiring the developer to
+        modify their build script to extract the resources into the webapp root
+        directory or a specially configured subdirectory.</li>
+    <li><a href="impl/WebResourceProcessor.html">WebResourceProcessor</a> -
+        Serves static resources (such as stylesheets or JavaScript source files)
+        from the web application's document root.  This is essentially the same
+        as allowing your servlet container's default file-serving servlet to
+        serve the resources, but allows operation in scenarios where such a
+        file serving servlet has not been configured.</li>
+    <li><a href="impl/MethodBindingProcessor.html">MethodBindingProcessor</a> -
+        Translates the resource portion of the URL (see examples below) into a
+        JavaServer Faces <em>method binding expression</em> that points at a
+        public method taking no parameters, and then executes a call to this
+        method.  As a result of evaluating the method binding, it is possible
+        that the JavaServer Faces <em>managed beans</em> facility will be
+        invoked to create and configure the bean containing the called method.</li>
+    <li><a href="impl/ChainProcessor.html">ChainProcessor</a> - Translates the
+        resource portion of the URL into execution of an appropriate
+        <a href="http://jakarta.apache.org/commons/chain">Commons Chain</a>
+        <code>Chain</code> or <code>Command</code> from an appropriate
+        <code>Catalog</code>.</li>
+</ul>
+
+<p>The static resource serving <a href="Processor.html">Processor</a> implentations
+share the following features:</p>
+<ul>
+    <li>Unconditionally disallow access to prohibited resources (web application
+        resources under <code>/WEB-INF</code> or <code>/META-INF</code>, Java class
+        files, and JSP source files).</li>
+        <li>Conditionally allow or disallow access to other resources based on
+        include and exclude pattern lists.</li>
+    <li>Set the content type of the response based on the extension portion
+        of the resource identifier.  This is done by first consulting the
+        servlet or portlet container (which supports mapping of extensions
+        to content types with a <code>&lt;mime-type&gt;</code> element in the
+        web application deployment descriptor), and then by consulting a
+        fallback list of mappings for common types of resources.</li>
+    <li>Support browser caching of static content, by watching for incoming
+        requests that contain an <code>If-Modified-Since</code> HTTP header,
+        and returning an HTTP "not modified" (304) response if this application
+        has not been restarted since the resource was served to this client.</li>
+    <li>Requests for non-existent resources will return a standard HTTP
+        "not found" (404) response.</li>
+    <li>Standard servlet access control features may be applied to the served
+        resources, by using standard security constraint elements in the web
+        application deployment descriptor.</li>
+</ul>
+
+<p>The dynamic logic invoked by <a href="impl/MethodBindingProcessor.html">
+MethodBindingProcessor</a> can use any technique it desires to create the
+content for this response.  Available options (starting with the one that is
+recommended best practice) include:</p>
+<ul>
+    <li>For a text response, acquire a <code>ResponseWriter</code> instance
+        and use its methods, just as a <code>Renderer</code> would:
+        <blockquote><pre>
+FacesContext context = FacesContext.getCurrentInstance();
+ResponseWriter writer = (new ResponseFactory()).getResponseWriter(context, "text/xml");
+writer.startDocument();
+...
+writer.endDocument();
+writer.close();
+        </pre></blockquote></li>
+    <li>For a binary response, acquire a <code>ResponseStream</code> instance
+        and use its methods:
+        <blockquote><pre>
+FacesContext context = FacesContext.getCurrentInstance();
+ResponseStream stream = (new ResponseFactory()).getResponseStream(context, "image/gif");
+stream.write(...);
+...
+stream.close();
+        </pre></blockquote></l>
+    <li>Stash relevant model data (typically in request scope), and then forward
+        to a JSP page (with either JSF components or JSTL tags coupled with EL
+        expressions) that will produce the actual response:
+        <blockquote><pre>
+FacesContext context = FacesContext.getCurrentInstance();
+context.getExternalContext().dispatch("/results.jsp");
+        </pre></blockquote></li>
+    <li>Access the response object from the external context, and acquire a
+        writer or stream from the response object directly.  Note that this
+        technique, unlike those illustrated above, requires you to program
+        specfically to either the servlet or portlet response APIs.</li>
+</ul>
+
+<p>Before returning, the dynamic logic should call <code>responseComplete()</code>
+on the <code>FacesContext</code> instance for the current request, to bypass
+the remaining phases of the JavaServer Faces request processing lifecycle.</p>
+
+<h3>Configuring Remoting Support</h3>
+
+<p>In order for a request URI to be processed at all by the Shale remoting
+facilities, it must match the mapping for <code>FacesServlet</code> that is
+already defined in <code>/WEB-INF/web.xml</code>.  Once that occurs, JSF will
+have constructed a corresponding view identifier that can be retrieved by
+calling:
+<blockquote><pre>
+String viewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+</pre></blockquote>
+</p>
+
+<p>This view identifier is then compared to a set of matching patterns which,
+like servlet mappings, can be either prefix matched (<code>/foo/*</code>) or
+extension matched (<code>*.foo</code>).  If the view identifier matches, it will
+be transformed into a corresponding <em>resource identifier</em> that is passed
+to the <code>process()</code> method of an appropriate <a href="Processor.html">
+Processor</a> instance.</p>
+
+<p>Mapping of view identifiers to resources is configured by specifying comma
+delimited lists of "pattern:classname" pairs for the following context initialization
+parameters in <code>/WEB-INF/web.xml</code>.  For each of these parameters that
+is not specified, the value illustrated here will be the default (<strong>WARNING</strong>
+- this decision may be changed later, so double check the latest documentation):
+<blockquote><pre>
+&lt;context-param&gt;
+  &lt;param-name&gt;
+    org.apache.shale.remoting.CLASS_RESOURCES
+  &lt;/param-name&gt;
+  &lt;param-value&gt;
+    /static/*:org.apache.shale.remoting.impl.ClassResourceProcessor
+  &lt;/param-value&gt;
+&lt;/context-param&gt;
+
+&lt;context-param&gt;
+  &lt;param-name&gt;
+    org.apache.shale.remoting.DYNAMIC_RESOURCES
+  &lt;/param-name&gt;
+  &lt;param-value&gt;
+    /dynamic/*:org.apache.shale.remoting.impl.MethodBindingProcessor
+  &lt;/param-value&gt;
+&lt;/context-param&gt;
+
+&lt;context-param&gt;
+  &lt;param-name&gt;
+    org.apache.shale.remoting.WEBAPP_RESOURCES
+  &lt;/param-name&gt;
+  &lt;param-value&gt;
+    /webapp/*:org.apache.shale.remoting.impl.WebResourceProcessor
+  &lt;/param-value&gt;
+&lt;/context-param&gt;
+</pre></blockquote>
+</p>
+
+<p>Conditional access controls for a specific <a href="Processor.html">Processor</a>
+implementation are described by configuring comma-delimited lists of patterns
+(either "/foo/*" style or "*.foo" style) that are matched against the
+<em>resource id</em> part of the request URL.  The standard algorithm applied
+by the provided implementations (via base class <a href="FilteringProcessor.html">
+FilteringProcessor</a>) works as follows:</p>
+<ul>
+<li>If there is an "excludes" list for this processor, and the resource id
+    portion of the request URL matches one of these patterns, reject the
+    request by returning an HTTP 404 (not found) status.</li>
+<li>If there is an "includes" list for this processor, and the resource id
+    portion of the request URL matches one of these patterns, perform the
+    processing required to deliver the requested response.</li>
+<li>If there is an "includes" list for this processor, and we reached this
+    point, reject the request by returning an HTTP 404 (not found) status,
+    because the resource URL did not match one of the "include" patterns.</li>
+<li>Because we did not reject the resource id for an "excludes" list match,
+    and there was no "includes" list, perform the processing required to
+    deliver the requested response.</li>
+</ul>
+
+<p>Unless explicitly configured differently, the context init parameters shown
+below contain default values that will be used for include and exclude patterns:</p>
+<p><blockquote><pre>
+&lt;context-param&gt;
+  &lt;param-name&gt;
+    org.apache.shale.remoting.CLASS_RESOURCES_EXCLUDES
+  &lt;/param-name&gt;
+  &lt;param-value&gt;
+    *.class,*.jsp,*.properties
+  &lt;/param-value&gt;
+&lt;/context-param&gt;
+
+&lt;context-param&gt;
+  &lt;param-name&gt;
+    org.apache.shale.remoting.CLASS_RESOURCES_INCLUDES
+  &lt;/param-name&gt;
+  &lt;param-value&gt;
+    *.css,*.gif,*.html,*.jpg,*.js,*.png,*.xml
+  &lt;/param-value&gt;
+&lt;/context-param&gt;
+
+&lt;context-param&gt;
+  &lt;param-name&gt;
+    org.apache.shale.remoting.DYNAMIC_RESOURCES_EXCLUDES
+  &lt;/param-name&gt;
+  &lt;param-value&gt;
+    /application/*,/applicationScope/*,/facesContext/*,/request/*,/requestScope/*,/session/*,/sessionScope/*,/view/*
+  &lt;/param-value&gt;
+&lt;/context-param&gt;
+
+&lt;context-param&gt;
+  &lt;param-name&gt;
+    org.apache.shale.remoting.DYNAMIC_RESOURCES_INCLUDES
+  &lt;/param-name&gt;
+  &lt;param-value&gt;
+  &lt;/param-value&gt;
+&lt;/context-param&gt;
+
+&lt;context-param&gt;
+  &lt;param-name&gt;
+    org.apache.shale.remoting.DYNAMIC_RESOURCES_EXCLUDES
+  &lt;/param-name&gt;
+  &lt;param-value&gt;
+  &lt;/param-value&gt;
+&lt;/context-param&gt;
+
+&lt;context-param&gt;
+  &lt;param-name&gt;
+    org.apache.shale.remoting.DYNAMIC_RESOURCES_INCLUDES
+  &lt;/param-name&gt;
+  &lt;param-value&gt;
+  &lt;/param-value&gt;
+&lt;/context-param&gt;
+
+&lt;context-param&gt;
+  &lt;param-name&gt;
+    org.apache.shale.remoting.OTHER_RESOURCES_EXCLUDES
+  &lt;/param-name&gt;
+  &lt;param-value&gt;
+    *.class,*.jsp,*.properties
+  &lt;/param-value&gt;
+&lt;/context-param&gt;
+
+&lt;context-param&gt;
+  &lt;param-name&gt;
+    org.apache.shale.remoting.OTHER_RESOURCES_INCLUDES
+  &lt;/param-name&gt;
+  &lt;param-value&gt;
+    *.css,*.gif,*.html,*.jpg,*.js,*.png,*.xml
+  &lt;/param-value&gt;
+&lt;/context-param&gt;
+
+&lt;context-param&gt;
+  &lt;param-name&gt;
+    org.apache.shale.remoting.WEBAPP_RESOURCES_EXCLUDES
+  &lt;/param-name&gt;
+  &lt;param-value&gt;
+    *.class,*.jsp,*.properties
+  &lt;/param-value&gt;
+&lt;/context-param&gt;
+
+&lt;context-param&gt;
+  &lt;param-name&gt;
+    org.apache.shale.remoting.WEBAPP_RESOURCES_INCLUDES
+  &lt;/param-name&gt;
+  &lt;param-value&gt;
+    *.css,*.gif,*.html,*.jpg,*.js,*.png,*.xml
+  &lt;/param-value&gt;
+&lt;/context-param&gt;
+
+</pre></blockquote></p>
+
+<p><strong>SECURITY NOTE</strong> - Note that, by default, no conditional
+restrictions are placed on the managed bean names and public zero-argument
+method names referenced by the method binding processor.  You will generally
+want to restrict access to methods only on those managed beans explicitly
+designed to retrieve such callbacks.  So, if your application has managed beans
+"foo" and "bar" that should allow access, you might set the DYNAMIC_RESOURCES_INCLUDES
+parameter to <code>/foo/*,/bar/*</code> to enforce these restrictions.</p>
+
+<p>In addition, you can configure the following additional context initialization
+parameters:</p>
+<ul>
+    <li><code>org.apache.shale.remoting.OTHER_RESOURCES</code> - configuration
+        pairs as described above, which will be marked with the "other"
+        mechanism type.  No default value.</li>
+    <li><code>org.apache.shale.remoting.MAPPING_CLASS</code> - fully qualified
+        classname of class used to create <a href="Mapping.html">Mapping</a>
+        instances to record configuration information.  If not specified, the
+        <a href="impl/MappingImpl.html">MappingImpl</a> class will be used.</li>
+    <li><code>org.apache.shale.remoting.MAPPINGS_CLASS</code> - fully qualified
+        classname of class used to create a <a href="Mappings.html">Mappings</a>
+        instance to record configuration information.  If not specified, the
+        <a href="impl/MappingsImpl.html">MappingsImpl</a> class will be used.</li>
+</ul>
+
+<p>Once the configuration information has been processed (which will occur on
+the first JSF request after the application has started), an instance of
+<a href="Mappings.html">Mappings</a> will be stored as an application scope
+parameter under the key identified by <code>Globals.MAPPINGS_ATTR</code> which
+contains all of the configuration information being used.  This instance might
+be useful, for example, to a JSF component that wishes to dynamically determine
+the appropriate mapping for class resources.</p>
+
+
+<h3>Example URLs</h3>
+
+<p>Given the default resource mappings described above, and assuming that the
+developer has mapped <code>FacesServlet</code> to the <code>*.faces</code>
+pattern, the following request URLs will be mapped to appropriate resources
+and processed as follows:</p>
+
+<p><code>http://localhost:8080/myapp/dynamic/foo/bar.faces</code>
+<blockquote>
+    Constructs a method binding expression <code>#{foo.bar}</code> and then
+    executes it.  This will cause the bean instance at attribute name <code>foo</code>
+    to be located (or created, if necessary), and then the public <code>bar()</code>
+    method, which takes no parameters, will be called on that instance.
+</blockquote></p>
+
+<p><code>http://localhost:8080/myapp/static/mycompany/mypackage/MyScript.js.faces</code>
+<blockquote>
+    Locates and serves a static resource (<code>/mycompany/mypackage/MyScript.js</code>)
+    from the web application class loader, which will therefore locate such resources
+    in the <code>/WEB-INF/classes</code> directory, or packaged in a JAR file in the
+    <code>/WEB-INF/lib</code> directory.
+</blockquote></p>
+
+<p><code>http://localhost:8080/myapp/webapp/resources/MyScript.js.faces</code>
+<blockquote>
+    Locates and serves a static resource (<code>/resources/MyScript.js</code>)
+    from the document root of the web application.
+</blockquote></p>
+
+</body>

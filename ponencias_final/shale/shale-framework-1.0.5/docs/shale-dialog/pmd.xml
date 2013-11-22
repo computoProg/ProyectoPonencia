@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.1" timestamp="2008-06-02T11:03:01.860">
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-dialog/src/main/java/org/apache/shale/dialog/base/AbstractDialogContextManagerListener.java">
+<violation beginline="50" endline="50" begincolumn="9" endcolumn="9" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.dialog.base" class="AbstractDialogContextManagerListener" method="onCreate" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+<violation beginline="58" endline="58" begincolumn="9" endcolumn="9" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.dialog.base" class="AbstractDialogContextManagerListener" method="onRemove" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-dialog/src/main/java/org/apache/shale/dialog/base/AbstractDialogLifecycleListener.java">
+<violation beginline="38" endline="38" begincolumn="9" endcolumn="9" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.dialog.base" class="AbstractDialogLifecycleListener" method="onInit" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+<violation beginline="46" endline="46" begincolumn="9" endcolumn="9" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.dialog.base" class="AbstractDialogLifecycleListener" method="onDestroy" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+</pmd>

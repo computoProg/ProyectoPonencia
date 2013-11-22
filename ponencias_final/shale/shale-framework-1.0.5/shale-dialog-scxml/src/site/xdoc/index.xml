@@ -1,0 +1,396 @@
+<?xml version="1.0"?>
+<document>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+  <properties>
+    <title>Shale Dialog Manager (SCXML Implementation)</title>
+  </properties>
+
+  <body>
+    
+    <section name="Shale Dialog Manager (SCXML Implementation)">
+    <a name="dialog-scxml"/>
+
+      <a name="dialog-scxml-introduction"/>
+      <subsection name="Introduction">
+
+        <p>The <a href="../shale-dialog/index.html">Shale Dialog Manager</a>
+        defines a generic API by which an application may utilize a
+        Dialog Manager implementation to manage conversations with the
+        user of that application.  A user may have (at most) one active
+        conversation in each window or frame that he or she is using.</p>
+
+        <p>This module contains the <em>SCXML (State Chart XML) Implementation</em>
+        of the Shale Dialog Manager facilities.  It uses the
+        <a href="http://commons.apache.org/scxml/">Commons SCXML</a>
+        library for the dialog state machine execution under the
+        covers, and the dialogs are described using SCXML documents.</p>
+
+      </subsection>
+
+
+      <a name="dialog-scxml-why"/>
+      <subsection name="Benefits">
+
+        <ul>
+
+          <li>SCXML is a <a href="http://www.w3.org/TR/scxml">W3C Working Draft</a>
+          which may translate to better support in tooling, number of
+          implementations and various runtime environments. It is the candidate
+          controller notation coming out of the W3C.</li>
+
+          <li>SCXML is more closely aligned to state chart theory and UML2, which
+          helps those using model driven development methodologies.</li>
+
+          <li>SCXML semantics provides for much more than the basic Shale dialogs
+          implementation, such as histories, per state contexts, arbitrary
+          expression evaluation, parallelism and the possibility
+          (<i>currently not available in the shale-dialog-scxml module</i>) to add
+          domain-specific XML vocabularies via action namespaces. See the
+          <a href="http://commons.apache.org/scxml/">Commons SCXML site</a>
+          for details.</li>
+
+          <li>Those developing multi-channel applications, or using frameworks
+          that use SCXML for the controller bits in other contexts (e.g.
+          <a href="http://jakarta.apache.org/taglibs/doc/rdc-doc/intro.html">RDC framework</a>),
+          may be inclined towards SCXML-based authoring for Shale dialogs.</li>
+
+        </ul>
+
+      </subsection>
+
+
+      <a name="dialog-scxml-how"/>
+      <subsection name="Describing Shale dialogs via SCXML documents">
+
+        <p>A Shale dialog is modeled as a state machine. The various
+        "state types" that commonly constitute the dialog state machine
+        are described in the Shale dialogs
+        <a href="../shale-dialog-basic/index.html#dialog-state-types">basic
+        implementation documentation</a>.</p>
+
+        <p> This section maps these types to the corresponding SCXML
+        snippets appropriate for the Shale dialogs SCXML implementation.
+        The example dialog from the Shale usecases sample application
+        is captured here as a <a href="images/log-on-dialog.jpg">UML state
+        machine diagram</a> and forms the basis of the snippets below.</p>	
+
+        <ul>
+
+          <li>Action state instances may be mapped to executable content
+          in UML <code>&lt;onentry&gt;</code> (and may be chained similarly).
+<source>
+&lt;!-- An "action" state --&gt;
+&lt;state id="checkCookie"&gt;
+
+  &lt;!-- Execute the method binding expression in the onentry block,
+      method must take no arguments and return a String. These
+      method binding expressions must use the #{...} syntax --&gt;
+
+  &lt;onentry&gt;
+    &lt;var name="cookieOutcome" expr="#{profile$logon.check}" /&gt;
+  &lt;/onentry&gt;
+
+  &lt;!-- Check the return value, and conditionally transition
+      to the appropriate state. Arbitrary EL expressions must use
+      the ${...} syntax. Since transitions are not guarded by
+      events, the transitions are "immediate" --&gt;
+
+  &lt;transition cond="${cookieOutcome eq 'authenticated'}"
+      target="exit"/&gt;
+  &lt;transition cond="${cookieOutcome eq 'unauthenticated'}"
+      target="logon"/&gt;
+
+&lt;/state&gt;
+</source>
+          </li>
+
+          <li>View state instances use event guards to wait for postback.
+          The mapping between the &lt;state&gt; <code>id</code> and the
+          JavaServer Faces <code>view identifier</code> is pluggable.
+          The default mapping is an identity transform i.e. the state
+          identifier is reused as the view identifier. See the
+          <a href="apidocs/org/apache/shale/dialog/scxml/DialogStateMapper.html">DialogStateMapper
+          Javadocs</a> for details. This mapping may be overridden by using
+          the &lt;shale:view> custom Commons SCXML action. See the
+          <a href="#dialog-scxml-actions">Shale dialogs custom Commons SCXML actions section</a>
+          for details. Also note the associated
+          <a href="#dialog-scxml-practices">best practices</a>
+          when authoring view &lt;state>s.
+<source>
+&lt;!-- A "view" state, the default convention maps this state to
+    to the JSF view identifier "/logon" --&gt;
+&lt;state id="logon"&gt;
+
+  &lt;!-- Wait for postback event, which is named "faces.outcome"
+      The reserved variable "outcome" contains the logical
+      outcome, which is used to conditionally transition
+      to the next state --&gt;
+
+  &lt;transition event="faces.outcome"
+      cond="${outcome eq 'authenticated'}"
+      target="exit"/&gt;
+  &lt;transition event="faces.outcome"
+      cond="${outcome eq 'create'}"
+      target="createProfile"/&gt;
+
+&lt;/state&gt;
+</source>
+          </li>
+
+          <li>Subdialog state instances may be mapped to external SCXML
+          documents (describing the subdialog) via the "src" attribute
+          of the SCXML &lt;state&gt; element.
+          </li>
+<source>
+&lt;!-- A "subdialog" state, the "src" attribute points to the SCXML
+    document describing the subdialog. --&gt;
+&lt;state id="createProfile" src="edit-profile.xml"&gt;
+
+  &lt;!-- Wait for &lt;state_id&gt;.done event, which lets us know
+      the subdialog has run to completion. This subdialog uses the
+      the "outcome" variable to convey its logical outcome to the
+      parent dialog (the SCXML &lt;assign&gt; element can be used
+      to assign values to existing variables) --&gt;
+
+  &lt;transition event="createProfile.done"
+      cond="${outcome eq 'success' or outcome eq 'cancel'}"
+      target="exit"/&gt;
+  &lt;transition event="createProfile.done"
+      cond="${outcome eq 'failure'}"
+      target="fail"/&gt;
+
+&lt;/state&gt;
+</source>
+          <li>End state instances may be mapped to SCXML final states.
+<source>
+&lt;!-- An "end" state, signifies that the dialog has run to
+    completion, the default convention maps this state to
+    to the JSF view identifier "/exit". --&gt;
+&lt;state id="exit" final="true"/&gt;
+</source>
+          Once the dialog reaches an end state, the dialog manager
+          cleans up the current instance of the executing dialog.
+          </li>
+
+        </ul>
+
+      </subsection>
+
+
+      <a name="dialog-scxml-using"/>
+      <subsection name="Using Dialog Manager (SCXML implementation)">
+
+        <p>To use the SCXML Dialog Manager facilities in Shale, take the following
+        steps:</p>
+
+        <ul>
+        <li>Model your dialog as a series of <em>State</em>s with transitions
+            between them labelled with the logical outcome that selects
+            that particular transition.  A UML State Diagram is a very useful
+            mechanism for visualizing such a model.  Then create a SCXML
+            document for each of the dialogs (dialog state machine diagrams can
+            be easily mapped to SCXML documents, see above section).</li>
+        <li>Build the views (and corresponding <code>ViewController</code> beans,
+            if you are also using the <a href="../shale-view/index.html">
+            Shale View Controller Support</a> functionality)
+            that comprise your dialog, using standard JavaServer Faces and
+            (optional) Shale <code>ViewController</code> facilities.</li>
+        <li>Declare your dialogs via an XML document, conventionally named
+            <code>/WEB-INF/dialog-config.xml</code>, that conforms to the
+            required DTD:
+<source>
+&lt;!DOCTYPE dialogs PUBLIC
+  "-//Apache Software Foundation//DTD Shale SCXML Dialog Configuration 1.0//EN"
+  "http://shale.apache.org/dtds/dialog-scxml-config_1_0.dtd"&gt;
+
+&lt;dialogs&gt;
+
+  &lt;dialog name="FirstDialogName"
+       scxmlconfig="firstdialog.xml"
+       dataclassname="org.apache.shale.examples.FirstDialogData"
+       /&gt;
+
+  &lt;dialog name="SecondDialogName"
+       scxmlconfig="seconddialog.xml"
+       dataclassname="org.apache.shale.examples.SecondDialogData"
+       /&gt;
+
+  ...
+
+&lt;/dialogs&gt;
+</source></li>
+        <li>If you have more than one dialog configuration file, or you have
+            defined your only dialog configuration file as a web application
+            resource with a name different than the one described above, use
+            a context initiaization parameter to define a comma-delimited list
+            of context-relative paths to configuration resources to be loaded:
+<source>
+&lt;context-param>
+  &lt;param-name>org.apache.shale.dialog.scxml.CONFIGURATION&lt;/param-name>
+  &lt;param-value>/WEB-INF/foo.xml,/WEB-INF/bar.xml&lt;/param-value>
+&lt;/context-param>
+</source></li>
+        <li>In addition to the dialog configuration resources defined by this
+            context initialization parameter, a resource named
+            <code>/WEB-INF/dialog-config.xml</code> will be automatically
+            processed, if it exists, and has not already been loaded.</li>
+        <li>Alternatively, or in addition to the above, any JAR file in
+            <code>/WEB-INF/lib</code> will be scanned for configuration
+            documents at <code>META-INF/dialog-config.xml</code>.  Such
+            resources will be automatically processed, making it easy to
+            define JAR files with dialog configurations and corresponding
+            Java classes and resources, which are recognized simply by
+            including this JAR file in the application.</li>
+        <li>To initiate a dialog named "xxxxx", use one of the techniques
+                defined by the <a href="../shale-dialog/index.html#dialog-using">
+            Shale Dialog Manager</a>.</li>
+        </ul>
+
+      </subsection>
+
+      <a name="dialog-scxml-actions"/>
+      <subsection name="Custom Commons SCXML actions">
+
+        <p>The Shale dialogs Commons SCXML implementation provides a couple
+           of custom Commons SCXML actions out of the box (
+           <a href="http://commons.apache.org/scxml/guide/custom-actions.html">
+           background reading on custom actions</a>). The first one
+           allows the use of redirects while navigating to a view,
+           and the second allows overriding the
+           <a href="apidocs/org/apache/shale/dialog/scxml/DialogStateMapper.html">DialogStateMapper</a>
+           mapping between a "view" state and the associated JSF
+           view identifier.</p>
+
+        <ul>
+
+          <li><b>&lt;shale:redirect&gt;</b> - Typically used in the
+          &lt;onentry&gt; section of the "view" &lt;state> that should be
+          visited by issuing a redirect.
+<source>
+&lt;onentry>
+  &lt;shale:redirect/>
+&lt;/onentry>
+</source></li>
+
+          <li><b>&lt;shale:view&gt;</b> - Typically used in the
+          &lt;onentry&gt; section of the "view" &lt;state>, such that the
+          "viewId" attribute contains the JSF view identifier that
+          should be rendered when in this dialog state.
+<source>
+&lt;onentry>
+  &lt;shale:view viewId="/faces/wizardpage3" />
+&lt;/onentry>
+</source></li>
+
+        </ul>
+
+        <p>The <i>shale</i> prefix used above is arbitrary. The
+        association is made using the namespace URI associated with
+        the prefix (the above custom actions belong to the
+        <i>http://shale.apache.org/dialog-scxml</i> URI), so the SCXML
+        document describing the above dialog would need to establish
+        that prefix to namespace URI association, for example:
+<source>
+&lt;scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0"
+       xmlns:shale="http://shale.apache.org/dialog-scxml"
+       initialstate="...">
+</source> 
+        </p>
+
+        <p>It is possible for application developers to define additional
+        custom actions per dialog definition. For example, a developer may
+        define a custom Commons SCXML action via a class
+        <i>my.actions.Foo</i> (which must extend
+        <i>org.apache.commons.scxml.model.Action</i>, see background
+        reading link above) and make it available in the namespace URI
+        <i>http://foo.bar/actions</i> to the dialog named "wizard"
+        by defining it in the <i>dialog-config.xml</i> like so:
+<source>
+&lt;dialog name="wizard" scxmlconfig="wizard.xml"
+           dataclassname="wizard.Data">
+
+    &lt;scxmlaction name="foo" uri="http://foo.bar/actions"
+                    actionclassname="my.actions.Foo" />
+
+&lt;/dialog>
+</source>
+
+        and further using it in the <i>wizard.xml</i> SCXML document like so:
+
+<source>
+&lt;scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0"
+       xmlns:shale="http://shale.apache.org/dialog-scxml"
+       xmlns:my="http://foo.bar/actions"
+       initialstate="...">
+
+    ...
+
+    &lt;state id="state1">
+        &lt;onentry>
+            &lt;my:foo .../&gt;
+        &lt;/onentry>
+
+        ...
+
+    &lt;/state>
+
+</source>
+        </p>
+
+      </subsection>
+
+
+      <a name="dialog-scxml-practices"/>
+      <subsection name="Best practices">
+
+        <p>The particular usecase of SCXML within Shale dialogs implies
+        certain restrictions on the SCXML document used to describe
+        the dialog. In particular, best practices for SCXML documents
+        used to describe Shale dialogs include:
+
+          <ul>
+
+            <li>A "view" &lt;state> must be a simple leaf state (should not
+            contain other &lt;state> elements and should not have a
+            &lt;parallel> ancestor).</li>
+
+            <li>A "view" &lt;state> must not rely on &lt;onexit> or
+            &lt;onentry> executable content. Such executable content can
+            be moved to a preceeding or following "action" state. This
+            is due to the possibility of browser navigation buttons
+            (back/forward) being used during the dialog execution. The
+            exception to this is the two custom actions described in the
+            previous section, when used as mentioned above.</li>
+
+            <li>All views that participate in a dialog should
+            provide for checks to guard against double
+            submits (see &lt;token> tag in shale-core) and provide
+            "immediate" actions such as a cancel button to exit out of
+            the dialog.</li>
+
+          </ul>
+
+        </p>
+
+      </subsection>
+
+    </section>
+
+  </body>
+
+</document>

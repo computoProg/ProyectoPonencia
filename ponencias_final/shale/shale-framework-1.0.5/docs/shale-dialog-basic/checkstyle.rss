@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>Shale Dialog Manager (Basic Implementation) - Checkstyle report</title>
+    <link>http://shale.apache.org/shale-dialog-basic</link>
+    <description>Shale Dialog Manager (Basic Implementation) - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2004 - 2008 The Apache Software Foundation</copyright>
+    <item>
+      <title>File: 23,
+             Errors: 57,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://shale.apache.org/shale-dialog-basic/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.config.ActionStateImpl.java">org/apache/shale/dialog/basic/config/ActionStateImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.BasicDialogContext.java">org/apache/shale/dialog/basic/BasicDialogContext.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.model.State.java">org/apache/shale/dialog/basic/model/State.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.config.package.html">org/apache/shale/dialog/basic/config/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.config.ConfigurationParser.java">org/apache/shale/dialog/basic/config/ConfigurationParser.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.config.AbstractState.java">org/apache/shale/dialog/basic/config/AbstractState.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.config.DialogImpl.java">org/apache/shale/dialog/basic/config/DialogImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.model.package.html">org/apache/shale/dialog/basic/model/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.config.TransitionImpl.java">org/apache/shale/dialog/basic/config/TransitionImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.Position.java">org/apache/shale/dialog/basic/Position.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.model.ActionState.java">org/apache/shale/dialog/basic/model/ActionState.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.config.EndStateImpl.java">org/apache/shale/dialog/basic/config/EndStateImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.package.html">org/apache/shale/dialog/basic/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.model.EndState.java">org/apache/shale/dialog/basic/model/EndState.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.model.Dialog.java">org/apache/shale/dialog/basic/model/Dialog.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.model.Transition.java">org/apache/shale/dialog/basic/model/Transition.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.config.ViewStateImpl.java">org/apache/shale/dialog/basic/config/ViewStateImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.BasicDialogManager.java">org/apache/shale/dialog/basic/BasicDialogManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.model.ViewState.java">org/apache/shale/dialog/basic/model/ViewState.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.Globals.java">org/apache/shale/dialog/basic/Globals.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.config.SubdialogStateImpl.java">org/apache/shale/dialog/basic/config/SubdialogStateImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.BasicLifecycleListener.java">org/apache/shale/dialog/basic/BasicLifecycleListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog-basic/checkstyle.html#org.apache.shale.dialog.basic.model.SubdialogState.java">org/apache/shale/dialog/basic/model/SubdialogState.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

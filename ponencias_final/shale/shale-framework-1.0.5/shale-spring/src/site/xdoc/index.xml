@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<document>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+  <properties>
+    <title>Shale Spring Integration</title>
+  </properties>
+
+  <body>
+    
+    <section name="Shale Spring Integration">
+    <a name="spring"/>
+
+      <a name="spring-introduction"/>
+      <subsection name="Introduction">
+
+        <p>The <a href="http://springframework.org/">Spring Framework</a>
+        is a popular application framework for Enterprise Java applications,
+        featuring a powerful <em>Dependency Injection</em> mechanism
+        (also known as <em>Inversion of Control</em>) for creating and
+        configuring "plain old Java objects" (POJOs) on the fly.  Since
+        verson 1.1.5, Spring has included an expression evaluation 
+        mechanism (see below) for integration with JavaServer
+        Faces.  Shale adds the ability to programmatically access the Spring
+        <code>WebApplicationContext</code> for the current application.</p>
+
+      </subsection>
+
+      <a name="spring-services"/>
+      <subsection name="Services Provided">
+
+        <p>Spring provides a custom JavaServer Faces
+        <code>VariableResolver</code> implementation that extends the standard
+        JavaServer Faces managed beans mechanism.  When asked to resolve a
+        variable name, the following algorithm is performed:</p>
+        <ol>
+        <li>Does a bean with the specified name already exist in some
+            scope (request, session, application)?  If so, return it.</li>
+        <li>Is there a standard JavaServer Faces managed bean definition for
+            this variable name?  If so, invoke it in the usual way, and
+            return the bean that was created.</li>
+        <li>Is there configuration information for this variable name
+            in the Spring <code>WebApplicationContext</code> for this
+            application?  If so, use it to create and configure an instance,
+            and return that instance to the caller.</li>
+        <li>If there is no managed bean or Spring definition for this
+            variable name, return <code>null</code> instead.</li>
+        </ol>
+
+        <p>As a result of this algorithm, you can transparently use either
+        JavaServer Faces or Spring facilities to create beans on demand.
+        Note, however, that the Spring integration capabilities do not
+        include the ability to place a Spring-created bean into a specified
+        scope.  Therefore, it works best for application singletons, or for
+        beans where you wish to create a new instance on every request.</p>
+
+        <p>Separately, Shale also provides a custom
+        <code>VariableResolver</code> that exposes Spring's
+        <code>WebApplicationContext</code> instance for the current
+        application, using variable name <code>webApplicationContext</code>
+        to look it up.  This is useful when an event handler wishes to
+        explicitly invoke the bean factory to create beans on demand,
+        such as a bean that encapsulates the business logic to be performed
+        when a submit button is pressed.</p>
+
+      </subsection>
+
+      <a name="spring-using"/>
+      <subsection name="Using Shale-Spring Integration">
+
+        <p>In order to utilize the Spring integration, you will need to include
+        Spring in your web application.  You can either include the all-in-one
+        version (<code>spring.jar</code>) or the necessary individual
+        components (<code>spring-core.jar</code>,
+        <code>spring-context.jar</code>, and <code>spring-web.jar</code>).
+        In order to utilize the Shale feature that exposes the
+        <code>webApplicationContext</code> instance, you will need to
+        include <code>shale-spring.jar</code>.</p>
+
+        <p>Here are some sample use cases for leveraging the integration
+        capabilities:</p>
+
+        <h4>(1) Bind a JSF Component To An Applicaton Scope Bean</h4>
+
+        <p>Imagine you have an application scope bean that contains
+        domains (the lists of selection items used in drop down components)
+        for your application.  You might bind a component to a property
+        of this bean as follows:</p>
+
+<source>
+  &lt;h:selectOneMenu id="category" value="..." ...&gt;
+    &lt;f:selectItems value="#{domains.categories}"/&gt;
+  &lt;/h:selectOneMenu&gt;
+</source>
+
+        <p>where the underlying object referenced by the logical name
+        <code>domains</code> is expected to have a <code>getCategories()</code>
+        method with a return type of <code>SelectItem[]</code>.
+        The underlying bean class might be defined as a managed bean
+        in <code>/WEB-INF/faces-context.xml</code>:</p>
+
+<source>
+  &lt;managed-bean&gt;
+    &lt;managed-bean-name&gt;domains&lt;/managed-bean-name&gt;
+    &lt;managed-bean-class&gt;
+      com.mycompany.mypackage.MyDomainsImpl
+    &lt;/managed-bean-class&gt;
+    &lt;managed-bean-scope&gt;application&lt;/managed-bean-scope&gt;
+    ... configuration of managed properties ...
+  &lt;/managed-bean&gt;
+</source>
+
+        <p>or as a Spring bean in <code>/WEB-INF/applicationContext.xml</code>:</p>
+
+<source>
+  &lt;bean id="domains"
+        class="com.mycompany.mypackage.MyDomainsImpl"
+        singleton="true"&gt;
+    ... configuration of managed properties ...
+  &lt;/bean&gt;
+</source>
+
+        <p>The binding expression will work with either definition
+        of the bean, transparently.</p>
+
+        <h4>(2) Access Encapsulated Business Logic Indirectly</h4>
+
+        <p>Assume you have business logic to manage updating a customer
+        database in a bean with logical name <code>CustomerDAO</code>.
+        In the event handler for a submit button (here, assuming that
+        your backing bean extends <code>AbstractViewController</code> or
+        <code>AbstractFacesBean</code>), you can acquire a reference to
+        the appropriate instance of this business logic bean by
+        using a value binding expression programmatically:</p>
+
+<source>
+  CustomerDAO dao = (CustomerDAO) getValue("#{CustomerDAO}");
+</source>
+
+        <p>Again, the logic utilizing this expression is agnostic to
+        whether the bean is actually created by JSF's managed bean
+        facility, or by Spring's bean factory.</p>
+
+        <h4>(3) Access Spring WebApplicationContext Directly</h4>
+
+        <p>In some circumstances, applications will want to explicitly
+        interact with Spring's bean factory (in a web application, this
+        is typically an instance of <code>WebApplicationContext</code>.
+        In order to retrieve the application wide instance of this
+        class for the current web application, you may evaluate a
+        value binding expression with a particular reserved name:</p>
+
+<source>
+  WebApplicationContext wac = (WebApplicationContext)
+    getValue("#{webApplicationContext}");
+</source>
+
+        <p>Once you have this reference, you can explicitly invoke its
+        methods to create or manage bean instances.  Interacting with it,
+        of course, is using Spring facilities directly, so you are no
+        longer able to transparently use managed beans.  However, you do
+        have direct access to the extra facilities provided by Spring.</p>
+
+      </subsection>
+
+    </section>
+
+  </body>
+
+</document>

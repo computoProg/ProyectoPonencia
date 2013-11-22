@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<document>
+ <properties>
+  <title>Issue tracking</title>
+ </properties>
+<body>
+<!-- ================================================== -->
+<section name="Issue tracking">
+
+<p>Shale uses <a href="http://issues.apache.org/struts/">JIRA</a> for
+tracking issues.  To add new issues or comments in JIRA, you may need to
+<a href="http://issues.apache.org/struts/secure/Signup!default.jspa">register</a>
+and log in first.</p>
+
+<p>If you would like to report a bug, or raise an enhancement request with
+Shale please do the following:</p>
+<ol>
+  <li>Use the links below to search existing bug reports and RFEs
+      (request for enhancement).  If you find your issue listed,
+      then please add a comment with your details.</li>
+  <li>Search the <a href="http://mail-archives.apache.org/mod_mbox/struts-dev/">Search the mailing list archive</a>.
+  You may find your issue or idea has already been discussed.</li>
+  <li><a href="http://issues.apache.org/struts/secure/CreateIssue!default.jspa">
+      Create a new issue in JIRA</a>, for project "Shale" with
+      the appropriate issue type.  (NOTE:  because JIRA now has
+      a project set up for Shale, there is no longer a need to
+      follow the former convention of prefixing issue subjects
+      with "[shale]".)</li>
+  </ol>
+
+<p>Please also remember these points:</p>
+<ul>
+  <li>the more information you provide, the better we can help you</li>
+  <li>test cases are vital, particularly for any proposed enhancements</li>
+  <li>the developers of Shale are all unpaid volunteers</li>
+</ul>
+
+<p>For more information on subversion and creating patches see the
+<a href="http://www.apache.org/dev/contributors.html">Apache Contributors Guide</a>.</p>
+
+<p>You may also find these links useful:</p>
+<ul>
+  <li><a href="http://issues.apache.org/struts/secure/IssueNavigator.jspa?mode=hide&amp;requestId=10653">Shale Unresolved Bugs</a></li>
+  <li><a href="http://issues.apache.org/struts/secure/IssueNavigator.jspa?mode=hide&amp;requestId=10654">Shale Unresolved RFEs</a></li>
+</ul>
+
+</section>
+<!-- ================================================== -->
+</body>
+</document>

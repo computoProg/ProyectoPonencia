@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>Shale Dialog Manager - Checkstyle report</title>
+    <link>http://shale.apache.org/shale-dialog</link>
+    <description>Shale Dialog Manager - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2004 - 2008 The Apache Software Foundation</copyright>
+    <item>
+      <title>File: 16,
+             Errors: 56,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://shale.apache.org/shale-dialog/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://shale.apache.org/shale-dialog/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.faces.package.html">org/apache/shale/dialog/faces/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.base.AbstractDialogContext.java">org/apache/shale/dialog/base/AbstractDialogContext.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.DialogContextManagerListener.java">org/apache/shale/dialog/DialogContextManagerListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.faces.DialogNavigationHandler.java">org/apache/shale/dialog/faces/DialogNavigationHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.DialogLifecycleListener.java">org/apache/shale/dialog/DialogLifecycleListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.base.AbstractDialogLifecycleListener.java">org/apache/shale/dialog/base/AbstractDialogLifecycleListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.Constants.java">org/apache/shale/dialog/Constants.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.DialogContext.java">org/apache/shale/dialog/DialogContext.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.faces.DialogPhaseListener.java">org/apache/shale/dialog/faces/DialogPhaseListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.package.html">org/apache/shale/dialog/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.base.AbstractDialogContextManager.java">org/apache/shale/dialog/base/AbstractDialogContextManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.base.AbstractDialogContextManagerListener.java">org/apache/shale/dialog/base/AbstractDialogContextManagerListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.base.AbstractDialogContextListener.java">org/apache/shale/dialog/base/AbstractDialogContextListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.DialogContextManager.java">org/apache/shale/dialog/DialogContextManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.DialogContextListener.java">org/apache/shale/dialog/DialogContextListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-dialog/checkstyle.html#org.apache.shale.dialog.base.package.html">org/apache/shale/dialog/base/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

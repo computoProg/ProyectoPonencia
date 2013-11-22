@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.1" timestamp="2008-06-02T11:05:46.679">
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-remoting/src/main/java/org/apache/shale/remoting/faces/MappingsHelper.java">
+<violation beginline="384" endline="384" begincolumn="63" endcolumn="63" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.remoting.faces" class="MappingsHelper" method="patterns" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-remoting/src/main/java/org/apache/shale/remoting/faces/RemotingPhaseListener.java">
+<violation beginline="33" endline="33" begincolumn="1" endcolumn="42" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.remoting.faces" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.remoting.Mappings'
+</violation>
+<violation beginline="67" endline="67" begincolumn="28" endcolumn="33" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.apache.shale.remoting.faces" class="RemotingPhaseListener" variable="bundle" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'bundle'.
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-remoting/src/main/java/org/apache/shale/remoting/impl/AbstractResourceProcessor.java">
+<violation beginline="41" endline="41" begincolumn="1" endcolumn="43" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.remoting.impl" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.remoting.Processor'
+</violation>
+<violation beginline="149" endline="149" begincolumn="69" endcolumn="69" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.remoting.impl" class="AbstractResourceProcessor" method="process" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+<violation beginline="152" endline="152" begincolumn="68" endcolumn="68" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.remoting.impl" class="AbstractResourceProcessor" method="process" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-remoting/src/main/java/org/apache/shale/remoting/impl/ClassResourceProcessor.java">
+<violation beginline="26" endline="26" begincolumn="1" endcolumn="43" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.remoting.impl" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.remoting.Processor'
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-remoting/src/main/java/org/apache/shale/remoting/impl/FilteringProcessor.java">
+<violation beginline="233" endline="233" begincolumn="17" endcolumn="17" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.remoting.impl" class="FilteringProcessor" method="precompile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-remoting/src/main/java/org/apache/shale/remoting/impl/MethodBindingProcessor.java">
+<violation beginline="28" endline="28" begincolumn="1" endcolumn="57" rule="ImportFromSamePackage" ruleset="Import Statement Rules" package="org.apache.shale.remoting.impl" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#ImportFromSamePackage" priority="3">
+No need to import a type that lives in the same package
+</violation>
+<violation beginline="29" endline="29" begincolumn="1" endcolumn="43" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.remoting.impl" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.remoting.Processor'
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-remoting/src/main/java/org/apache/shale/remoting/impl/WebResourceProcessor.java">
+<violation beginline="27" endline="27" begincolumn="1" endcolumn="43" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.remoting.impl" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.remoting.Processor'
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-remoting/src/main/java/org/apache/shale/remoting/logger/AbstractLogger.java">
+<violation beginline="21" endline="21" begincolumn="1" endcolumn="47" rule="ImportFromSamePackage" ruleset="Import Statement Rules" package="org.apache.shale.remoting.logger" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#ImportFromSamePackage" priority="3">
+No need to import a type that lives in the same package
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-remoting/src/main/java/org/apache/shale/remoting/logger/DefaultLogger.java">
+<violation beginline="20" endline="20" begincolumn="1" endcolumn="47" rule="ImportFromSamePackage" ruleset="Import Statement Rules" package="org.apache.shale.remoting.logger" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#ImportFromSamePackage" priority="3">
+No need to import a type that lives in the same package
+</violation>
+<violation beginline="47" endline="47" begincolumn="13" endcolumn="13" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.remoting.logger" class="DefaultLogger" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+<violation beginline="56" endline="56" begincolumn="13" endcolumn="13" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.remoting.logger" class="DefaultLogger" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+</pmd>

@@ -1,0 +1,5 @@
+org.apache.shale.component
+org.apache.shale.faces
+org.apache.shale.renderer
+org.apache.shale.taglib
+org.apache.shale.util

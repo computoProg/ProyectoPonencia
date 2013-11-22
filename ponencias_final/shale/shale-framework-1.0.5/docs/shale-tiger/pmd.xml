@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.1" timestamp="2008-06-02T11:09:10.359">
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-tiger/src/main/java/org/apache/shale/tiger/config/FacesConfigParser.java">
+<violation beginline="167" endline="167" begincolumn="21" endcolumn="21" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.tiger.config" class="FacesConfigParser" method="parse" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-tiger/src/main/java/org/apache/shale/tiger/faces/VariableResolverImpl.java">
+<violation beginline="33" endline="33" begincolumn="1" endcolumn="43" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.tiger.faces" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.tiger.managed.Bean'
+</violation>
+<violation beginline="34" endline="34" begincolumn="1" endcolumn="44" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.tiger.faces" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.tiger.managed.Value'
+</violation>
+<violation beginline="507" endline="507" begincolumn="17" endcolumn="17" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.tiger.faces" class="VariableResolverImpl" method="property" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+<violation beginline="556" endline="556" begincolumn="17" endcolumn="17" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.tiger.faces" class="VariableResolverImpl" method="property" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-tiger/src/main/java/org/apache/shale/tiger/managed/rules/ManagedBeansRuleSet.java">
+<violation beginline="22" endline="22" begincolumn="1" endcolumn="55" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.tiger.managed.rules" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.tiger.config.FacesConfigConfig'
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-tiger/src/main/java/org/apache/shale/tiger/view/faces/LifecycleListener2.java">
+<violation beginline="221" endline="221" begincolumn="13" endcolumn="13" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.tiger.view.faces" class="LifecycleListener2" method="contextInitialized" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+<violation beginline="943" endline="980" begincolumn="13" endcolumn="5" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.apache.shale.tiger.view.faces" class="LifecycleListener2" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'context'.
+</violation>
+<violation beginline="970" endline="970" begincolumn="17" endcolumn="17" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.tiger.view.faces" class="LifecycleListener2" method="archiveClasses" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+<violation beginline="972" endline="972" begincolumn="17" endcolumn="17" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.tiger.view.faces" class="LifecycleListener2" method="archiveClasses" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+<violation beginline="1095" endline="1109" begincolumn="13" endcolumn="5" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.apache.shale.tiger.view.faces" class="LifecycleListener2" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'servletContext'.
+</violation>
+<violation beginline="1353" endline="1418" begincolumn="13" endcolumn="5" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.apache.shale.tiger.view.faces" class="LifecycleListener2" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'application'.
+</violation>
+<violation beginline="1594" endline="1594" begincolumn="21" endcolumn="21" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.tiger.view.faces" class="LifecycleListener2" method="webClasses" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+<violation beginline="1596" endline="1596" begincolumn="21" endcolumn="21" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.tiger.view.faces" class="LifecycleListener2" method="webClasses" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-tiger/src/main/java/org/apache/shale/tiger/view/faces/PackageInfo.java">
+<violation beginline="55" endline="59" begincolumn="25" endcolumn="5" rule="UnnecessaryFinalModifier" ruleset="Basic Rules" package="org.apache.shale.tiger.view.faces" class="PackageInfo" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UnnecessaryFinalModifier" priority="3">
+Unnecessary final modifier in final class
+</violation>
+</file>
+</pmd>

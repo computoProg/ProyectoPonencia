@@ -1,0 +1,95 @@
+<!--
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to you under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
+<!-- $Id: package.html 293010 2005-10-01 17:58:52Z wsmoak $ -->
+
+<body>
+
+<p>This package contains Java SE 5 <em>annotations</em> that support declaring
+JavaServer Faces <em>managed beans</em> through annotations in the class source
+code, rather than requiring <code>&lt;managed-bean&gt;</code> declarations in
+a <code>faces-config.xml</code> configuration resource.  The following annotation
+types are supported:</p>
+<ul>
+<li><a href="Bean.html">Bean</a> - Declares this class to represent an instance
+    of a managed bean, specifying the managed bean name and (optionally)
+    the scope into which newly created instances should be placed.</li>
+<li><a href="Value.html">Value</a> - Declares that the annotated field is
+    represented by a property setter, which will use the content of this
+    element as either a literal String representing the value to be assigned
+    (after appropriate conversion), or as a value binding expression to be
+    evaluated in order to acquire the value to which this property should
+    be set.</li>
+</ul>
+
+<p>It is possible for configuration entries to override the information
+configured via annotations.  Simply specify a <code>&lt;managed-bean&gt;</code>
+with the same managed bean name, and override whatever settings you wish.
+Note that, for this use case, it would be ideal if the bean class or property
+type elements would not be required (since they can be inferred from the
+source code of the annotated class).  However, these elements are required
+by the DTDs for JavaServer Faces 1.0 and 1.1 configuration resources.</p>
+
+<p>A typical bean class using these annotations might look like this:</p>
+<pre>
+    // Replaces configuration information in faces-config.xml
+    &#64;Bean(name="mybean" scope=Scope.SESSION)
+    public class MyBeanClass {
+
+        // Name a property that will be initialized via expression
+        &#64;Value("#{otherBean.otherProperty}")
+        private String name = null;
+        
+        public String getName() { return this.name; }
+        public void setName(String name) { this.name = name; }
+
+    }
+</pre>
+
+<p>API STATUS:  Experimental.</p>
+
+<p>IMPLEMENTATION STATUS:  Represented by the following classes:</p>
+<ul>
+<li><a href="../config/FacesConfigParser.html">org.apache.shale.tiger.config.FacesConfigParser</a>
+    - Preconfigured <code>Digester</code> instance that utilizes all of
+    the defined rule sets, returning a
+    <a href="../config/FacesConfigConfig.html">FacesConfigConfig</a>
+    instance representing all of the parsed configuration elements.</li>
+<li><a href="../faces/LifecycleListener.html">org.apache.shale.tiger.faces.LifecycleListener</a>
+    - Servlet context listener that parses all of the application's
+    configuraiton resources, using the parsing rules for managed beans.</li>
+<li><a href="../faces/VariableResolverImpl.html">org.apache.shale.tiger.faces.VariableResolverImpl</a>
+    - Custom JavaServer Faces <code>VariableResolver</code> that implements the
+    standard managed bean functionality, plus support for annotated
+    managed beans.</li>
+<li><a href="config/package-summary.html">org.apache.shale.tiger.managed.config.*</a> -
+    Beans that represent configuration elements (related to managed beans)
+    from a JavaServer Faces configuration resource.</li>
+<li><a href="rules/package-summary.html">org.apache.shale.tiger.managed.rules.*</a> -
+    Digester parsing rules (and a rule set) used for parsing managed bean
+    information from a JavaServer Faces configuration resource.</li>
+</ul>
+
+<p><strong>WARNING</strong> - The current implementation is incomplete
+(compared to the functionality required by JSF), in that
+<code>&lt;list-entries&gt;</code> and <code>&lt;map-entries&gt;</code>
+elements are not recognized, on either a managed bean or a managed
+property.  This restriction will be lifted later.</p>
+
+@since 1.0.1
+
+</body>

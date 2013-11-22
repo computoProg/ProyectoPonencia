@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<document>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+  <properties>
+    <title>Acquiring and Building Shale</title>
+  </properties>
+
+  <body>
+    
+    <a name="building"/>
+    <section name="Acquiring and Building Shale">
+    
+      <a name="building-introduction"/>
+      <subsection name="Introduction">
+
+        <p>This page documents how to <a href="#building-acquiring">Acquire
+        a copy of the source code</a> and <a href="#building-building">Build
+        the framework from source</a>.</p>
+
+      </subsection>
+
+      <a name="building-acquiring"/>
+      <subsection name="Acquiring Shale">
+
+        <p>The easiest way to acquire the source code for Shale is to download
+        one of the
+        <a href="http://people.apache.org/builds/shale/nightly/">
+        Nightly Build</a> or <a href="http://shale.apache.org/index.html#download">
+        Release Distributions</a>, which contain both the
+        source code and the binary libraries.  Alternatively, you can check out
+        the source code from the Shale Subversion repository using the
+        URLs specified <a href="source-repository.html">here</a>.</p>
+
+      </subsection>
+
+        <a name="building-building"/>
+        <subsection name="Building Shale From Source">
+
+          <p>Once you have <a href="#building-acquiring">acquired</a> the
+          source code for Shale from the Subversion repository or a nightly
+          build, as described above, you can proceed to set up a development
+          environment with which to build it.  Follow these steps to continue:</p>
+
+          <ul>
+          <li>Acquire a copy of a <a href="http://java.sun.com/javase/">Java
+              Development Kit</a> (Version 1.4 or later), and install it according
+              to the provided documentation.</li>
+          <li>Acquire a copy of <a href="http://maven.apache.org/">Apache Maven</a>
+              (version 2.0.4 or later), and install it according to the
+              provided documentation.</li>
+          <li>By default, the Shale build uses <a href="http://myfaces.apache.org">
+              Apache MyFaces</a>, but you can also build against the JavaServer
+              Faces Reference Implementation by adding <code>-Djsf=ri</code>
+              to the command line.</li>
+          <li>In the top-level directory of the unpacked Shale distribution,
+              execute the command <code>mvn clean install</code> to completely
+              rebuild the framework distribution from source.</li>
+          <li>In the shale-apps directory of the unpacked Shale distribution,
+                  execute the command <code>mvn clean install</code> to completely
+                  rebuild the example applications from source.</li>
+          <li>In addition, each of the major source subdirectories has a properly
+              configured <code>pom.xml</code> file, so you can rebuild just that
+              subdirectory if desired.</li>
+          </ul>
+
+        </subsection>
+
+
+      <a name="building-building"/>
+      <subsection name="Building Shale 1.0.2 (Alpha) From Source">
+
+        <p>Once you have <a href="#building-acquiring">acquired</a> the
+        Shale 1.0.2 (Alpha) distribution, you can proceed to set
+        up a development environment with which to build it.  Follow these
+        steps to continue:</p>
+
+        <ul>
+        <li>Acquire a copy of a <a href="http://java.sun.com/javase/">Java
+            Development Kit</a> (Version 1.4 or later), and install it according
+            to the provided documentation.</li>
+        <li>Acquire a copy of <a href="http://ant.apache.org/">Apache Ant</a>
+            (version 1.6.3 or later), and install it according to the
+            provided documentation.</li>
+        <li>If you wish to build Shale against the JavaServer Faces reference
+            implementation, <a href="http://java.sun.com/j2ee/javaserverfaces/">
+            acquire a copy</a> (Version 1.1_01) and install it according to
+            the provided documentation.</li>
+        <li>In the top-level directory of the unpacked Shale distribution, copy
+            the file <code>build.properties.sample</code> to
+            <code>build.properties</code>, and customize the property values
+            it contains.  Pay particular attention
+            to the following values:
+            <ul>
+            <li><code>jsfri.dir</code> - If you downloaded and installed the
+                JavaServer Faces Reference implementation, set this property
+                to the fully qualified pathname of the directory into which
+                you installed the distribution.</li>
+            <li><code>jsf.home</code> - If you are using MyFaces, comment out
+                the default value and uncomment the following line.</li>
+            <li><code>jsf-api.jar</code> - If you are using MyFaces, comment out
+                the default value and uncomment the following line.</li>
+            <li><code>jsf-impl.jar</code> - If you are using MyFaces,
+                comment out the default value and uncomment the following
+                line.</li>
+            </ul></li>
+        <li>In the top-level directory of the unpacked Shale distribution,
+            execute the following Ant commands to set up external dependencies:
+            <ul>
+            <li><code>ant download-dependencies</code> - to download freely
+                available external dependencies.</li>
+            <li><code>ant copy-jsf-ri</code> - if you are using the JSF RI, load
+                the appropriate artifacts.</li>
+            </ul></li>
+        <li>In the top-level directory of the unpacked Shale distribution,
+            execute the command <code>ant clean release</code> to completely
+            rebuild the entire distribution from source.</li>
+        <li>In addition, each of the major source subdirectories has a properly
+            configured <code>build.xml</code> file, so you can rebuild just that
+            subdirectory if desired.</li>
+        </ul>
+
+      </subsection>
+
+    </section>
+
+  </body>
+
+</document>

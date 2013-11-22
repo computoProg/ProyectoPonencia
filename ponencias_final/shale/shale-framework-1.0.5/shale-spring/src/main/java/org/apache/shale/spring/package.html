@@ -1,0 +1,47 @@
+<!--
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to you under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
+<!-- $Id: package.html 464373 2006-10-16 04:21:54Z rahul $ -->
+
+<body>
+
+<p>The package contains an optional integration layer connecting Shale with
+the <a href="http://sourceforge.net/projects/springframework">Spring Framework</a>.
+The following capabilities are enabled by this integration:</p>
+<ul>
+<li>Spring's <code>DelegatingVariableResolver</code> is automatically
+    enabled, which will utilize Spring's standard facilities to create a
+    new bean if the standard JavaServer Faces managed bean facility does
+    not recognize this variable name.</li>
+<li>An additional resolver is added that maps the (configurable) variable
+    name <code>webApplicationContext</code> to the instance of
+    <code>org.springframework.web.context.WebApplicationContext</code>
+    that Spring has established for this web application.</li>
+</ul>
+
+<p>To enable this integration in applications based on Shale, simply include
+the following JAR files in your application's <code>/WEB-INF/lib</code>
+directory, in addition to <code>shale.jar</code>:</p>
+<ul>
+<li>From the Shale Core Library distribution:  <code>shale-spring.jar</code>.
+<li>From the Spring Framework distribution (version 1.1.5 or later):
+    <code>spring-context.jar</code>, <code>spring-core.jar</code>, and
+    <code>spring-web.jar</code> (alternatively, include <code>spring.jar</code>
+    which includes all of the above)</li>
+</ul>
+
+</body>

@@ -1,0 +1,557 @@
+<?xml version="1.0"?>
+<document>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+  <properties>
+    <title>Using Shale In Web Applications</title>
+  </properties>
+
+  <body>
+    
+    <section name="Using Shale In Web Applications">
+    <a name="using"/>
+    
+      <a name="using-introduction"/>
+      <subsection name="Introduction">
+
+        <p>This page documents the use of Shale in your web applicatons,
+        including <a href="#using-dependencies">external dependencies</a>
+        and detailed instructions on <a href="#using-configuring">configuring
+        your application</a>.  You might also consider starting from the
+        <em>shale-blank</em> example application that has many of the basics
+        set up for you, ready to be customized for your own use.</p>
+
+      </subsection>
+
+      <a name="using-dependencies"/>
+      <subsection name="External Dependencies">
+
+        <p>The following table describes runtime external dependencies of the
+        Shale libraries included in the distribution.</p>
+
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Shale Library</th>
+              <th>External Library</th>
+              <th>Version</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>(All)</code></td>
+              <td>JavaServer Faces Implementation</td>
+              <td align="center">1.1</td>
+              <td align="center">API classes<a href="#[1]">[1]</a> must be on compile classpath.
+                API and implementation classes must be included in webapp or provided by the
+                servlet container.</td>
+            </tr>
+            <tr>
+              <td><code>(All)</code></td>
+              <td>JavaServer Pages API</td>
+              <td align="center">2.0</td>
+              <td align="center">API classes must be on compile classpath</td>
+            </tr>
+            <tr>
+              <td><code>(All)</code></td>
+              <td>Servlet API</td>
+              <td align="center">2.4</td>
+              <td align="center">API classes must be on compile classpath</td>
+            </tr>
+            <tr>
+              <td><code>shale-application.jar</code></td>
+              <td><a href="http://commons.apache.org/beanutils/">Commons BeanUtils</a></td>
+              <td align="center">1.7.0</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-application.jar</code></td>
+              <td><a href="http://commons.apache.org/chain/">Commons Chain</a></td>
+              <td align="center">1.1</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-application.jar</code></td>
+              <td><a href="http://commons.apache.org/digester/">Commons Digester</a></td>
+              <td align="center">1.8</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-application.jar</code></td>
+              <td><a href="http://commons.apache.org/logging/">Commons Logging</a></td>
+              <td align="center">1.1</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-application.jar</code></td>
+              <td><a href="http://shale.apache.org/">Shale Core</a></td>
+              <td align="center">(Same)</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-clay.jar</code></td>
+              <td><a href="http://commons.apache.org/beanutils/">Commons BeanUtils</a></td>
+              <td align="center">1.7.0</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-clay.jar</code></td>
+              <td><a href="http://commons.apache.org/chain/">Commons Chain</a></td>
+              <td align="center">1.1</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-clay.jar</code></td>
+              <td><a href="http://commons.apache.org/digester/">Commons Digester</a></td>
+              <td align="center">1.8</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-clay.jar</code></td>
+              <td><a href="http://commons.apache.org/logging/">Commons Logging</a></td>
+              <td align="center">1.1</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-clay.jar</code></td>
+              <td><a href="http://shale.apache.org/">Shale Core</a></td>
+              <td align="center">(Same)</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-core.jar</code></td>
+              <td><a href="http://commons.apache.org/logging/">Commons Logging</a></td>
+              <td align="center">1.1</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-dialog.jar</code></td>
+              <td><a href="http://commons.apache.org/logging/">Commons Logging</a></td>
+              <td align="center">1.1</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-dialog-basic.jar</code></td>
+              <td><a href="http://commons.apache.org/beanutils/">Commons BeanUtils</a></td>
+              <td align="center">1.7.0</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-dialog-basic.jar</code></td>
+              <td><a href="http://commons.apache.org/digester/">Commons Digester</a></td>
+              <td align="center">1.8</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-dialog-basic.jar</code></td>
+              <td><a href="http://commons.apache.org/logging/">Commons Logging</a></td>
+              <td align="center">1.1</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-dialog-basic.jar</code></td>
+              <td><a href="http://shale.apache.org/">Shale Dialog</a></td>
+              <td align="center">(Same)</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-dialog-scxml.jar</code></td>
+              <td><a href="http://commons.apache.org/beanutils/">Commons BeanUtils</a></td>
+              <td align="center">1.7.0</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-dialog-scxml.jar</code></td>
+              <td><a href="http://commons.apache.org/digester/">Commons Digester</a></td>
+              <td align="center">1.8</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-dialog-scxml.jar</code></td>
+              <td><a href="http://commons.apache.org/logging/">Commons Logging</a></td>
+              <td align="center">1.1</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-dialog-scxml.jar</code></td>
+              <td><a href="http://commons.apache.org/scxml/">Commons SCXML</a></td>
+              <td align="center">0.6</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-dialog-scxml.jar</code></td>
+              <td><a href="http://shale.apache.org/">Shale Dialog</a></td>
+              <td align="center">(Same)</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-remoting.jar</code></td>
+              <td><a href="http://commons.apache.org/logging/">Commons Logging</a></td>
+              <td align="center">1.1</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-spring.jar</code></td>
+              <td><a href="http://shale.apache.org/">Shale Core</a></td>
+              <td align="center">(Same)</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-spring.jar</code></td>
+              <td><a href="http://springframework.org/">Spring Framework</a></td>
+              <td align="center">1.2.8</td>
+              <td align="center"><a href="#[2]">[2]</a></td>
+            </tr>
+            <tr>
+              <td><code>shale-tiger.jar</code></td>
+              <td>Java SE</td>
+              <td>5 or later</td>
+              <td><strong>MUST</strong> be running on a Java SE 5
+                  (code name "Tiger") or later JDK.</td>
+            </tr>
+            <tr>
+              <td><code>shale-tiger.jar</code></td>
+              <td><a href="http://commons.apache.org/beanutils/">Commons BeanUtils</a></td>
+              <td align="center">1.7.0</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-tiger.jar</code></td>
+              <td><a href="http://commons.apache.org/digester/">Commons Digester</a></td>
+              <td align="center">1.8</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-tiger.jar</code></td>
+              <td><a href="http://commons.apache.org/logging/">Commons Logging</a></td>
+              <td align="center">1.1</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-tiger.jar</code></td>
+              <td><a href="http://shale.apache.org/">Shale View Controller</a></td>
+              <td align="center">(Same)</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-validator.jar</code></td>
+              <td><a href="http://commons.apache.org/validator/">Commons Validator</a></td>
+              <td align="center">1.3.1</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-view.jar</code></td>
+              <td><a href="http://commons.apache.org/logging/">Commons Logging</a></td>
+              <td align="center">1.1</td>
+              <td align="center">---</td>
+            </tr>
+            <tr>
+              <td><code>shale-view.jar</code></td>
+              <td><a href="http://shale.apache.org/">Shale Core</a></td>
+              <td align="center">(Same)</td>
+              <td align="center">---</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <ol>
+        <li><a name="[1]"></a>Shale has been tested with the
+            <a href="https://javaserverfaces.dev.java.net/">
+            JavaServer Faces Reference Implementation</a> (Version 1.1_01) and
+            with <a href="http://myfaces.apache.org/">Apache MyFaces</a>
+            (Version 1.1.1).  Be sure to read the release documentation of
+            each implementation to acquire the dependencies of that
+            package.</li>
+        <li><a name="[2]"></a>Spring ships with either an all-in-one JAR file
+            (<code>spring.jar</code>) or a set of smaller JAR files containing
+            only portions of the framework.  If you do not use the all-in-one
+            file, you will need to use <code>spring-beans.jar</code>,
+            <code>spring-context.jar</code>, <code>spring-core.jar</code>, and
+            <code>spring-web.jar</code>.</li>
+        </ol>
+
+      </subsection>
+
+      <a name="using-configuring"/>
+      <subsection name="Configuring Your Application For Shale">
+
+        <p>Shale based applications should run on any server that implements the
+        Servlet 2.4 and JavaServer Pages 2.0 APIs.  The following steps are
+        required to assemble a Shale based application that may be deployed and
+        executed.</p>
+
+        <h4>(A) Add Required Libraries</h4>
+
+        <p>If your server does not already provide an implementation of
+        JavaServer Faces, you must include such an implementation (plus all
+        of its dependent JARs) in the <code>/WEB-INF/lib</code> directory.</p>
+
+        <p>Most Shale based applications will require <code>shale-core.jar</code>
+        (and its dependencies, as described above).  If you wish to utilize the
+        features provided in the optional Shale components,
+        include those JARs (and ther external dependencies) as well.</p>
+
+        <p>The <code>shale-test.jar</code> contains base classes for
+        <a href="http://junit.org">JUnit</a> based unit tests for your
+        application classes.  As such, it is useful only at application
+        build time, and should never be included in a runtime web
+        application archive.</p>
+
+        <p>The <code>shale-tiger.jar</code> contains feature extensions
+        that depend on platform capabilities (most particularly the
+        annotations facility) of Java SE 5 (code named "Tiger").  You
+        must <strong>NOT</strong> include this library if you are running
+        on a JDK 1.4 platform.</p>
+
+        <blockquote>
+            <p><em>If you use <a href="http://maven.apache.org/">Maven 2</a>
+            as your build environment, the process of selecting the correct
+            JAR files and dependencies can be delegated to Maven.  Each Shale
+            module has a group identifier of <code>org.apache.shale</code>,
+            and an artifact identifier of <code>shale-xxxxx</code> depending
+            on the base name of the JAR file.  For example, to include the
+            Shale Core library (and all of its dependencies) in your web
+            application, add the following entry into the <code>dependencies</code>
+            section of your <code>pom.xml</code> file:</em></p>
+<source>
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.shale&lt;/groupId&gt;
+        &lt;artifactId&gt;shale-core&lt;/artifactId&gt;
+        &lt;version&gt;1.0.4&lt;/version&gt;
+    &lt;/dependency&gt;
+</source>
+        </blockquote>
+
+        <h4>(B) Configure <code>/WEB-INF/web.xml</code> Resource</h4>
+
+        <p>Create a <code>/WEB-INF/web.xml</code> resource that conforms to the
+        rules defined in the Servlet 2.4 Specification.  You can use the one in
+        the Use Cases example as a guide.  Include the following elements (at
+        appropriate places) as needed.</p>
+
+        <p>Configure whether you want JavaServer Faces to save component state
+        on the client side or the server side.  This lets you choose between the
+        tradeoffs of extra network traffic versus extra server memory usage,
+        without affecting your application code.</p>
+
+<source>
+    &lt;context-param&gt;
+      &lt;param-name&gt;javax.faces.STATE_SAVING_METHOD&lt;/param-name&gt;
+      &lt;param-value&gt;server&lt;/param-value&gt;
+    &lt;/context-param&gt;
+</source>
+
+        <p>If you have defined JavaServer Faces configuration resources in
+        addition to, or instead of, the default one
+        (<code>/WEB-INF/faces-config.xml</code>), list them here.
+        You may specify more than one resource by separating the
+        paths with a comma (',') character.  Note that the default
+        configuration resource will be processed, if it is present,
+        whether or not it is explicity listed here.</p>
+
+<source>
+    &lt;context-param&gt;
+      &lt;param-name&gt;javax.faces.CONFIG_FILES&lt;/param-name&gt;
+      &lt;param-value&gt;/WEB-INF/managed-beans.xml,/WEB-INF/navigation.xml&lt;/param-value&gt;
+    &lt;/context-param&gt;
+</source>
+
+        <p>If you have defined your own Command Chain commands (to customize the
+        behavior of the standard chains, or to implement mappings for remote
+        commands), tell Commons Chain where your configuration resource is.
+        You can specify more than one resource by separating the paths with a
+        comma (',') character.</p>
+
+<source>
+    &lt;context-param&gt;
+      &lt;param-name&gt;org.apache.commons.chain.CONFIG_WEB_RESOURCE&lt;/param-name&gt;
+      &lt;param-value&gt;/WEB-INF/chain-config.xml&lt;/param-value&gt;
+    &lt;/context-param&gt;
+</source>
+
+        <p>If you have defined your own Shale Dialog configuration resources
+        in addition to (or instead of) the standard path
+        (<code>/WEB-INF/dialog-config.xml</code>), specify the path here.
+        You may specify more than one resource by separating the paths with a
+        comma (',') character.</p>
+
+<source>
+    &lt;context-param&gt;
+      &lt;param-name&gt;org.apache.shale.dialog.CONFIGURATION&lt;/param-name&gt;
+      &lt;param-value&gt;/WEB-INF/dialog-config.xml&lt;/param-value&gt;
+    &lt;/context-param&gt;
+</source>
+
+        <p>If you are using the optional integration with Spring, you must
+        specify that path to the configuration resource for the
+        <code>ApplicationContext</code>.  You can specify more than one
+        resource by separating them with whitespace.</p>
+
+<source>
+    &lt;context-param&gt;
+      &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+      &lt;param-value&gt;/WEB-INF/applicationContext.xml&lt;/param-value&gt;
+    &lt;/context-param&gt;
+</source>
+
+        <p>If you are using the Clay plugin, you must specify the path to the
+        configuration resource defining your Clay component definitions.  You
+        can specify more than one resource by separating them with comma (',')
+        characters.</p>
+
+<source>
+    &lt;context-param&gt;
+      &lt;param-name&gt;clay-config-files&lt;/param-name&gt;
+      &lt;param-value&gt;/WEB-INF/clay-config.xml&lt;/param-value&gt;
+    &lt;/context-param&gt;
+</source>
+
+        <p>If you are using the Tapestry-like views feature of the Clay plugin,
+        you may override the default resource extension (.clay) used to identify
+        pages containing component references.</p>
+
+<source>
+    &lt;context-param&gt;
+      &lt;param-name&gt;clay-template-suffix&lt;/param-name&gt;
+      &lt;param-value&gt;.clay&lt;/param-value&gt;
+    &lt;/context-param&gt;
+</source>
+
+        <p>Configure the standard Shale application controller filter, and map
+        it to the requests you want it to apply to.  At a minimum, you will
+        want to map this filter to the same pattern that
+        <code>FacesServlet</code> is mapped to (see below); however, the
+        simplest approach is to use the <code>/*</code> pattern to map
+        the filter to all incoming requests.</p>
+
+<source>
+    &lt;filter&gt;
+      &lt;filter-name&gt;shale&lt;/filter-name&gt;
+      &lt;filter-class&gt;
+        org.apache.shale.faces.ShaleApplicationFilter
+      &lt;/filter-class&gt;
+    &lt;/filter&gt;
+</source>
+
+<source>
+    &lt;filter-mapping&gt;
+      &lt;filter-name&gt;shale&lt;/filter-name&gt;
+      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+</source>
+
+        <p>Configure the Commons Chain configuration listener, so that command
+        chains definitions specified by the application, and those defined
+        internally by Shale, will be loaded at application startup time.</p>
+
+<source>
+    &lt;listener&gt;
+      &lt;listener-class&gt;
+        org.apache.commons.chain.web.ChainListener
+      &lt;/listener-class&gt;
+    &lt;/listener&gt;
+</source>
+
+        <p>If you are using the Clay plugin, configure the Clay configuration
+        listener, so that component definitions specified by the application
+        as well as those specified internally by Shale, will be loaded at
+        application startup time.</p>
+
+<source>
+    &lt;listener&gt;
+      &lt;listener-class&gt;
+        org.apache.shale.clay.config.ClayConfigureListener
+      &lt;/listener-class&gt;
+    &lt;/listener&gt;
+</source>
+
+        <p>If you are using the Spring integration feature, configure the
+        Spring configuration listener so that the application context will
+        be configured at application startup time.</p>
+
+<source>
+    &lt;listener&gt;
+      &lt;listener-class&gt;
+        org.springframework.web.context.ContextLoaderListener
+      &lt;/listener-class&gt;
+    &lt;/listener&gt;
+</source>
+
+        <p>Configure the standard JavaServer Faces processing servlet and
+        mapping.  You may use either prefix or extension mapping, and the
+        JSF runtime will automatically adapt.  The example below shows the
+        most common default:</p>
+
+<source>
+    &lt;servlet&gt;
+      &lt;servlet-name&gt;faces&lt;/servlet-name&gt;
+      &lt;servlet-class&gt;javax.faces.webapp.FacesServlet&lt;/servlet-class&gt;
+    &lt;/servlet&gt;
+</source>
+
+<source>
+    &lt;servlet-mapping&gt;
+      &lt;servlet-name&gt;faces&lt;/servlet-name&gt;
+      &lt;url-pattern&gt;*.faces&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+</source>
+
+        <p>If you are using the Tapestry-like views feature of the Clay
+         plug-in, map the standard JavaServer Faces servlet to the same
+         extension you specified for the <code>clay-template-suffix</code>
+         context init parameter.</p>
+
+<source>
+    &lt;servlet-mapping&gt;
+      &lt;servlet-name&gt;faces&lt;/servlet-name&gt;
+      &lt;url-pattern&gt;*.html&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+</source>
+
+        <p>Optionally, configure the "welcome file(s)" for your application.</p>
+
+<source>
+    &lt;welcome-file-list&gt;
+      &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;
+    &lt;/welcome-file-list&gt;
+</source>
+
+        <h4>(C) Runtime Assertion Checking</h4>
+
+        <p>Shale leverages the <code>assert</code> capability of JDK 1.4
+        (or later) Java Virtual Machine (JVM) runtime environments to
+        support a large number of runtime assertion tests, to ensure that
+        functional assumptions are satisfied.  By default, the runtime JVM
+        of your container will disable checking such assertions (so that
+        they incur no production runtime hit on performance).  During
+        development, however, you will want to make sure that the
+        <code>-Denableassertions</code> (or, if you only want Shale
+        assertions enabled, use
+        <code>-Denableassertions:org.apache.shale...</code> instead)
+        command line argument is passed to the startup script for the
+        servlet container used by your development tool.  The details
+        of configuring this command line option are, of necessity,
+        tool specific.</p>
+
+      </subsection>
+
+    </section>
+
+  </body>
+
+</document>

@@ -1,0 +1,51 @@
+<!-- ### clay:page charset="UTF-8" /### -->
+<!-- ### clay:remove ### -->
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<html>
+<head>
+  <title>Mock Logon Title</title>
+</head>
+<body>
+<!-- ### /clay:remove ### -->
+<form id="logonForm">
+   <label id="usernameLabel" for="username"> Mock User Name Label: </label>
+   <input id="username" type="text" size="16" value="#{@managed-bean-name.username}"/>
+   <input id="submit" type="SUBMIT" value="submit" action="#{@managed-bean-name.save}"/>
+   <a id="shaleSite" href="http://shale.apache.org/" target="_blank">Apache Shale</a>   
+   <input id=checkbox type=checkbox value=#{@managed-bean-name.shaleRocks}>
+   <input id=radio type=radio value=#{@managed-bean-name.rockType}>
+   <select id="states" value="#{@managed-bean-name.state}">
+      <option id="alabama" value=AL>Alabama</option>
+   </select>
+   <select id=multiStates multiple value="#{@managed-bean-name.state}">
+       <!-- has to be a well formed option with no children to be a selectItems -->
+       <option id="stateOptions" value="#{@managed-bean-name.states}"/>
+   </select>
+   <textarea id="textArea" value="#{@managed-bean-name.textarea}" rows=10></textarea> 
+   <!-- 
+      ** not yet supported **
+      <input id="reset" type="RESET" value="reset"/> 
+      <input id="password" type="password" size="16" value="#{@managed-bean-name.password}"/>
+    -->
+    <a id="shaleSiteOverride" jsfid="h:commandLink" href="http://shale.apache.org/" action="#{@managed-bean-name.save}">Test</a>
+
+</form>
+<!-- ### clay:remove ### -->
+</body>
+</html>
+<!-- ### /clay:remove ### -->

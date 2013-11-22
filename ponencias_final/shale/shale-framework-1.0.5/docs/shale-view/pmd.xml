@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.1" timestamp="2008-06-02T11:07:26.202">
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-view/src/main/java/org/apache/shale/view/ViewController.java">
+<violation beginline="20" endline="20" begincolumn="1" endcolumn="62" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.view" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.view.impl.DefaultViewControllerMapper'
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-view/src/main/java/org/apache/shale/view/faces/FacesConstants.java">
+<violation beginline="20" endline="20" begincolumn="1" endcolumn="44" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.view.faces" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.view.ViewController'
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-view/src/main/java/org/apache/shale/view/faces/LifecycleListener.java">
+<violation beginline="316" endline="316" begincolumn="13" endcolumn="13" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.view.faces" class="LifecycleListener" method="sessionDestroyed" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+<violation beginline="816" endline="816" begincolumn="13" endcolumn="13" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.view.faces" class="LifecycleListener" method="tiger" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-view/src/main/java/org/apache/shale/view/faces/ViewPhaseListener.java">
+<violation beginline="35" endline="35" begincolumn="1" endcolumn="49" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.view.faces" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.view.AbstractRequestBean'
+</violation>
+<violation beginline="39" endline="39" begincolumn="1" endcolumn="44" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.view.faces" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.view.ViewController'
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-view/src/main/java/org/apache/shale/view/faces/ViewViewHandler.java">
+<violation beginline="345" endline="345" begincolumn="37" endcolumn="84" rule="UnusedPrivateMethod" ruleset="Unused Code Rules" package="org.apache.shale.view.faces" class="ViewViewHandler" method="getViewControllerCallbacks" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateMethod" priority="3">
+Avoid unused private methods such as 'getViewControllerCallbacks(FacesContext)'.
+</violation>
+</file>
+</pmd>

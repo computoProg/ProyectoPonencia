@@ -1,0 +1,273 @@
+<body>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<h3>Shale Dialog2 Framework</h3>
+
+<h4>Introduction</h4>
+
+<p>The <em>Shale Dialog2 Framework</em> is designed to allow configuration of
+a "dialog" or "conversation" with a user, which may span multiple HTTP requests.
+While such a dialog is in progress, the framework will also maintain a "data"
+object representing the state of the current computation, and throw that data
+object away when the conversation is completed, without waiting for the user to
+log off so that the user's session will be cleaned out.</p>
+
+<p>Design goals for the framework include the following:</p>
+<ul>
+    <li>Since Shale presumes the use of JavaServer Faces, utilize concepts
+        and functionality that will be familiar to JSF application developers.</li>
+    <li>Support a general abstraction of a "dialog", identified by a logical name,
+        that represents a particular interaction with the application user.</li>
+    <li>It MUST NOT be required that all interactions with the user be under
+        the management of a dialog.  Outside of the Dialog2 Framework,
+        standard JSF functionality must operate as usual.</li>
+    <li>It must be possible to associate a "context" representing the active
+        execution of a particular dialog, with a particular user, in a
+        particular JSF view.  At most one context can be associated with
+        any single view (i.e. a single frame or window).</li>
+    <li>The context is used by the framework to maintain the state of the
+        computation (such as which "state" is currently being executed, if
+        the dialog is modelled as a state machine), and also by the application
+        to maintain application data related to the dialog across requests.</li>
+    <li>It must be possible for the application to cause a new instance of a
+        context (for a particular named dialog) to be created and associated
+        with a JSF view that did not previously have such an association.</li>
+    <li>The framework must ensure that the context associated with a particular
+        view will be maintained across requests while the corresponding dialog
+        is active, and clean it up when the dialog completes.</li>
+    <li>In the special case of a popup window associated with a main window,
+        it must be possible to for the context instances of the two views
+        to be associated with each other, such that the popup window's context
+        can pull information from the main window, perform computations, and
+        then store results back into the main window's context.</li>
+    <li>To the maximum degree feasible, the framework should deal gracefully
+        with browser "back" and "forward" buttons.  <strong>IMPLEMENTATION
+        NOTE</strong> - this requirement has not yet been addressed.</li>
+</ul>
+
+<p>The remaining sections below provide more details about the generic framework
+APIs and functionality exposed to application developers.  However, many details
+of the actual functionality (including configuration resource formats) will be
+specific to the particular implementation of the Dialog2 Framework that you select
+for your application, so be sure to consult the JavaDocs for that particular
+package as well.</p>
+
+<h4>Fundamental Concepts</h4>
+
+<p>The Shale Dialog2 framework operates on the following primary abstractions:</p>
+<ul>
+    <li>A "dialog" is a logical name for some structured interaction with the
+        user of a web application that typically lasts longer than a single
+        HTTP request.  The details of configuration and functionality are
+        dependent upon the Dialog Framework implementation that is selected,
+        but typically a dialog is configured as some sort of state machine that
+        is driven by internal transitions.  When interaction with the user is
+        required, the framework can save the current state of an executing
+        instance, display a specified JSF view, process the response (up through
+        and including <em>Invoke Application</em> phase, and use the logical
+        outcome specified by the application to drive further transitions.</li>
+    <li><a href="org/apache/shale/dialog2/DialogContext.html">DialogContext</a> -
+        Contains the current
+        state for a particular executing instance of a dialog, associated with
+        a particular JavaServer Faces view.  The dialog framework promises to
+        save and restore this instance across requests, and expose it as a request
+        scoped attribute specified by <code>Constants.CONTEXT_BEAN</code>
+        (literal value is <code>dialog2</code>).  At most one DialogContext
+        may be associated with a JSF view at any time.</li>
+    <li><a href="org/apache/shale/dialog2/DialogContextManager.html">DialogContextManager</a> -
+        Contains management methods to create new <code>DialogContext</code> instances,
+        or retrieve existing ones, associated with a particular user session.
+        During runtime execution of the application, the manager for a particular
+        user is stored as a session scope attribute specified by
+        <code>Constants.MANAGER_BEAN</code> (literal value is
+        <code>org.apache.shale.dialog2.MANAGER</code>).</li>
+</ul>
+
+<p>While a <a href="org/apache/shale/dialog2/DialogContext.html">DialogContext</a>
+instance is active for a particular JavaServer Faces view, it takes over the usual
+implementation of the JavaServer Faces <code>NavigationHandler</code>.  After the
+<em>Invoke Application</em> phase completes, a custom navigation handler will call the
+<code>advance()</code> on the active DialogContext instance.  This method is
+presumed to advance the state of the underlying dialog until a JavaServer Faces
+view needs to be displayed to the user.  At that point, the <code>advanced()</code>
+method returns the required view identifier (or <code>null</code> to redisplay
+the current view, consistent with standard JavaServer Faces navigation), and
+the requested view is rendered to the user.</p>
+
+<p>If there is no active <code>DialogContext</code> for the current view, the
+custom <code>NavigationHandler</code> delegates to the standard JavaServer Faces
+<code>NavigationHandler</code>.  Because of this, you may freely intermix views
+managed by the dialog framework and views managed by standard JavaServer Faces
+navigation rules, in the same application.</p>
+
+<p>It is quite often useful to maintain a set of information about the state of
+the current dialog's computation, across multiple requests to the server.  When
+a particular dialog instance is completed, the corresponding information can be
+thrown away.  The Dialog2 Framework supports these requirements by supporting a
+general purpose <code>data</code> property (of type Object) on the
+<a href="org/apache/shale/dialog2/DialogContext.htlm">DialogContext</a> instance.
+The data type of this object can be anything useful for the dialog being executed,
+but will typically be either a JavaBean containing properties for each individual
+information item comprising the state of the computation for this dialog, or a
+<code>Map</code> where key/value pairs can easily be stored.  When the dialog instance has
+completed its computation, the data object will have all references to it removed,
+so that it can be garbage collected.</p>
+
+<p>Of particular note is the fact that JavaServer Faces value binding
+expressions can be used to bind visual components to values in the data object.
+For example, assume that the dialog is managing a wizard dialog for updating a
+user profile, and one of the properties that can be edited is the user's full name.
+One can bind an input text component directly to the corresponding property
+like this, with no need for intermediate copying as the various pages of the
+wizard dialog are navigated:</p>
+<pre>
+    &lt;h:inputText id="fullName" value="#{dialog2.data.fullName}"/>
+</pre>
+
+<h4>Creating A New DialogContext Instance</h4>
+
+<p>If the current view does not have an active DialogContext instance associated
+with it, there are several approaches available to creating a new instance and
+associating it with the current view:</p>
+<ul>
+    <li><em>Via Navigation</em> - If the action method executed by the
+        <em>Invoke Application</em> phase returns a logical outcome that
+        begins with the prefix specified by <code>Constants.DIALOG_PREFIX</code>
+        (literal value is <code>dialog2:</code>), a new DialogContext instance
+        for a dialog named by the remainder of the logical outcome string
+        will be created and associated with the current view.  To start a
+        dialog named "wizard", the action method could execute:
+        <blockquote><pre>
+return "dialog2:wizard";
+        </pre></blockquote></li>
+    <li><em>Programmatically</em> - If the action method acquires a
+        reference to the <a href="org/apache/shale/dialog2/DialogContextManager.html">DialogContextManager</a>
+        for the user, it can programmatically create a new instance by
+        executing code like this:
+        <blockquote><pre>
+// Create a new DialogContext instance for a dialog named "wizard"
+FacesContext context = FacesContext.getCurrentInstance();
+DialogContextManager manager = (DialogContextManager)
+  context.getApplication().getVariableResolver().
+  resolveVariable(context, Constants.MANAGER_BEAN);
+DialogContext dcontext = manager.create(context, "wizard");
+
+// Advance the state of this dialog until it needs to display a view
+String viewId = dcontext.advance(context, null);
+
+// Navigate to the specified view and return
+ViewHandler vh = context.getApplication().getViewHandler();
+UIViewRoot view = vh.createView(context, viewId);
+view.setViewId(viewId);
+context.setViewRoot(view);
+context.renderResponse();
+return null;
+        </pre></blockquote></li>
+    <li><em>Via Request Parameter</em> - If the request URI for a JSF request
+        includes a request parameter specified by
+        <code>Constants.DIALOG_NAME</code> (literal value is
+        <code>org.apache.shale.dialog2.DIALOG_NAME</code>), a new
+        <code>DialogContext</code> instance for this dialog name will
+        be created and associated with the current view.  For example,
+        a request for view <code>editCustomer.faces</code> could also
+        request starting the <code>EditCustomerInfo</code> dialog by
+        submitting a request URL like this:
+        <blockquote><pre>
+http://localhost:8080/myapp/editCustomer.faces?org.apache.shale.dialog2.DIALOG_NAME=EditCustomerInfo
+        </pre></blockquote></li>
+</ul>
+
+<p>In the latter case, there is an additional option to cause the newly
+created dialog instance to be associated with a <em>parent</em> dialog
+instance for the same user.  This is accomplished by specifying an additional
+request parameter specified by <code>Constants.PARENT_ID</code>
+(literal value is <code>org.apache.shale.dialog2.PARENT_ID</code>), whose
+value is the <em>dialog id</em> of an active dialog for this user.</p>
+
+<p>The most common use case for this special parent/child relationship is
+where the main page that a user is executing is under control of a named
+dialog, and the application wishes to display a popup window (under the control
+of its own dialog, and therefore its own DialogContext intsance) that can
+access the data of the parent dialog instance, via a value binding expression
+like <code>#{dialog2.parent.data.fullName}</code> from within the popup dialog's
+execution.  In this way, you can easily create popup dialogs that can pull
+initial state information from the main window, perform arbitrary operations
+on it, and push results back to the main window ... with the only coupling being
+agreement on the names of properties in the parent dialog's <code>data</code>
+object to be used for communication.</p>
+
+<h4>Removing An Existing DialogContext Instance</h4>
+
+<p>The precise mechanism by which a DialogContext is removed is dependent upon
+the implementation selected, but typically an implementation will allow the
+application developer to specify an "end state" that, when <code>advance()</code>
+reaches that state, will cause the <code>remove()</code> method on the
+<a href="DialogContextManager.hml">DialogContextManager</a> instance for the
+current user to be called.  This will trigger any necessary cleanup, including
+releasing all references to the <code>data</code> object for the removed
+<code>DialogContext</code> instance so that it can be garbage collected.</p>
+
+<h4>Packaging a Dialog2 Implementation</h4>
+
+<p>Any implementation of the Shale Dialog2 APIs should conform to the following
+requirements:</p>
+<ul>
+    <li>Package all of the required implementation classes into a JAR file
+        (or declare dependencies on specified external JAR files for some
+        of the functionality).</li>
+    <li>Provide a <code>META-INF/faces-config.xml</code> resource in the JAR
+        file, so that the JavaServer Faces implementation will process the
+        included configuration metadata at application startup time.</li>
+    <li>At a minimum, include a managed bean definition for your implementation
+        of <code>org.apache.shale.dialog2.DialogContextManager</code>.  The
+        managed bean definition must:
+        <ul>
+            <li>Declare the managed bean name to be the value specified by
+                <code>Constants.MANAGER_BEAN</code> (literal value is
+                <code>org.apache.shale.dialog2.MANAGER</code>).</li>
+            <li>Declare the bean to be placed in session scope, because it
+                will be created once per user in a running application.</li>
+        </ul></li>
+    <li>Ensure that your <code>DialogContextManager</code> implementation will
+        configure itself on demand, upon the first call to its processing
+        methods.</li>
+</ul>
+
+<p>If these requirements are met, an application developer may select a particular
+implementation simply by dropping its corresponding JAR file (and any external
+dependencies that the implementation also requires) into the
+<code>/WEB-INF/lib</code> directory of a web application, and the implementation
+will be self configured.</p>
+
+<h4>Available Implementations</h4>
+
+<p>The Shale Sandbox currently contains two implementations of the Dialog2
+Framework:</p>
+<ul>
+    <li><em>Legacy</em> - So named because it supports a superset of the original
+        Shale Dialog framework functionality available through version 1.0.3,
+        with dialogs configured in an XML document that represents a simple
+        state machine with transitions driven by logical outcomes.</li>
+    <li><em>SCXML</em> - So named because it represents dialogs as a state
+        machine configured according to the schema for State Chart XML, a
+        general purpose framework for defining advanced state machines.
+        This implementation depends on the
+        <a href="http://jakarta.apache.org/commons/scxml">Commons SCXML</a>
+        implementation from Apache.</li>
+</ul>
+
+</body>

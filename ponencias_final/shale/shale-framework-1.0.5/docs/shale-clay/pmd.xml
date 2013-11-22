@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.1" timestamp="2008-06-02T11:01:53.816">
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/AssignViewRootCommand.java">
+<violation beginline="25" endline="25" begincolumn="1" endcolumn="35" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.clay.component.chain" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javax.faces.el.ValueBinding'
+</violation>
+<violation beginline="31" endline="31" begincolumn="1" endcolumn="34" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.clay.component.chain" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.util.Tags'
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/config/ClayXmlParser.java">
+<violation beginline="160" endline="162" begincolumn="17" endcolumn="17" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.clay.config" class="ClayXmlParser" method="configureRules" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/config/beans/ComponentConfigBean.java">
+<violation beginline="478" endline="480" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.clay.config.beans" class="ComponentConfigBean" method="assignParent" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="991" endline="993" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.apache.shale.clay.config.beans" class="ComponentConfigBean" method="clear" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/config/beans/ConfigDefinitionsWatchdogFilter.java">
+<violation beginline="195" endline="195" begincolumn="17" endcolumn="17" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.clay.config.beans" class="ConfigDefinitionsWatchdogFilter" method="precompile" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/config/beans/TemplateConfigBean.java">
+<violation beginline="153" endline="155" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Basic Rules" package="org.apache.shale.clay.config.beans" class="TemplateConfigBean" method="clear" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="247" endline="249" begincolumn="17" endcolumn="17" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.clay.config.beans" class="TemplateConfigBean" method="isVerbatim" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="350" endline="352" begincolumn="21" endcolumn="21" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.clay.config.beans" class="TemplateConfigBean" method="optimizeTree" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/parser/AttributeTokenizer.java">
+<violation beginline="319" endline="324" begincolumn="17" endcolumn="17" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.clay.parser" class="AttributeTokenizer" method="parse" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/parser/Parser.java">
+<violation beginline="470" endline="480" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.clay.parser" class="Parser" method="isNodeNameEqual" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="471" endline="479" begincolumn="17" endcolumn="17" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.clay.parser" class="Parser" method="isNodeNameEqual" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/taglib/ClayTagValidator.java">
+<violation beginline="117" endline="124" begincolumn="17" endcolumn="17" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.clay.taglib" class="ClayTagValidator" method="checkForInvalidNestedTags" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+</pmd>

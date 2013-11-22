@@ -1,0 +1,401 @@
+<?xml version="1.0"?>
+<document>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+  <properties>
+    <title>Shale Dialog Manager</title>
+  </properties>
+
+  <body>
+    
+    <section name="Shale Dialog Manager">
+    <a name="dialog"/>
+
+      <a name="dialog-introduction"/>
+      <subsection name="Introduction">
+
+        <p>One of the frustrating aspects of organizing the flow of control
+        in a web based application is that fact that it is composed of
+        completely disconnected interactions with the client (via the
+        HTTP protocol).  The popularity of application frameworks based
+        on model-view-controller (MVC) principles, and particularly the
+        emergence of the <em>front controller</em> design pattern, have
+        become the de facto standard architectural approach.</p>
+
+        <p>Like other frameworks, JavaServer Faces supports a mechanism
+        to define navigation rules for transitions between views.  The
+        actual processing is performed by an implementation of
+        the <code>javax.faces.application.NavigationHandler</code>.  The
+        standard implementation provided by the framework (which can be
+        customized via a pluggable API) performs transitions from one view
+        to another based on three inputs:</p>
+
+        <ul>
+        <li>What view is currently processing this form submit?</li>
+        <li>Which of the potentially several actions were invoked?  (This
+            allows you to support different "submit" buttons with different
+            functionality, or share actions between, say, a "Save" button
+            at the top and bottom of a table.)</li>
+        <li>What "logical outcome" was returned by the action that was
+            invoked?</li>
+        </ul>
+
+        <p>Basing navigation on outcomes, by the way, assists in reducing
+        the coupling between pages, because the developer that writes the
+        action method is only focused on reporting "what happened" rather
+        than worrying about "where do I go next".  This concept is also
+        found in the way Struts has <code>Action.execute()</code> methods
+        that return a logical <code>ActionForward</code> describing the
+        outcome of performing the action.</p>
+
+        <p>However, it is still difficult to reuse individual views in
+        more than one "conversation" or "dialog" with the user, nor to
+        treat one dialog as a "black box" subroutine that can be called by
+        more than one calling dialog.  To address these needs, Shale
+        offers Dialog Manager support.</p>
+
+        <p>The functionality of this feature was <strong>heavily</strong>
+        inspired by the implementation of Spring Webflow (Preview 2),
+        whose home page is:</p>
+        <blockquote>
+        <a href="http://opensource.atlassian.com/confluence/spring/display/WEBFLOW/Home">
+        http://opensource.atlassian.com/confluence/spring/display/WEBFLOW/Home</a>
+        </blockquote>
+
+      </subsection>
+
+      <a name="dialog-api"/>
+      <subsection name="API and Implementations">
+
+        <p>The Shale <em>Dialog Manager</em> defines an API that supports
+        access to an abstract "execution engine" that manages the processing
+        flow through a dialog.  In addition, multiple implementations of this
+        API are provided that offer different sets of unique features:</p>
+
+        <ul>
+            <li><a href="../shale-dialog-basic/index.html">Basic Implementation</a>
+                A relatively simple implementation that models a dialog as a
+                state diagram with four types of states:
+                <ul>
+                    <li><em>Action</em> - Execute an arbitrary method</li>
+                    <li><em>Exit</em> - Terminate execution of this dialog</li>
+                    <li><em>Subdialog</em> - Execute another dialog as a
+                        subroutine</li>
+                    <li><em>View</em> - Display a JSF view (page) and wait
+                        for the following submit to execute an application
+                        action method</li>
+                </ul>
+                This implementation supports a superset of the functionality
+                that was present in versions of Shale up through 1.0.3.</li>
+            <li><a href="../shale-dialog-scxml/index.html">State Chart XML
+                Implementation</a> A more sophisticated implementation based
+                on state charts modelled with <a href="http://www.w3.org/TR/scxml/">
+                State Chart XML</a>, which is currently a Working Draft published
+                by the W3C.  This technology has grown out of the use of similar
+                techniques in the telephony industry, and Shale uses the
+                <a href="http://commons.apache.org/scxml">Apache
+                Commons SCXML</a> library to provide the required execution
+                engine.</li>
+        </ul>
+
+        <p>The remainder of this document describes services that are available
+        no matter which implementation you choose.  See the module descriptions
+        for the implementation modules for details of configuration, as well as
+        the unique features provided by that implementation.</p>
+
+      </subsection>
+
+      <a name="dialog-services"/>
+      <subsection name="Services Provided">
+
+        <p>The fundamental APIs that an application interacts with are
+        simple and straightforward:</p>
+        <ul>
+            <li><a href="apidocs/org/apache/shale/dialog/DialogContext.html">
+                DialogContext</a> - Represents the state of an active dialog
+                with the user.  There will be one such instance for each
+                window or frame running a dialog, stored in session scope.</li>
+            <li><a href="apidocs/org/apache/shale/dialog/DialogContextManager.html">
+                DialogContextManager</a> - Factory for creating new
+                <code>DialogContext</code> instances.  The Shale Dialog implementation
+                that you select will provide a suitable factory as a session scope
+                managed bean under a well-known key.  At most one active
+                <code>DialogContext</code> instance can be associated with
+                each window or frame that the user is operating, in association
+                with the same session.</li>
+            <li><a href="apidocs/org/apache/shale/dialog/DialogListener">
+                DialogListener.html</a> - An active <code>DialogContext</code>
+                fires events that document interesting changes in the state of
+                the dialog.  Interested objects can ask to be notified of such
+                events by implementing this interface, and registering themselves
+                with the <code>DialogContext</code> using standard JavaBeans
+                event listener design patterns.</li>
+        </ul>
+
+        <p><a href="apidocs/org/apache/shale/dialog/DialogContextManager.html">
+        DialogContextManager</a> provides public methods that support the
+        following functionality:</p>
+        <ul>
+            <li>Create and return a new <code>DialogContext</code> instance,
+                optionally associated with a parent <code>DialogContext</code>
+                (useful for popup windows that need to coordinate their
+                behavior with the underlying page).</li>
+            <li>Retrieve an active <code>DialogContext</code> for the current
+                user, based on a specified dialog identifier.</li>
+            <li>Remove an active <code>DialogContext</code> instance,
+                denoting that this instance is no longer active.  As a
+                side effect, the content of the <code>data</code> property
+                of this <code>DialogContext</code> will be made available
+                for garbage collection, as long as the application does not
+                maintain any other references to the data object.</li>
+        </ul>
+
+        <p><a href="apidocs/org/apache/shale/dialog/DialogContext.html">
+        DialogContext</a> provides the following public properties:</p>
+        <ul>
+            <li><code>active</code> - Flag indicating that this
+                <code>DialogContext</code> instance has been started
+                but not yet stopped.</li>
+            <li><code>data</code> - General purpose object made available
+                for storing state information related to a particular
+                active dialog instance.  Details of how this property
+                is implemented are specific to the implementation you
+                choose, but will generally default to being an instance
+                of <code>java.util.Map</code>.  You can also replace
+                this object at runtime with an object that contains
+                state properties specific to a particular use case.</li>
+            <li><code>id</code> - An identifier, unique within the scope
+                of the current user, for this particular instance.
+                The Dialog Manager framework promises to transport
+                this identifier along with the JSF component tree,
+                and will use it to regain access to the corresponding
+                <code>DialogContext</code> instance on a postback.</li>
+            <li><code>name</code> - The logical name of the dialog
+                definition being executed by this instance.  This
+                will typically map to configuration information that
+                is specific to the implementation you select.</li>
+             <li><code>parent</code> - Optional reference to a parent
+                 <code>DialogContext</code> instance that we were
+                associated with when this instance was created.</li>
+        </ul>
+
+        <p><a href="apidocs/org/apache/shale/dialog/DialogContext.html">
+        DialogContext</a> provides public methods to support the following
+        functionality:</p>
+        <ul>
+            <li>Start the active execution represented by this instance,
+                advancing until the instance has displayed a JSF view
+                and needs to wait for the user to fill out a form and
+                submit it.</li>
+            <li>Advance the state of the computation represented by
+                this instance, passing in the logical outcome that
+                was returned by the application's action method.</li>
+            <li>Stop the execution of the computation represented by
+                this instance, which will cause it to be passed to
+                the <code>remove()</code> method on the
+                <code>DialogContextManager</code> instance for this user.</li>
+        </ul>
+
+        <p><a href="apidocs/org/apache/shale/dialog/DialogListener.html">
+        DialogListener</a> is an event listener interface that follows
+        standard JavaBean design patterns.  Interested objects can register
+        themselves as a listener on a <code>DialogContext</code> instance,
+        and be notified of the occurrence of the following events:</p>
+        <ul>
+            <li>This <code>DialogContext</code> instance was started.</li>
+            <li>This <code>DialogContext</code> instance was stopped.</li>
+            <li>An exception was thrown by this <code>DialogContext</code>
+                instance.</li>
+            <li>A named "state" was entered (details are specific to the
+                selected implementation).</li>
+            <li>A named "state" was exited (details are specific to the
+                selected implementation).</li>
+            <li>A transition from one named "state" to another was performed
+                (details are specific to the selected implemenation).</li>
+        </ul>
+
+        <p>Applications that wish to implement listeners are encouraged to
+        subclass <a href="apidocs/org/apache/shale/dialog/base/AbstractDialogListener.html">
+        AbstractDialogListener</a> instead of implementing the interface
+        described above.  In addition to only needing to implement event
+        handling methods you are interested in, this protects the ability
+        to compile your application against future versions of the listener
+        interface, if more event handling methods are added in the future.</p>
+
+      </subsection>
+
+      <a name="dialog-using"/>
+      <subsection name="Using Dialog Manager">
+
+        <p>The following paragraphs describe functionality that works no matter
+        which specific Dialog Manager implementation you have selected.  Be
+        sure to consult the page for your selected implementation for additional
+        features and capabilities.</p>
+
+        <h4>Starting A New DialogContext Instance</h4>
+
+        <p>At most one <code>DialogContext</code> instance can be active, in a
+        particular window or frame, at one time.  There are several ways in which
+        an application can cause such a <code>DialogContext</code> instance can
+        be activated and associated with the current window or frame.  Each
+        technique is described below.</p>
+
+        <h5>Starting A DialogContext Via Navigation</h5>
+
+        <p>This technique is very useful if your application contains a mixture
+        of pages managed by standard JavaServer Faces navigation, and pages
+        managed by the Shale Dialog Manager.  To enter a dialog whose logical
+        name is <strong>foo</strong>, simply have one of your application actions
+        return a logical outcome string of <code>dialog:foo</code>, and a new
+        <code>DialogContext</code> instance will be started for you.</p>
+
+        <p>In the example above, we used the default <code>dialog:</code> prefix
+        value to trigger starting a dialog.  You can also specify your own
+        prefix by setting a context init parameter whose name is defined by
+        the symbolic constant <code>Constants.DIALOG_PREFIX_PARAM</code>
+        (i.e. <code>org.apache.shale.dialog.DIALOG_PREFIX</code>).  By convention
+        this value should end with a ':' character to look like a namespace,
+        but this is <strong>not</strong> required.</p>
+
+        <h5>Starting A DialogContext Programmatically</h5>
+
+        <p>Under some circumstances, it may be preferable for your application's
+        event handler to decide programmatically which dialog to use, and start
+        it programmatically.  To start a dialog named <strong>foo</strong>
+        programmatically, code something like this in your action method:</p>
+
+<source>
+  FacesContext context = FacesContext.getCurrentInstance();
+  DialogContextManager manager = (DialogContextManager)
+    context.getApplication().getVariableResolver().
+    resolveVariable(context, Constants.MANAGER_BEAN);
+  DialogContext dcontext = manager.create(context, "foo");
+  dcontext.start(context);
+  return null;
+</source>
+
+        <h5>Starting A DialogContext Via URL Parameters</h5>
+
+        <p>In a use case like a pop-up window, the first request served by the
+        application will be to a new window that is not currently associated
+        with a current dialog.  In order for such a window to immediately
+        become associated with a <code>DialogContext</code> instance, the
+        Dialog Manager also recognizes the following request parameters, if
+        they are present, and if there is no active DialogContext already:</p>
+
+        <ul>
+            <li><strong>org.apache.shale.dialog.DIALOG_NAME</strong> - The
+                logical name of the dialog to be created and started.</li>
+            <li><strong>org.apache.shale.dialog.PARENT_ID</strong> -
+                (Optional) the logical dialog identifier of a parent
+                <code>DialogContext</code> instance that should become the
+                parent of the newly created one.  This allows, for example,
+                a popup window to be associated with the <code>data</code>
+                element for the <code>DialogContext</code> instance associated
+                with the parent window.</li>
+        </ul>
+
+        <h4>Request Processing for an Active DialogContext Instance</h4>
+
+        <p>Once a <code>DialogContext</code> instance has been associated with
+        the current window, the Dialog Manager performs the following tasks
+        automatically, with no need for application interaction:</p>
+
+        <ul>
+            <li>Cause a <em>dialog identifier</em> for this <code>DialogContext</code>
+                instance to be saved and restored as part of the JSF compoennt
+                tree and associated state.</li>
+            <li>When a POST request for this window is processed, the active
+                <code>DialogContext</code> instance for the logical dialog 
+                identifier for this window will be retrieved from the
+                <code>DialogContextManager</code> for this user, and stored
+                as a request scope attribute under key <code>dialog</code>
+                for easy reference in expressions.</li>
+            <li>During <em>Invoke Application</em> phase of the request
+                processing lifecycle, the logical outcome returned by the
+                action method will be intercepted by the Dialog Manager,
+                rather than being fed into the standard JSF navigation handler.
+                Instead, the outcome will be passed in as a parameter to the
+                <code>advance()</code> method on the current <code>DialogContext</code>
+                instance, which will advance the state of the computation until
+                a further interaction with the user is required.  Then, the
+                Dialog Manager will create the requested JSF view, and forward
+                to Render Response phase so that this view may be rendered.</li>
+        </ul>
+
+        <h4>Accessing Per-DialogContext State Information</h4>
+
+        <p>The Dialog Manager provides a convenient place for an active
+        <code>DialogContext</code> instance to maintain state information
+        that lasts only for the lifetime of the instance.  This is the
+        <code>data</code> property of the <code>DialogContext</code> instance
+        for the currently active dialog.  Each Dialog Manager implementation
+        will provide a default data structure (typically an instance of
+        <code>java.util.Map</code>) for this purpose, but you may also provide
+        a JavaBean class that is application specific if you wish.</p>
+
+        <p>Note that, due to the combination of the current <code>DialogContext</code>
+        instance being exposed as a request scoped attribute under key
+        <code>dialog</code>, and the fact that <code>data</code> is a standard
+        Java Bean property on this instance, you can conveniently use JSF
+        value binding expressions to bind component values to state information.
+        For example, assume you have provided an application specific Java Bean
+        class for the state information, and it has a <code>name</code> property
+        to contain a customer name.  You can easily bind an input component to
+        that name, like this:</p>
+
+<source>
+  &lt;h:inputText id="name" ... value="#{dialog.data.name}"/>
+</source>
+
+        <p>As an extra value-added feature, if the object you store as the
+        <code>data</code> property is of a class that implements the
+        <code>DialogContextListener</code> interface, your data object will
+        also be automatically registered to receive the corresponding events.
+        This can be useful (for example), when your application needs to know
+        when a particular "state" has been entered, or whether a transition
+        to a particular "state" came from some other particular "state".</p>
+
+        <p>If you intend to leverage this feature, you can optionally make your
+        data class extend <code>AbstractDialogContextListener</code> instead of
+        implementing the interface directly.  If you do this, you only need to
+        implement the event handling methods that you are interested in, rather
+        than all of them.</p>
+
+        <h4>Stopping An Active DialogContext Instance</h4>
+
+        <p>There are two general approaches to stopping the processing of an
+        active <code>DialogContext</code> instance:</p>
+
+        <ul>
+            <li>Each Dialog Manager implementation will typically define a
+                particular state as an "exit" or "end" state.  When a transition
+                to such a state occurs, the Dialog Manager implementation will
+                call <code>stop()</code> on the active <code>DialogContext</code>
+                instance, which will take it out of service.</li>
+            <li>You can also cause the current <code>DialogContext</code>
+                instance to be aborted by calling <code>stop()</code> on it
+                yourself.</li>
+        </ul>
+
+    </subsection>
+
+    </section>
+
+  </body>
+
+</document>

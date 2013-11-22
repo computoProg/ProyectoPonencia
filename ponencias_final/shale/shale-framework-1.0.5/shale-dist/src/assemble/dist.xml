@@ -1,0 +1,258 @@
+<!--
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to you under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * $Id: dist.xml 639480 2008-03-20 22:06:54Z greddin $
+ */
+-->
+
+<assembly>
+
+    <id></id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
+
+    <fileSets>
+
+        <!-- Include top level directory files in the assembly -->
+
+        <fileSet>
+            <directory>..</directory>
+            <outputDirectory></outputDirectory>
+            <includes>
+                <include>pom.xml</include>
+                <include>*.txt</include>
+            </includes>
+        </fileSet>
+
+        <!-- Include the source code in the assembly -->
+
+        <fileSet>
+            <directory>../src</directory>
+            <outputDirectory>src/</outputDirectory>
+        </fileSet>
+
+        <!-- Include submodule sources in the assembly -->
+
+        <fileSet>
+            <directory>../shale-application</directory>
+            <outputDirectory>shale-application</outputDirectory>
+            <includes>
+                <include>pom.xml</include>
+                <include>*.txt</include>
+                <include>src/</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-clay</directory>
+            <outputDirectory>shale-clay</outputDirectory>
+            <includes>
+                <include>pom.xml</include>
+                <include>*.txt</include>
+                <include>src/</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-core</directory>
+            <outputDirectory>shale-core</outputDirectory>
+            <includes>
+                <include>pom.xml</include>
+                <include>*.txt</include>
+                <include>src/</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-dialog</directory>
+            <outputDirectory>shale-dialog</outputDirectory>
+            <includes>
+                <include>pom.xml</include>
+                <include>*.txt</include>
+                <include>src/</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-dialog-basic</directory>
+            <outputDirectory>shale-dialog-basic</outputDirectory>
+            <includes>
+                <include>pom.xml</include>
+                <include>*.txt</include>
+                <include>src/</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-dialog-scxml</directory>
+            <outputDirectory>shale-dialog-scxml</outputDirectory>
+            <includes>
+                <include>pom.xml</include>
+                <include>*.txt</include>
+                <include>src/</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-dist</directory>
+            <outputDirectory>shale-dist</outputDirectory>
+            <includes>
+                <include>pom.xml</include>
+                <include>*.txt</include>
+                <include>src/</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-remoting</directory>
+            <outputDirectory>shale-remoting</outputDirectory>
+            <includes>
+                <include>pom.xml</include>
+                <include>*.txt</include>
+                <include>src/</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-spring</directory>
+            <outputDirectory>shale-spring</outputDirectory>
+            <includes>
+                <include>pom.xml</include>
+                <include>*.txt</include>
+                <include>src/</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-test</directory>
+            <outputDirectory>shale-test</outputDirectory>
+            <includes>
+                <include>pom.xml</include>
+                <include>*.txt</include>
+                <include>src/</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-tiger</directory>
+            <outputDirectory>shale-tiger</outputDirectory>
+            <includes>
+                <include>pom.xml</include>
+                <include>*.txt</include>
+                <include>src/</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-validator</directory>
+            <outputDirectory>shale-validator</outputDirectory>
+            <includes>
+                <include>pom.xml</include>
+                <include>*.txt</include>
+                <include>src/</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-view</directory>
+            <outputDirectory>shale-view</outputDirectory>
+            <includes>
+                <include>pom.xml</include>
+                <include>*.txt</include>
+                <include>src/</include>
+            </includes>
+        </fileSet>
+
+        <!-- Include the website docs in the assembly -->
+
+        <fileSet>
+            <directory>../target/site</directory>
+            <outputDirectory>docs/</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-application/target/site</directory>
+            <outputDirectory>docs/shale-application</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-clay/target/site</directory>
+            <outputDirectory>docs/shale-clay</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-core/target/site</directory>
+            <outputDirectory>docs/shale-core</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-dialog/target/site</directory>
+            <outputDirectory>docs/shale-dialog</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-dialog-basic/target/site</directory>
+            <outputDirectory>docs/shale-dialog-basic</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-dialog-scxml/target/site</directory>
+            <outputDirectory>docs/shale-dialog-scxml</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-remoting/target/site</directory>
+            <outputDirectory>docs/shale-remoting</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-spring/target/site</directory>
+            <outputDirectory>docs/shale-spring</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-test/target/site</directory>
+            <outputDirectory>docs/shale-test</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-tiger/target/site</directory>
+            <outputDirectory>docs/shale-tiger</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-validator/target/site</directory>
+            <outputDirectory>docs/shale-validator</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>../shale-view/target/site</directory>
+            <outputDirectory>docs/shale-view</outputDirectory>
+        </fileSet>
+
+    </fileSets>
+
+</assembly>

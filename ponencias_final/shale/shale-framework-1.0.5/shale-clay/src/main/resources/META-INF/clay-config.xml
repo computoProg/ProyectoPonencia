@@ -1,0 +1,1422 @@
+<?xml version='1.0' encoding="UTF-8"?>
+
+<!--
+
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ $Id: clay-config.xml 560477 2007-07-28 03:17:33Z gvanmatre $
+
+-->
+    <!DOCTYPE view PUBLIC
+      "-//Apache Software Foundation//DTD Shale Clay View Configuration 1.0//EN"
+      "http://shale.apache.org/dtds/clay-config_1_0.dtd">
+<view>
+
+  <component jsfid="view" componentType="javax.faces.ViewRoot">
+     <attributes>
+         <set name="renderKitId" bindingType="VB" />
+         <!--  
+               Can not support until full JSF 1.2 support
+               Requires MethodExpression type
+                
+         <set name="beforePhaseListener" bindingType="VB" />
+         <set name="afterPhaseListener" bindingType="VB" />
+          -->
+         <set name="locale" bindingType="VB"/>
+     </attributes>      
+  </component>
+  <component jsfid="f:view" extends="view"/>
+
+  <component jsfid="converter" componentType="override">
+     <description>Abstract component definition.</description>
+     <attributes>
+         <set name="binding" bindingType="VB" />
+     </attributes>
+  </component>
+  <component jsfid="f:converter" extends="converter">
+     <attributes>
+         <set name="converterId" bindingType="VB" />
+     </attributes>
+  </component>
+  
+  <component jsfid="validator" componentType="override">
+     <description>Abstract component definition.</description>
+     <attributes>
+         <set name="binding" bindingType="VB" />
+     </attributes>
+  </component>
+  <component jsfid="f:validator" extends="validator">
+     <attributes>
+         <set name="validatorId" bindingType="VB" />
+     </attributes>
+  </component>
+  
+  <component jsfid="actionListener" componentType="override">
+     <description>Abstract component definition.</description>
+     <attributes>
+         <set name="binding" bindingType="VB" />
+     </attributes>  
+  </component>
+  <component jsfid="f:actionListener" extends="actionListener"/>
+  
+  <component jsfid="valueChangeListener" componentType="override">
+     <description>Abstract component definition.</description>
+     <attributes>
+         <set name="binding" bindingType="VB" />
+     </attributes>
+  </component>
+  <component jsfid="f:valueChangeListener" extends="valueChangeListener"/>
+
+   <component jsfid="baseComponent" componentType="override">
+      <description>Abstract component definition extended by baseHtml, token, subview, 
+         validatorScript, parameter, selectItem, selectItems, inputHidden, column, 
+         clay and loadBundle
+      </description>
+      <attributes>
+        <set name="rendered" bindingType="VB">
+           <description>Controls the visibility of the component markup.  
+              A boolean value is expected as a literal or a value binding expression.
+           </description>
+        </set>
+        <set name="binding" bindingType="VB">
+            <description>A value binding expression that fixes up a component instance 
+              within the component tree with a reference defined in a backing bean.
+            </description>
+        </set>
+      </attributes>
+   </component>
+
+
+   <component jsfid="baseHtml" extends="baseComponent">
+      <description>Abstract base component definition extended by baseInput, 
+         baseOutput, baseAction, outputText, panelGroup, image, form, dataTable, 
+         message, messages and panelGrid.
+      </description>
+      <attributes>        
+        <!-- HTML 4.0 universal attributes -->
+        <set name="dir" bindingType="VB">
+           <description></description> 
+        </set>         
+        <set name="lang" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="style" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="title" bindingType="VB">
+           <description></description>
+        </set>  
+        
+        <set name="styleClass" bindingType="VB" value="@class">
+           <description>Convention mapping html class attribute to 
+              styleClass component property
+           </description>   
+        </set>
+
+        <!-- HTML 4.0 event-handler attributes --> 
+        <set name="onclick" bindingType="VB">
+           <description></description>
+        </set>
+          
+        <set name="ondblclick" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="onmousedown" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="onmouseup" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="onmouseover" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="onmouseover" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="onmousemove" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="onmouseout" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="onkeypress" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="onkeydown" bindingType="VB">
+           <description></description>     
+        </set>  
+        <set name="onkeyup" bindingType="VB">
+           <description></description>
+        </set>
+      </attributes>
+      <symbols>
+        <set name="class">
+           <description>The default value of the styleClass attribute.</description>
+        </set>
+        <set name="null-value">
+           <description>A symbol that can be used to assign a null value to an attribute.</description>
+        </set>
+      </symbols>
+   </component>
+   
+   
+   <component jsfid="baseInput" extends="baseHtml">
+      <description>Abstract base component definition extending baseHtml and extended by selectOneRadio, 
+          selectOneMenu, selectManyMenu, manySelectCheckbox, selectBooleanCheckbox, inputTextarea, 
+          inputSecret and inputText.</description>
+      <attributes>
+        <!-- HTML 4.0 input attributes -->
+        <set name="accesskey" bindingType="VB">
+           <description></description>
+        </set>
+        <set name="align" bindingType="VB">
+           <description></description>
+        </set>
+        <set name="alt" bindingType="VB">
+          <description></description>
+        </set>
+        <set name="datafld" bindingType="VB">
+          <description></description>
+        </set>
+        <set name="datasrc" bindingType="VB">
+          <description></description>
+        </set>
+        <set name="dataformatas" bindingType="VB">
+          <description></description>
+        </set>
+        <set name="disabled" bindingType="VB">
+          <description></description>
+        </set>
+        <set name="onblur" bindingType="VB">
+           <description></description>
+        </set>
+        <set name="onchange" bindingType="VB">
+           <description></description>
+        </set>
+        <set name="onfocus" bindingType="VB">
+           <description></description>
+        </set>
+        <set name="readonly" bindingType="VB">
+           <description></description>
+        </set>
+        <set name="onselect" bindingType="VB">
+           <description></description>
+        </set>
+        <set name="tabindex" bindingType="VB">
+           <description></description>
+        </set>
+        <set name="required" bindingType="VB">
+           <description></description>
+        </set>        
+        <set name="value" bindingType="VB">
+           <description></description>
+        </set>
+        <set name="converter" bindingType="VB">
+           <description></description>
+        </set>
+        <set name="immediate" bindingType="VB">
+           <description></description>
+        </set>
+        <set name="validator" bindingType="MB">
+           <description></description>
+        </set>
+        <set name="valueChangeListener" bindingType="MB">
+           <description></description>
+        </set> 
+      </attributes>
+   </component>
+   
+   <component jsfid="baseOutput" extends="baseHtml">
+     <description>Abstract component definition that extends baseHtml and
+      is subclassed by outputLink, outputLabel and outputFormat.</description>
+     <attributes>
+        <set name="value" bindingType="VB">
+           <description></description>
+        </set>
+        <set name="converter" bindingType="VB">
+           <description></description>
+        </set> 
+     </attributes>
+  </component>
+  
+   <component jsfid="baseAction" extends="baseHtml">
+      <description>Abstract component definition for commandLink and 
+        comandButton extending baseHtml.
+      </description>
+      <attributes>
+        <!-- UIComponent attributes -->
+        <set name="action" bindingType="MB">
+           <description></description>
+        </set> 
+        <set name="actionListener" bindingType="MB">
+           <description></description>
+        </set> 
+        <set name="immediate" bindingType="VB">
+           <description></description>
+        </set> 
+        <set name="value" bindingType="VB">
+            <description></description>
+        </set>  
+     </attributes>
+   </component>
+   
+  <component jsfid="token" id="token" componentType="org.apache.shale.Token" allowBody="false" extends="baseComponent">
+     <description>
+        The "Token" component emits a transactional token that is then
+        validated (on a subsequent form submit) to catch cases where the
+        same form was submitted more than once.
+     </description>      
+  </component>
+  <component jsfid="s:token" extends="token"/> 
+
+  <component jsfid="commonsValidator" componentType="org.apache.shale.CommonsValidator" allowBody="false" extends="validator">
+      <description>This is a JSF validator that uses Commons Validator to perform 
+         validation, either client-side or server-side.
+      </description>
+      <attributes>
+        <set name="type" bindingType="Early">
+           <description>The validator rule name to invoke.</description>
+        </set>
+        <set name="min" bindingType="None">
+           <description>Lower range limit used by the doubleRange, floatRange and intRange rules.</description>
+        </set>
+        <set name="max" bindingType="None">
+           <description>Upper range limit used by the doubleRange, floatRange and intRange rules.</description>
+        </set>
+        <set name="minLength" bindingType="None">
+           <description>Minimum link used by the minlength rule.</description>
+        </set>
+        <set name="maxLength" bindingType="None">
+           <description>Maximum link used by the minlength rule. </description>
+        </set>
+        <set name="mask" bindingType="None">
+           <description>Validating regular expression used by the mask rule.</description>
+        </set>
+        <set name="message" bindingType="Early">
+           <description>An overriding error message.  The replacement positional parameters 
+              are defined by args in the xml config.
+           </description>
+        </set>
+        <set name="arg" bindingType="None">
+           <description>The name of the validating component.</description>
+        </set>
+        <set name="client" bindingType="Early">
+           <description>Boolean flag that determines if client side validation is performed.</description>
+        </set>
+        <set name="server" bindingType="Early">
+           <description>Boolean flag that indicates that server side validation should be performed.</description>
+        </set>
+      </attributes>
+  </component>
+  <component jsfid="s:commonsValidator" extends="commonsValidator" />
+  <component jsfid="val:commonsValidator" extends="s:commonsValidator" />
+
+  <component jsfid="s:commonsValidatorRequired" extends="commonsValidator">
+      <attributes>
+        <set name="type" value="required"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorRequired" extends="s:commonsValidatorRequired"/>
+
+  <component jsfid="s:commonsValidatorMaxlength" extends="commonsValidator">
+      <attributes>
+        <set name="type" value="maxlength"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorMaxlength" extends="s:commonsValidatorMaxlength"/>
+
+  <component jsfid="s:commonsValidatorMinlength" extends="commonsValidator" >
+      <attributes>
+        <set name="type" value="minlength"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorMinlength" extends="s:commonsValidatorMinlength" />
+
+  <component jsfid="s:commonsValidatorMask" extends="commonsValidator" >
+      <attributes>
+        <set name="type" value="mask"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorMask" extends="s:commonsValidatorMask" />
+
+  <component jsfid="s:commonsValidatorByte" extends="commonsValidator" >
+      <attributes>
+        <set name="type" value="byte"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorByte" extends="s:commonsValidatorByte" />
+
+  <component jsfid="s:commonsValidatorShort" extends="commonsValidator" >
+      <attributes>
+        <set name="type" value="short"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorShort" extends="s:commonsValidatorShort" />
+
+  <component jsfid="s:commonsValidatorInteger" extends="commonsValidator" >
+      <attributes>
+        <set name="type" value="integer"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorInteger" extends="s:commonsValidatorInteger" />
+
+  <component jsfid="s:commonsValidatorLong" extends="commonsValidator" >
+      <attributes>
+        <set name="type" value="long"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorLong" extends="s:commonsValidatorLong" />
+
+  <component jsfid="s:commonsValidatorFloat" extends="commonsValidator" >
+      <attributes>
+        <set name="type" value="float"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorFloat" extends="s:commonsValidatorFloat" />
+
+  <component jsfid="s:commonsValidatorDouble" extends="commonsValidator" >
+      <attributes>
+        <set name="type" value="double"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorDouble" extends="s:commonsValidatorDouble" />
+
+  <component jsfid="s:commonsValidatorDate" extends="commonsValidator" >
+      <attributes>
+        <set name="type" value="date"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorDate" extends="s:commonsValidatorDate" />
+
+  <component jsfid="s:commonsValidatorIntRange" extends="commonsValidator" >
+      <attributes>
+        <set name="type" value="intRange"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorIntRange" extends="s:commonsValidatorIntRange" />
+
+  <component jsfid="s:commonsValidatorFloatRange" extends="commonsValidator" >
+      <attributes>
+        <set name="type" value="floatRange"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorFloatRange" extends="s:commonsValidatorFloatRange" />
+
+  <component jsfid="s:commonsValidatorDoubleRange" extends="commonsValidator" >
+      <attributes>
+        <set name="type" value="doubleRange"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorDoubleRange" extends="s:commonsValidatorDoubleRange" />
+
+  <component jsfid="s:commonsValidatorCreditCard" extends="commonsValidator" >
+      <attributes>
+        <set name="type" value="creditCard"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorCreditCard" extends="s:commonsValidatorCreditCard" />
+
+  <component jsfid="s:commonsValidatorEmail" extends="commonsValidator" >
+        <attributes>
+        <set name="type" value="email"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorEmail" extends="s:commonsValidatorEmail" />
+
+  <component jsfid="s:commonsValidatorUrl" extends="commonsValidator" >
+      <attributes>
+        <set name="type" value="url"/>
+      </attributes>
+  </component>
+  <component jsfid="val:commonsValidatorUrl" extends="s:commonsValidatorUrl" />
+
+  <!--  Provide ViewController support functionality for the nested content
+      (typically a JSP dynamic include) of this component.
+  -->
+  <component jsfid="subview" id="subview" componentType="org.apache.shale.view.Subview" allowBody="true" extends="baseComponent">
+     <description>
+        Provide ViewController support functionality for the nested content
+        (typically a JSP dynamic include) of this component.  The id attribute binds
+        to the managed bean name that must be a ViewController.  
+     </description>
+  </component>
+  <component jsfid="f:subview" extends="subview"/>
+  <component jsfid="view:subview" extends="f:subview"/>
+
+  <component jsfid="validatorScript" id="validatorScript" componentType="org.apache.shale.ValidatorScript" 
+             allowBody="false" extends="baseComponent">
+      <description>
+         Generates JavaScript for client-side validation.
+      </description>
+      <attributes>
+        <set name="functionName" bindingType="None">
+           <description></description>
+        </set>
+      </attributes>
+  </component>
+  <component jsfid="s:validatorScript" extends="validatorScript"/>
+  <component jsfid="val:validatorScript" extends="s:validatorScript"/>
+
+  <component jsfid="outputText" componentType="javax.faces.HtmlOutputText" extends="baseHtml">
+    <description>Render readonly text.</description>
+    <attributes>
+        <set name="value" bindingType="VB">
+           <description></description>
+        </set>        
+        <set name="escape" bindingType="VB">
+           <description></description>
+        </set>  
+    </attributes>
+  </component>
+  <component jsfid="h:outputText" extends="outputText"/> 
+ 
+  <component jsfid="parameter" componentType="javax.faces.Parameter" extends="baseComponent">
+    <description>Render a url query parameter argument.</description>
+    <attributes>
+      <set name="name" bindingType="VB">
+         <description></description>
+      </set>
+      <set name="value" bindingType="VB">
+         <description></description>
+      </set>
+    </attributes>  
+  </component>
+  <component jsfid="param" extends="parameter"/>
+   <component jsfid="f:param" extends="param"/>
+  
+  <component jsfid="selectItem" componentType="javax.faces.SelectItem" extends="baseComponent">
+    <description>Render a single html option tag.</description>
+    <attributes>
+      <set name="itemDisabled" bindingType="VB">
+         <description></description>
+      </set>
+      <set name="itemDescription" bindingType="VB">
+         <description></description>
+      </set>
+      <set name="itemLabel" bindingType="VB">
+         <description></description>
+      </set>
+      <set name="itemValue" bindingType="VB">
+         <description></description>
+      </set>
+      <set name="value" bindingType="VB">
+         <description></description>
+      </set>
+    </attributes>  
+  </component>
+  <component jsfid="f:selectItem" extends="selectItem"/>
+  
+  <component jsfid="verbatim" extends="baseComponent" componentType="javax.faces.HtmlOutputText" >
+    <description>Render plain text.</description>     
+    <attributes>
+      <set name="isTransient" bindingType="VB" value="true">
+         <description></description>
+      </set>
+      <set name="escape" bindingType="VB" value="false">
+         <description></description>
+      </set>
+      <set name="value" bindingType="VB">
+           <description></description>
+      </set>        
+    </attributes>
+  </component>
+  <component jsfid="f:verbatim" extends="verbatim"/> 
+
+  <component jsfid="ignore" componentType="javax.faces.HtmlOutputText">
+     <description>
+         Special Clay declarative tag that acts like a comment 
+         tag treating child nodes as verbatim.
+     </description>
+  </component>
+  
+  <component jsfid="void" componentType="javax.faces.HtmlOutputText">
+      <description>
+          This is a special Clay declarative tag that creates an empty 
+          node associated with the HTML markup.  The markup is not 
+          rendered.
+      </description>
+      <attributes>
+        <set name="isTransient" bindingType="VB" value="true" />  
+      </attributes>
+  </component>
+  
+  
+  <component jsfid="selectItems" componentType="javax.faces.SelectItems" extends="baseComponent">
+    <description> Render an html option tag for each item in the bound collection</description>
+    <attributes>
+      <set name="value" bindingType="VB">
+         <description></description>
+      </set>
+    </attributes>
+  </component>
+  <component jsfid="f:selectItems" extends="selectItems"/>
+  
+  <component jsfid="selectOneRadio" componentType="javax.faces.HtmlSelectOneRadio" extends="baseInput">
+      <description>Render a set of html input elements of type radio.</description>
+      <attributes>      
+        <set name="layout" bindingType="VB">
+           <description></description>
+        </set> 
+        <set name="border" bindingType="VB">
+           <description></description>
+        </set> 
+      </attributes>
+  </component>
+  <component jsfid="h:selectOneRadio" extends="selectOneRadio" />
+
+  <component jsfid="selectOneMenu" componentType="javax.faces.HtmlSelectOneMenu" extends="baseInput">
+     <description> Render a select element without a multiple attribute.</description>
+  </component>
+  <component jsfid="h:selectOneMenu" extends="selectOneMenu"/>
+ 
+
+  <component jsfid="selectManyMenu" componentType="javax.faces.HtmlSelectManyMenu" extends="baseInput">
+     <description>Render a select element with a multiple attribute.</description>
+  </component>
+  <component jsfid="h:selectManyMenu" extends="selectManyMenu" />
+
+  <component jsfid="manySelectCheckbox" componentType="javax.faces.HtmlSelectManyCheckbox" extends="baseInput">
+      <description> Render a set of html input elements of type checkbox.</description>
+      <attributes>
+        <set name="layout" bindingType="VB">
+           <description></description>
+        </set> 
+      </attributes>  
+  </component>
+  <component jsfid="h:manySelectCheckbox" extends="manySelectCheckbox"/>
+
+  <component jsfid="selectBooleanCheckbox" componentType="javax.faces.HtmlSelectBooleanCheckbox" extends="baseInput">
+     <description>Render a html input element of type checkbox.</description>
+  </component>
+  <component jsfid="h:selectBooleanCheckbox" extends="selectBooleanCheckbox" />
+
+  <component jsfid="panelGroup" componentType="javax.faces.HtmlPanelGroup" extends="baseHtml">
+     <description>Render a html "span" element around its nested components</description>
+  </component>
+  <component jsfid="h:panelGroup" extends="panelGroup"/>
+
+  <component jsfid="outputLink" componentType="javax.faces.HtmlOutputLink" extends="baseOutput">
+     <description>Render a html "a" element.</description>
+     <attributes>
+        <set name="target" bindingType="VB">
+           <description></description>
+        </set>      
+     </attributes>
+  </component>
+  <component jsfid="h:outputLink" extends="outputLink" />
+
+  <component jsfid="outputLabel" componentType="javax.faces.HtmlOutputLabel" extends="baseOutput">
+     <description>Render a html label element.</description>
+     <attributes>
+        <set name="for" bindingType="VB">
+           <description></description>
+        </set>      
+     </attributes>
+  </component>
+  <component jsfid="h:outputLabel" extends="outputLabel"/>
+  
+  
+  <component jsfid="inputTextarea" componentType="javax.faces.HtmlInputTextarea" extends="baseInput">
+      <description>Render a html "textarea" element.</description>
+      <attributes>
+        <set name="rows" bindingType="VB">
+           <description></description>
+        </set>   
+        <set name="cols" bindingType="VB">
+           <description></description>
+        </set>              
+      </attributes>
+  </component>
+  <component jsfid="h:inputTextarea" extends="inputTextarea"/>
+
+  <component jsfid="inputSecret" componentType="javax.faces.HtmlInputSecret" extends="baseInput">
+      <description>Render a html input element of type password.</description>
+      <attributes>
+         <!-- SecretRenderer attributes -->
+        <set name="redisplay" bindingType="Early">
+           <description></description>
+        </set>
+        <set name="maxLength" bindingType="VB">
+          <description></description>
+        </set>   
+        <set name="size" bindingType="VB">
+          <description></description>
+        </set>                            
+      </attributes>
+  </component>
+  <component jsfid="h:inputSecret" extends="inputSecret"/>
+
+  <component jsfid="inputHidden" componentType="javax.faces.HtmlInputHidden" extends="baseComponent">
+       <description>Render a html input element of type hidden.</description>
+       <attributes>
+        <set name="value" bindingType="VB">
+           <description></description>
+        </set>       
+        <set name="converter" bindingType="VB">
+           <description></description>
+        </set>
+        <set name="immediate" bindingType="VB">
+           <description></description>
+        </set>
+        <set name="validator" bindingType="MB">
+           <description></description>
+        </set>
+        <set name="valueChangeListener" bindingType="MB">
+           <description></description>
+        </set>
+       </attributes>  
+  </component>
+  <component jsfid="h:inputHidden" extends="inputHidden" />
+
+  <component jsfid="image" componentType="javax.faces.HtmlGraphicImage" extends="baseHtml">
+       <description>Render a html "img" element.</description>
+       <attributes>
+        <set name="url" bindingType="VB">
+           <description></description>
+        </set>
+        <set name="value" bindingType="VB">
+           <description></description>
+        </set>
+
+        <!-- HTML 4.0 img attributes -->
+        <set name="align" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="alt" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="border" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="height" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="hspace" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="ismap" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="longdesc" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="usemap" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="vspace" bindingType="VB">
+           <description></description>
+        </set>  
+        <set name="width" bindingType="VB">
+           <description></description>
+        </set>  
+       </attributes>
+  </component>
+  
+  <component jsfid="graphicImage" extends="image"/>
+  <component jsfid="h:graphicImage" extends="graphicImage"/>
+
+  <component jsfid="form" componentType="javax.faces.HtmlForm" extends="baseHtml">
+     <description>Render a html form element.</description>
+     <attributes>        
+        <!-- HTML 4.0 form attributes -->  
+        <set name="accept" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="acceptCharset" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="enctype" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="name" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="onreset" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="onsubmit" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="target" bindingType="VB">
+          <description></description>
+        </set>  
+     </attributes>
+  </component>
+  <component jsfid="h:form" extends="form" />
+
+  <component jsfid="dataTable" componentType="javax.faces.HtmlDataTable" extends="baseHtml">
+     <description>Render an html table that is populated from a backing dynamic collection.</description>
+     <attributes>
+        
+        <!-- HTML 4.0 table attributes -->
+        <set name="align" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="border" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="bgcolor" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="cellpadding" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="cellspacing" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="datafld" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="datasrc" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="dataformatas" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="frame" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="rules" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="summary" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="width" bindingType="VB">
+          <description></description>
+        </set>
+        <set name="value" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="var" bindingType="None">
+          <description></description>
+        </set>  
+        <set name="rows" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="first" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="columnClasses" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="footerClass" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="headerClass" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="rowClasses" bindingType="VB">
+          <description></description>
+        </set>      
+     </attributes>
+  </component>
+  <component jsfid="h:dataTable" extends="dataTable"/> 
+
+  <component jsfid="commandLink" componentType="javax.faces.HtmlCommandLink" extends="baseAction">
+      <description>Render a html anchor link that simulates a button by invoking a form submit.</description>
+      <attributes>  
+        <!-- HTML 4.0 anchor (=a) attributes -->
+        <set name="accesskey" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="coords" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="hreflang" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="rel" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="rev" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="shape" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="tabindex" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="type" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="onblur" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="onfocus" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="target" bindingType="VB">
+          <description></description>
+        </set>  
+     </attributes>
+  </component>
+  <component jsfid="h:commandLink" extends="commandLink"/>
+
+  <component jsfid="column" componentType="javax.faces.Column" extends="baseComponent">
+     <description>Defines a column of data within a dataTable component.</description>
+  </component>
+  <component jsfid="h:column" extends="column"/> 
+
+  <component jsfid="inputText" componentType="javax.faces.HtmlInputText" extends="baseInput">
+    <description>Render a html input element of type text.</description>
+    <attributes>
+        <set name="escape" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="maxLength" bindingType="VB">
+          <description></description>
+        </set>   
+        <set name="size" bindingType="VB">
+          <description></description>
+        </set>              
+    </attributes>
+  </component>
+  <component jsfid="h:inputText" extends="inputText"/>
+
+  <component jsfid="outputFormat" componentType="javax.faces.HtmlOutputFormat" extends="baseOutput">
+     <description>Render a readonly text value substituting inline string parameters. </description>
+     <attributes>
+        <set name="escape" bindingType="VB"/>
+     </attributes>  
+  </component>
+  <component jsfid="h:outputFormat" extends="outputFormat"/>
+  
+  <component jsfid="messages" componentType="javax.faces.HtmlMessages" extends="baseHtml">
+    <description>Renders a set of readonly text messages. </description>
+    <attributes>
+      <set name="showSummary" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="showDetail" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="globalOnly" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="infoClass" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="infoStyle" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="warnClass" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="warnStyle" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="errorClass" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="errorStyle" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="fatalClass" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="fatalStyle" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="tooltip" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="layout" bindingType="VB">
+        <description></description>
+      </set> 
+    </attributes>  
+  </component>
+  <component jsfid="h:messages" extends="messages"/>	
+
+  <component jsfid="message" componentType="javax.faces.HtmlMessage" extends="baseHtml">
+    <description>Render a readonly text message associated with an input element.</description>
+    <attributes>
+      <set name="for" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="showSummary" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="showDetail" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="infoClass" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="infoStyle" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="warnClass" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="warnStyle" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="errorClass" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="errorStyle" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="fatalClass" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="fatalStyle" bindingType="VB">
+        <description></description>
+      </set>
+      <set name="tooltip" bindingType="VB">
+        <description></description>
+      </set>
+
+    </attributes>  
+  </component>
+  <component jsfid="h:message" extends="message"/> 	
+
+  <component jsfid="commandButton" componentType="javax.faces.HtmlCommandButton" extends="baseAction">
+    <description>Render a html input element of type "submit".</description>
+    <attributes>      
+      <!-- HTML 4.0 button attributes -->
+      <set name="accesskey" bindingType="VB">
+         <description></description>
+      </set>  
+      <set name="alt" bindingType="VB">
+         <description></description>
+      </set>  
+      <set name="disabled" bindingType="VB">
+         <description></description>
+      </set>  
+      <set name="onblur" bindingType="VB">
+         <description></description>
+      </set>  
+      <set name="onchange" bindingType="VB">
+         <description></description>
+      </set>  
+      <set name="onfocus" bindingType="VB">
+         <description></description>
+      </set>  
+      <set name="onselect" bindingType="VB">
+         <description></description>
+      </set>  
+      <set name="size" bindingType="VB">
+         <description></description>
+      </set>  
+      <set name="tabindex" bindingType="VB">
+         <description></description>
+      </set>  
+      <set name="type" bindingType="VB">
+         <description></description>
+      </set>  
+
+      <!-- HtmlCommandButton attributes -->
+      <set name="image" bindingType="VB">
+         <description></description>
+      </set>  
+    </attributes>
+  </component>	
+  <component jsfid="h:commandButton" extends="commandButton"/>
+
+  <component jsfid="panelGrid" componentType="javax.faces.HtmlPanelGrid" extends="baseHtml">
+     <description>Render a HTML table element.</description>
+     <attributes>
+        <!-- HTML 4.0 table attributes -->
+        <set name="align" bindingType="VB">
+          <description>The position of the table within the document.  The valid 
+             values are center left and right.
+          </description>
+        </set>  
+        <set name="border" bindingType="VB">
+          <description>The size of the frame around the table.</description>
+        </set>  
+        <set name="bgcolor" bindingType="VB">
+          <description>The background color of the table.</description>
+        </set>  
+        <set name="cellpadding" bindingType="VB">
+          <description>The spacing within table cells.</description>
+        </set>  
+        <set name="cellspacing" bindingType="VB">
+          <description>The spacing between table cells.</description>
+        </set>  
+        <set name="datafld" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="datasrc" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="dataformatas" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="frame" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="rules" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="summary" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="width" bindingType="VB">
+          <description></description>
+        </set>  
+        
+        <!-- GridRenderer attributes -->
+        <set name="columnClasses" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="columns" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="footerClass" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="headerClass" bindingType="VB">
+          <description></description>
+        </set>  
+        <set name="rowClasses" bindingType="VB">
+          <description></description>
+        </set>   
+     </attributes>
+  </component>
+  <component jsfid="h:panelGrid" extends="panelGrid"/>
+
+  <component jsfid="namingContainer" componentType="javax.faces.NamingContainer">
+    <description>
+       This component generates a unique container namespace.  It has
+       null renderer and is not associated with an html element.
+    </description>
+  </component>
+  <component jsfid="clay:namingContainer" extends="namingContainer"/>
+
+   <!-- 
+      Renders a html space. 
+   -->                      
+  <component jsfid="space" extends="outputText">
+    <description>An outputText component that renders a html non breakable space.</description>
+    <attributes>
+      <set name="value" value="&amp;nbsp;" bindingType="None">
+        <description>The html symbol for a space.</description>
+      </set>
+      <set name="escape" value="false" bindingType="None">
+        <description>Toggles of symbol escaping.</description>
+      </set>
+    </attributes>		
+  </component>
+  <component jsfid="clay:space" extends="space"/>
+
+  <component jsfid="bigDecimalConverter" componentType="javax.faces.BigDecimal" extends="converter">
+     <description>Converts a String value into a java.util.BigDecimal type and back to a String.</description>
+  </component>
+  <component jsfid="convertBigDecimal" extends="bigDecimalConverter"/>
+  <component jsfid="f:convertBigDecimal" extends="convertBigDecimal"/>
+
+  <component jsfid="bigIntegerConverter" componentType="javax.faces.BigInteger" extends="converter">
+     <description>Converts a String value into a java.util.BigInteger type and back to a String.</description>
+  </component>
+  <component jsfid="convertBigInteger" extends="bigIntegerConverter"/>
+  <component jsfid="f:convertBigInteger" extends="convertBigInteger"/>
+
+  <component jsfid="booleanConverter" componentType="javax.faces.Boolean" extends="converter">
+     <description>Converts a String value into a java.lang.Boolean type and back to a String.</description>
+  </component>
+  <component jsfid="convertBoolean" extends="booleanConverter"/>
+  <component jsfid="f:convertBoolean" extends="convertBoolean"/>
+  
+  <component jsfid="byteConverter" componentType="javax.faces.Byte" extends="converter">
+     <description>Converts a String value into a java.lang.Byte type and back to a String.</description>
+  </component>
+  <component jsfid="convertByte" extends="byteConverter"/>
+  <component jsfid="f:convertByte" extends="convertByte"/>
+
+  <component jsfid="characterConverter" componentType="javax.faces.Character" extends="converter">
+     <description>Converts a String value into a java.lang.Character type and back to a String.</description>
+  </component>
+  <component jsfid="convertCharacter" extends="characterConverter"/>
+  <component jsfid="f:convertCharacter" extends="convertCharacter"/>
+  
+  <component jsfid="doubleConverter" componentType="javax.faces.Double" extends="converter">
+     <description>Converts a String value into a java.lang.Double type and back to a String.</description>
+  </component>
+  <component jsfid="convertDouble" extends="doubleConverter"/>
+  <component jsfid="f:convertDouble" extends="convertDouble"/>
+
+  <component jsfid="floatConverter" componentType="javax.faces.Float" extends="converter">
+    <description>Converts a String value into a java.lang.Float type and back to a String.</description>
+  </component>
+  <component jsfid="convertFloat" extends="floatConverter"/>
+  <component jsfid="f:convertFloat" extends="convertFloat"/>
+  
+  <component jsfid="integerConverter" componentType="javax.faces.Integer" extends="converter">
+     <description>Converts a string value into an java.lang.Integer type and back to a string.</description>
+  </component> 
+  <component jsfid="convertInteger" extends="integerConverter"/>
+  <component jsfid="f:convertInteger" extends="convertInteger"/>
+
+  <component jsfid="longConverter" componentType="javax.faces.Long" extends="converter">
+    <description>Converts a String value into a java.lang.Long type and back to a String.</description>
+  </component>
+  <component jsfid="convertLong" extends="longConverter"/>
+  <component jsfid="f:convertLong" extends="convertLong"/>
+
+  <component jsfid="numberConverter" componentType="javax.faces.Number" extends="converter">
+    <description>Converts a String into a number and back to a String.</description>
+    <attributes>
+       <set name="currencyCode" bindingType="Early">
+         <description>See java.util.Currency.</description>
+       </set>
+       <set name="currencySymbol" bindingType="Early">
+         <description>See java.util.Currency.</description>
+       </set>
+       <set name="integerOnly" bindingType="Early">
+         <description>Flag indicating the binding value is an integer.</description>       
+       </set>
+       <set name="maxFractionDigits" bindingType="Early">
+         <description>See java.text.FormatNumber#getMaximumFractionDigits(). for the description</description>
+       </set>
+       <set name="maxIntegerDigits" bindingType="Early">
+         <description>See java.text.FormatNumber#getMaximumIntegerDigits() for the description.</description>
+       </set>
+       <set name="minFractionDigits" bindingType="Early">
+         <description>See java.text.FormatNumber#getMinimumIntegerDigits() for the description.</description>
+       </set>
+       <set name="minIntegerDigits" bindingType="Early">
+         <description>See java.text.FormatNumber#getMinimumFractionDigits() for the description.</description>
+       </set>
+       <set name="pattern" bindingType="Early">
+         <description>See java.text.DecimalFormat for the decimal patterns.</description>
+       </set>
+       <set name="groupingUsed" bindingType="Early">
+         <description>Boolean flag that determines if separators are used.  
+           See java.text.DecimalFormat#isGroupingUsed().</description>
+       </set>
+       <set name="type" bindingType="Early">
+         <description>The type of numeric value.  The valid enumerations include number, currency and percent.
+         </description>
+       </set>
+    </attributes>
+  </component>
+  <component jsfid="convertNumber" extends="numberConverter"/>
+  <component jsfid="f:convertNumber" extends="convertNumber"/>
+
+  <component jsfid="shortConverter" componentType="javax.faces.Short" extends="converter">
+    <description>Converts a String value into a java.lang.Short type and back to a String.</description>
+  </component>
+  <component jsfid="convertShort" extends="shortConverter"/>
+  <component jsfid="f:convertShort" extends="convertShort"/>
+
+  <component jsfid="dateTimeConverter" componentType="javax.faces.DateTime" extends="converter">
+    <description>Converts a string value into a java.util.Date type and back to a string.</description>
+    <attributes>
+      <set name="dateStyle" bindingType="Early">
+        <description>Corresponds to the java.text.DateFormat style constants.  The valid enumerations are 
+          SHORT, MEDIUM, LONG, FULL.
+        </description>
+      </set>
+      <set name="pattern" bindingType="Early">
+        <description>Represents the date and time patterns of the java.text.SimpleDateFormat class.</description>
+      </set>
+      <set name="timeStyle" bindingType="Early">
+        <description></description>
+      </set>
+      <set name="type" bindingType="Early">
+        <description>The type of date.  The valid enumerations are date, time and both.</description>
+      </set>       
+      <set name="timeZone" bindingType="Early">
+        <description>String representation of the time zone.  The default is GMT.  
+          Refer to the java.util.TimeZone class. 
+        </description>
+      </set> 
+    </attributes>	
+  </component>
+  <component jsfid="convertDateTime" extends="dateTimeConverter"/>
+  <component jsfid="f:convertDateTime" extends="convertDateTime"/>
+  
+
+  <component jsfid="clay" componentType="org.apache.shale.clay.component.Clay" 
+        allowBody="false" extends="baseComponent">
+    <description>This component builds a sub component tree and attaches it to 
+       the component tree for the target view.  It uses XML and HTML template 
+       metadata to build the corresponding JSF components.
+    </description>
+    <attributes>
+      <set name="clayJsfid" bindingType="Early" value="RUNTIME">
+        <description>
+           The jsfid that will start the root of the clay component.  Only used
+           in HTML views.
+        </description>
+      </set>
+      <set name="managedBeanName" bindingType="Early">
+        <description>A symbol that is used to alias the bound backing bean.</description>
+      </set>
+      <set name="shapeValidator" bindingType="None">
+        <description>A method binding event that is fired when the subtree is formed.  
+           The signature of the event uses the validator's parameters.  The subtree's 
+           shape can be validated in this callback before the components are created.
+        </description>
+      </set> 
+    </attributes>
+  </component>	
+  <component jsfid="clay:clay" extends="clay"/>
+
+  <component jsfid="loadBundle" componentType="org.apache.shale.clay.component.LoadBundle" 
+       allowBody="false" extends="baseComponent">
+    <description>
+      This component was designed to emulate the JSF loadBundle JSP tag.  It was build 
+      for full clay HTML views that don't process JSP.
+    </description>
+    <attributes>
+      <set name="basename" bindingType="Early">
+        <description>The resoruce bundle name found in the classpath.</description>
+      </set>
+      <set name="var" bindingType="None" value="msgs">
+        <description>The target reference in request scope that will hold the Map
+          wrapper of the resource bundle.
+        </description>
+      </set> 
+    </attributes>
+  </component>	
+  <component jsfid="clay:loadBundle" extends="loadBundle"/>
+  <component jsfid="f:loadBundle" extends="loadBundle"/>
+  
+
+  <component jsfid="clayOut" extends="clay">
+    <description>
+       This component is similar to the c:out tag.  The value can be processed for 
+       special XML characters.  It can be used for inline html.
+    </description>
+    <attributes>
+      <set name="shapeValidator" bindingType="MB" value="#{ClayAmalgam.clayOut}">
+        <description>A runtime callback event that takes the value attribute and sets it to 
+          the value attribute of a verbatim component (outputText).  
+        </description>
+      </set> 
+      <set name="value" bindingType="None">
+        <description>The string content that will populate the value of a verbatim component.
+          The value is decoded from escaped symbols depending on the escapeXml attribute.
+        </description>
+      </set>
+      <set name="excapeXml" bindingType="None" value="true">
+        <description>A boolean flag that determines if the string content of the value attribute 
+           will be processed for special symbols.  A false value will trigger converting html 
+           symbols into the character equivalence.  A true value will escape the special html 
+           characters into corresponding symbols.
+        </description>
+      </set>
+    </attributes>
+  </component>	
+  <component jsfid="clay:clayOut" extends="clayOut"/>
+
+  
+  <component jsfid="clayImport" extends="clay">
+    <description>Includes the content of a file within a Clay template view.</description>
+    <attributes>
+      <set name="shapeValidator" bindingType="MB" value="#{ClayAmalgam.clayImport}">
+        <description>Runtime callback event that reads the content of the file using 
+          the external context and dumps it into a verbatim component.
+        </description>
+      </set> 
+      <set name="url" bindingType="None">
+        <description>The resource to be imported.  The path is context-root sensitive.</description>
+      </set>
+      <set name="escapeXml" bindingType="None" value="false">
+        <description>A boolean flag that indicates that special XML characters 
+          should be encoded or decoded.  A null value will result in no escape process.
+        </description>
+      </set>
+    </attributes>
+  </component>
+  <component jsfid="clay:clayImport" extends="clayImport"/>	
+
+  <component jsfid="clayForEach" extends="clay">
+    <description>
+        This component builds the component subtree using the clay runtime option.  
+        It iterates over the Map, List or Array provided by the value attribute.  
+        Each iteration applies the bodyJsfid as a template.  The current row instance 
+        is referenced by the managed-bean-name symbol.  This approach should not be 
+        confused with the flyweight pattern used by the UIData subclassed components.  
+        A graph of components is build and the binding expression is formed to 
+        reference the values key in a map in session scope that is named using the 
+        var attribute.
+    </description>
+    <attributes>
+      <set name="shapeValidator" bindingType="MB" value="#{ClayAmalgam.clayForEach}">
+        <description>The runtime callback method is invoked when the clay component 
+          subtree is created the first time from the render phase.  It is not invoked 
+          on a view restore.  This means that if the content changes, a navigation 
+          rule must be used to rebuild the component tree.
+        </description>
+      </set> 
+      <set name="value" bindingType="None">
+        <description>A collection of type Map, List or Object[] delivered through a
+          value binding expression.
+        </description>
+      </set>
+      <set name="bodyJsfid" bindingType="None">
+        <description>The content, a XML or HTML template, that will be applied on each
+           iteration of the collection.
+        </description>
+      </set>
+      <set name="var" bindingType="None">
+        <description>The name of the Map held in session scope that organizes the 
+          collection of data.  The components are bound to the Map versus the 
+          original collection.</description>
+      </set>         
+    </attributes>
+  </component>	
+  <component jsfid="clay:clayForEach" extends="clayForEach"/>
+
+  <component jsfid="doubleRangeValidator" componentType="javax.faces.DoubleRange" extends="validator"> 
+     <description>Verifies the submitted value is a double within the specified minimum and maximum values.</description>
+     <attributes>
+       <set name="maximum" bindingType="Early">
+         <description>The upper limit of the specified double range.</description>
+       </set>
+       <set name="minimum" bindingType="Early">
+         <description>The lower limit of the specified double range</description>
+       </set>
+     </attributes>
+  </component>
+  <component jsfid="validateDoubleRange" extends="doubleRangeValidator"/>
+  <component jsfid="f:validateDoubleRange" extends="validateDoubleRange"/>
+
+  <component jsfid="lengthValidator" componentType="javax.faces.Length" extends="validator">
+     <description>Verifies the submitted string value is greater than and not less than the specified minimum and maximum values.</description>
+     <attributes>
+       <set name="maximum" bindingType="Early">
+         <description>The largest valid length.</description>
+       </set>
+       <set name="minimum" bindingType="Early">
+         <description>The smallest valid length.</description>
+       </set>
+     </attributes>  
+  </component>
+  <component jsfid="validateLength" extends="lengthValidator"/>
+  <component jsfid="f:validateLength" extends="validateLength"/>
+
+  <component jsfid="longRangeValidator" componentType="javax.faces.LongRange" extends="validator">
+     <description>Verifies the submitted value is a long within the specified minimum and maximum values.</description>
+     <attributes>
+       <set name="maximum" bindingType="Early">
+         <description>The upper most limit of the specified long range.</description>
+       </set>
+       <set name="minimum" bindingType="Early">
+         <description>The lower limit of the specified long range.</description>
+       </set>
+     </attributes>
+  </component>
+  <component jsfid="validateLongRange" extends="longRangeValidator"/>
+  <component jsfid="f:validateLongRange" extends="validateLongRange"/>
+
+</view>

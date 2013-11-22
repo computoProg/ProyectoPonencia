@@ -1,0 +1,433 @@
+<!--
+
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ $Id: release-notes-1.0.2.html 464748 2006-10-16 23:58:57Z rahul $
+
+-->
+
+
+<html>
+
+  <head>
+    <title>Apache Shale (Version 1.0.2) Release Notes</title>
+  </head>
+
+  <body>
+
+    <div align="center">
+      <h1>Apache Shale (Version 1.0.2) Release Notes</h1>
+    </div>
+
+    <ul>
+    <li><a href="#Introduction">Introduction</a></li>
+    <li><a href="#Included">What Is Included</a></li>
+    <li><a href="#Changes">Changes From Previous Releases</a></li>
+    <li><a href="#Known">Known Issues In This Release</a></li>
+    </ul>
+
+    <a name="Introduction"></a>
+    <h3>1.0 Introduction</h3>
+
+    <p>Welcome to the <a href="http://struts.apache.org/struts-shale/">Apache
+    Shale Framework</a>.  Shale is a next generation framework for building web
+    applications using Java technology, and builds upon the framework and
+    component APIs provided by <a href="http://java.sun.com/j2ee/javaserverfaces/">
+    JavaServer Faces</a>.</p>
+
+    <p>This is the second milestone release of Shale, released to encourage
+    experimentation and gather feedback on usage issues and requested features.
+    This should be treated as an "alpha" quality release.  However, many of
+    the APIs in Shale are reasonably stable -- for details, see
+    <a href="http://struts.apache.org/struts-shale/api-stability.html">
+    Shale API Target Audiences and Stability Ratings</a>.
+
+    <a name="Included"></a>
+    <h3>2.0 What Is Included</h3>
+
+    <p>A release of Shale includes several primary categories of materials:</p>
+    <ul>
+    <li><a href="../dist">Shale distribution libraries</a>:
+        <ul>
+        <li><code>shale-core.jar</code> - Core framework functionality</li>
+        <li><code>shale-clay.jar</code> - Clay plug-in</li>
+        <li><code>shale-designtime.jar</code> - Optional design time integration
+            with <a href="http://developers.sun.com/jscreator/">Sun Java
+            Studio Creator 2</a></li>
+        <li><code>shale-remoting.jar</code> - Standalone library for components
+            and applications that wish to support asynchronous callbacks,
+            such as AJAX requests.</li>
+        <li><code>shale-spring.jar</code> - Optional integration layer with
+            adapters for the <a href="http://springframework.org">Spring
+            Framework</a></li>
+        <li><code>shale-test.jar</code> - Unit test framework</code></li>
+        <li><code>shale-tiger.jar</code> - Optional core extensions that are
+            available if you are using Java SE 5 ("Tiger")</li>
+        <li><code>shale-tiles.jar</code> - Optional integration layer with
+            the <em>standalone</em> version of Tiles, currently under
+            development as part of the <a href="http://struts.apache.org">
+            Apache Struts</a> project.</li>
+        <li><code>tiles-core.jar</code> - For convenience, a copy of the
+            Standalone Tiles distribution is included here, to avoid the
+            requirement to extract it from the sample applications.</li>
+        </ul>
+    <li>Source code and JavaDocs for the following modules:
+        <ul>
+        <li><a href="../blank/docs/api/index.html">Blank Example App</a></li>
+        <li><a href="../clay-plugin/docs/api/index.html">Clay Plug-In</a></li>
+        <li><a href="../core-library/docs/api/index.html">Core Library</a></li>
+        <li><a href="../mailreader/docs/api/index.html">MailReader Example App</a></li>
+        <li><a href="../sql-browser/docs/api/index.html">SQL Browser Example App</a></li>
+        <li><a href="../test-framework/docs/api/index.html">Unit Test Framework</a></li>
+        <li><a href="../tiger/docs/api/index.html">Tiger Extensions</a></li>
+        <li><a href="../use-cases/docs/api/index.html">Use Cases Example App</a></li>
+        </ul>
+    </ul>
+    
+    In addition to the standard Shale release distribution, the following 
+    examples and resources are available:
+    
+    <ul>
+    <li>Example web applications
+        <ul>
+        <li><code>shale-blank.war</code> - Very simple "starter" application that
+            includes all of the configuration files and libraries that a typical
+            Shale application will require.</li>
+        <li><code>shale-mailreader.war</code> - Canonical Struts 1.x example
+            application, converted to use JavaServer Faces and Shale facilities.</li>
+        <li><code>shale-sql-browser.war</code> - Simple implementation of an
+            SQL browsing application that illustrates dynamic changes to the
+            JSF component tree.</li>
+        <li><code>shale-usecases.war</code> Omnibus example application
+            that illustrates the use of most Shale features.</li>
+        </ul></li>
+    <li>Shale dependencies
+        <ul><code>shale-dependencies.zip</code> or 
+            <code>shale-dependencies.tar.gz</code> - For convenience,
+                  this is a snapshot of all the dependencies 
+                  that would normally be downloaded by executing the
+                  download-dependencies target in the top level build script.  
+                  Unpack this into the top-level directory of the framework 
+                  distribution (it will create a lib subdirectory).
+            </ul></li>
+    <li>Shale Starter
+        <ul><code>shale-starter.zip</code> or
+            <code>shale-dependencies.tar.gz</code> - 
+            A starting point source directory structure for a Shale based
+            application that will use Ant as the build tool. This is based on
+            the source code of the Shale Blank Starter Application example, but
+            separated out for the convenience of those who need only this
+            feature. To create a new project:
+            <ul>
+            <li>Untar or unzip this artifact into the directory that should
+            contain the new project directory.</li>
+            <li>Rename the <code>shale-starter</code> directory that is created
+            to the desired name of your project directory.</li>
+            <li>Follow the directions in the <code>README.txt</code> directory
+            of the new project to customize the default settings.</li>
+            <li>Start building and testing your Shale based application.</li>
+            </ul>
+        </ul></li>
+    </ul>
+    
+    <a name="Changes"></a>
+    <h3>3.0 Changes From Previous Releases</h3>
+
+    <h4>3.1 New Features</h4>
+
+    <p><b>Creator Design Time Support</b> - Shale now includes the beginnings of
+    design time support for importing Shale into
+    <a href="http://developers.sun.com/jscreator/">Sun Java Studio Creator</a>,
+    a graphical IDE for building web applications based on JavaServer Faces.
+    This support is not yet complete, or ready for use.</p>
+
+    <p><b>Shale Remoting</b> - The previous functionality for supporting "remoting"
+    application (in package <code>org.apache.shale.remote</code>) has been
+    substantially revised and expanded in a new package (<code>org.apache.shale.remoting</code>).
+    In addition, this support has been packaged in a separate JAR file
+    (<code>shale-remoting.jar</code>) that has zero dependencies on the
+    rest of Shale.  See the
+    <a href="http://struts.apache.org/struts-shale/shale-remoting/apidocs/org/apache/shale/remoting/package-summary.html">
+    package description</a> for this package in the Javadocs for more information.</code>
+
+    <p><b>Shale Tiger Extensions</b> - If you are running your servlet container
+    on a Java SE 5 ("Tiger") or later JDK, you may use this optional library
+    to reduce the need for configuring application metadata in <code>faces-config.xml</code>
+    files, or having to implement a particular interface to receive View
+    Controller services.  See the <a href="http://struts.apache.org/struts-shale/features-tiger-extensions.html">
+    feature description</a> on the Shale website for more information.</p>
+
+    <p><b>New Sample Applications</b> - New sample applications to illustrate
+    the use of Shale features:</p>
+    <ul>
+        <li><code>shale-blank.war</code> - Starter application that incudes the
+            configuration files and libraries needed by most applications.</i>
+        <li><code>shale-mailreader.war</code> - Conversion of the canonical
+            Struts 1.x example "mail reader" application.</i>
+        <li><code>shale-sql-browser.war</code> - Simple "SQL browser" application
+            that illustrates dynamic component tree manipulation.</li>
+    </ul>
+
+    <p><b>Test Framework Base Class for HTMLUNIT Tests</b> - The test framework
+    now includes a base class for building system integration tests of web based
+    applications.  It uses HTMLUNIT (from SourceForge) to simulate the client
+    of the webapp, and then exposes the DOM of the retrieved page to examination
+    by JUnit style test methods.</p>
+
+    <p><b>Test Framework New Mock Objects</b> - The test framework now offers mock
+    objects for <code>ResponseWriter</code>, <code>ResponseStream</code>, and
+    <code>Principal</code> objects.</p>
+
+    <P><b>Shale Clay plugin</b> - The Clay plugin has made several improvements with the help 
+       of the community. The most significant improvement is with the HTML template option. 
+       Several fixes were applied to in the template parser and to the 
+       nested template inclusion. The symbols feature became more stable and a example 
+       demonstrating symbols was added to the usecases project. The example features 
+       the usage of symbols to create generic tiles like page layouts.
+       In addition, an example of using full XML views was added to the symbols example. 
+       The full XML views allow the page entry point to be defined in a XML document 
+       conforming to the Clay DTD similar to tiles definitions. These page definitions
+       can be centrality located in a single XML document or defined for each view. 
+       The Clay documentation also underwent improvements. A new introduction and story 
+       on using HTML views was added. The composition options and reuse features were 
+       expanded on.</p> 
+ 
+
+    <h4>3.2 Bugfix Issues</h4>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=36884">36884<a>]
+    View file example in Use Cases is useless.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=37364">37364<a>]
+    Static members accessed in a non-static way.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=37796">37796<a>]
+    NullPointerException when Clay Jsfid parameter of Clay component
+    has null value.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=37821">37821<a>]
+    Clay HTML parser has problem with the &lt;a&gt; tag.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=37867">37867<a>]
+    Fix issues with filter mapping in the Clay Plug-In.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38058">38058<a>]
+    Clay initialization parameter names should be fully qualified.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38157">38157<a>]
+    Clay <code>&lt;TH&gt;</code> bug.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38190">38190<a>]
+    Remoting doesn't work with RI build.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38314">38314<a>]
+    Clay symbol replacement in CreateComponentCommand.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38492">38492<a>]
+    Symbol for action attribute on components does not get evaluated.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38493">38493<a>]
+    Rendered attribute does not affect children.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38542">38542<a>]
+    Clay not handling binding attribute correctly.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38593">38593<a>]
+    ValidatorScript does not find validators in facets.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38784">38784<a>]
+    LoadBundle basename property is not set.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=39015">39015<a>]
+    shale-mailreader-20060316.war could not be started. (r386550)</p>
+    
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38972">38972</a>]
+    The shale-blank application includes extra jars in WEB-INF/lib (r386897)</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=39028">39028</a>]
+    SQL Browser app includes extra jars in WEB-INF/lib.  Exclude the unnecessary
+    jars, and retrieve derby.jar from ibiblio in the download-dependencies
+    task. (r386921)</p>
+
+    <p>[-----] Fix two Clay configuration parsing bugs.</p>
+
+    <p>[-----] The "styleClass" attribute was duplicated in the Clay base configuration
+    file resulting in an invalid "bindingType".</p> 
+
+    <p>[-----] Fix two Java 1.4 API compatibility issues. (r386527, r386402)</p>
+
+    <p>[-----] Fix issues with links and JavaScript in the Use Cases example
+    application. (r386127, r386123)</p>
+
+    <h4>3.3 Request For Enhancement Issues</h4>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=37504">37504<a>]
+    Realphabetize imports and remove redundant ones.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38042">38042<a>]
+    Default validator configuration should include rules.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38044">38044<a>]
+    Name and location of validation rule file(s) should be
+    configurable.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38168">38168<a>]
+    Add spring like syntax for loading clay configs from classpath.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38185">38185<a>]
+    Refactor ShaleViewHandler and ShalePhaseListener.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38482">38482<a>]
+    Clay enhancement - reusable clay components.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38510">38510<a>]
+    Add additional convenience accessors in AbstractFacesBean.</p>
+
+    <p>[-----] Allow configuration of a comma delimited list of validation
+    rules files under the init param <code>org.apache.shale.validator.VALIDATOR_RULES</code>.</p>
+
+    <p>[-----] Include the default <code>validator-rules.xml</code> file so that
+    users do not have to include a copy in <code>/WEB-INF</code>.</p>
+
+    <p>[-----] Add support for specifying validator parameters using nested
+    <code>s:validatorVar</code> tags.</code>
+
+    <p>[-----] Improve functionality of <code>LoadBundle</code> and
+    <code>Messages</code> such that the "map" property is not required in
+    value binding expressions.</p>
+
+    <p>[-----] Add JSF-friendly helper methods to access bean properties;
+    first step towards removing core dependency on Commons Beanutils.</p>
+
+    <p>[-----] Add JSF-friendly helper methods to perform type conversions;
+    second step towards removing core dependency on Commons Beanutils.</p>
+
+    <p>[-----] Flesh out operation of many test framework methods that formerly
+    threw <code>UnsupportedOperationException</code>.</p>
+
+    <p>[-----] Add the "description" element to describe the element it is 
+     nested in to elements in the Clay DTD.</p>
+
+    <p>[-----] Add Cargo integration to the Use Cases example application.
+    (r386541)</p>
+
+    <p>[-----] Change the Maven groupId for Shale to org.apache.struts.shale.
+    (r385723, r385724, r385727)</p>
+
+    <a name="Known"></a>
+    <h3>4.0 Known Issues In This Release</h3>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=35066">35066<a>]
+    The <em>Dialog</em> feature has known problems with attempting to have
+    multiple simultaneously active dialogs in a single session (most commonly
+    due to using frames or multiple windows), and dealing with back buttons.
+    These issues will be addressed in a subsequent release.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=35839">35839</a>]
+    Additional improvements to the HTML parser will be addressed in a
+    subsequent release.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=37024">37024</a>]
+    The Shale contribution to addressing this issue is to ensure that
+    <code>META-INF/clay-config.xml</code> resources from JAR files loaded as
+    part of the application are automatically loaded.  This will be addressed
+    in a subsequent release.  The actual configuration resources for a given
+    component library such as Tomahawk, however, should be provided by the
+    component library itself rather than by Shale.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=37120">37120</a>]
+    IFrames are a specific use case related to multiple simultaneous dialogs,
+    so this issue will be addressed at the same time as 35066.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=37361">37361</a>]
+    There is a bug in the MyFaces implementation of validation that causes the
+    Use Cases example app to fail, where it works with the RI.  The corresponding
+    MyFaces issue is <a href="http://issues.apache.org/jira/browse/MYFACES-829">
+    here</a>.  Leaving this bug open (with state <code>REMIND</code>) as a
+    reminder to flag this issue in Shale release notes until it is resolved
+    in a subsequent MyFaces release.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=37571">37571</a>]
+    Dialog synchronization is not maintained when browser navigation buttons are 
+    used.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=37643">37643</a>]
+    RFE to add documentation (on the web site) for the Tiles and Remoting
+    features, to be addressed in a subsequent release.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=37707">37707</a>]
+    Several classes that need to be serializable (because they could be stored
+    in session scope) are not currently.  In addition, two classes inherit an
+    <code>implements Serializable</code> declaration from their superclass, but
+    are not themselves able to be serialized.  This does not cause a problem
+    using the classes in Shale, because such instances are never stored into
+    session scope, but will be flagged by code audits that check for this
+    scenario.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=37932">37932</a>]
+    Shale's Commons Validator integration ignores the immediate attribute when 
+    using client side validation.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38000">38000</a>]
+    ShalePhaseListener executes ViewController.prerender twice. This will be
+    resolved as part of a general exception handling strategy.  See Bug 
+    38186.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38079">38079</a>]
+    Range validator doesn't check dependencies.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38186">38186</a>]
+    RFE for a general exception handling strategy that fulfills ViewController
+    contracts, and offers application developers some choices in how exceptions
+    are handled.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38187">38187</a>]
+    RFE for ViewController to support init/destroy callbacks into objects that
+    are inserted into, or removed from, any of the servlet API scopes (request,
+    session, application).</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38189">38189</a>]
+    RFE to extend the capability of the servlet event callbacks to work with
+    classes that mark init and destroy methods with annotations, not just those
+    that implement a specific interface.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38298">38298</a>]
+    RFE for a phase listener to invoke a dialog without clicking on a button/link</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38627">38627</a>]
+    RFE to make the HtmlUnit dependency optional, or modify the build so that
+    it is automatically downloaded.  Currently the build fails if you do not
+    have the htmlunit.home property defined.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38809">38809</a>]
+    RFE for a "Dialog Aware" button panel component which would automatically
+    generate next and previous buttons, disabling them as appropriate.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38825">38825</a>]
+    Example applications that use dialogs may have problems when the session
+    state is saved and then restored.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38849">38849</a>]
+    RFE to support fine grained security on navigation.</p>
+
+    <p>[<a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38970">38970</a>]
+    When run in GlassFish, the Clay examples from usecases demo output Sun's 
+    state field marker. To be addressed when Clay support for JSF 1.2 is 
+    considered.</p>
+
+  </body>
+
+</html>

@@ -1,0 +1,9 @@
+org.apache.shale.tiger.config
+org.apache.shale.tiger.faces
+org.apache.shale.tiger.managed
+org.apache.shale.tiger.managed.config
+org.apache.shale.tiger.managed.rules
+org.apache.shale.tiger.register
+org.apache.shale.tiger.register.faces
+org.apache.shale.tiger.view
+org.apache.shale.tiger.view.faces

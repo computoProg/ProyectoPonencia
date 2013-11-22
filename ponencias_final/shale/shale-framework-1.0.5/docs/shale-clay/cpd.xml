@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="47" tokens="168">
+<file line="50" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/CreateValidatorCommand.java"/>
+<file line="49" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/CreateValueChangeListenerCommand.java"/>
+<codefragment>
+<![CDATA[
+        log = LogFactory.getLog(CreateValueChangeListenerCommand.class);
+    }
+
+    /**
+     * <p>
+     * Creates a <code>ValueChangeListener</code> and assigns it to the
+     * <code>parent</code> attribute.
+     * </p>
+     *
+     * @param context common chains
+     * @return <code>true</code> if the chain is complete
+     * @exception Exception propagated up to the top of the chain
+     */
+    public boolean execute(Context context) throws Exception {
+
+        boolean isFinal = false;
+
+        ClayContext clayContext = (ClayContext) context;
+        if (clayContext == null) {
+            throw new NullPointerException(getMessages()
+                    .getMessage("clay.null.clayContext"));
+        }
+
+        UIComponent child = (UIComponent) clayContext.getChild();
+        if (child == null) {
+            throw new NullPointerException(getMessages()
+                    .getMessage("clay.null.childComponent"));
+        }
+
+        ComponentBean displayElement = clayContext.getDisplayElement();
+        if (displayElement == null) {
+            throw new NullPointerException(getMessages()
+                    .getMessage("clay.null.componentBean"));
+        }
+
+        EditableValueHolder parent = (EditableValueHolder) clayContext
+                .getParent();
+        if (parent == null) {
+            throw new NullPointerException(getMessages()
+                    .getMessage("clay.null.parentComponent"));
+        }
+
+        FacesContext facesContext = clayContext.getFacesContext();
+        if (facesContext == null) {
+            throw new NullPointerException(getMessages()
+                    .getMessage("clay.null.facesContext"));
+        }
+]]>
+</codefragment>
+</duplication>
+<duplication lines="48" tokens="161">
+<file line="42" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/PropertyActionCommand.java"/>
+<file line="43" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/PropertyConverterCommand.java"/>
+<codefragment>
+<![CDATA[
+public class PropertyConverterCommand extends AbstractCommand implements Command {
+
+    /**
+     * <p>
+     * Common logger utility class.
+     * </p>
+     */
+    private static Log log;
+    static {
+        log = LogFactory.getLog(PropertyActionCommand.class);
+    }
+
+    /**
+     * <p>
+     * Looks to see if the {@link AttributeBean} on the {@link ClayContext} is a
+     * <code>converter</code> attribute. If it is, create a
+     * <code>ValueBinding</code> or a <code>Converter</code> and assign it to the
+     * component returning a <code>true</code> value. Otherwise, return a <code>false</code>
+     * value. This <code>Command</code> is invoked from the
+     * {@link AssignPropertiesCommand} chain.
+     * </p>
+     *
+     * @param context common chains
+     * @return <code>true</code> if the chain is complete
+     * @exception Exception propagated up to the top of the chain
+     */
+    public boolean execute(Context context) throws Exception {
+
+        boolean isFinal = false;
+
+        ClayContext clayContext = (ClayContext) context;
+        if (clayContext == null) {
+            throw new NullPointerException(getMessages().getMessage("clay.null.clayContext"));
+        }
+        AttributeBean attributeBean = clayContext.getAttribute();
+        if (attributeBean == null) {
+            throw new NullPointerException(getMessages().getMessage("clay.null.attributeBean"));
+        }
+        ComponentBean displayElement = clayContext.getDisplayElement();
+        if (displayElement == null) {
+            throw new NullPointerException(getMessages().getMessage("clay.null.componentBean"));
+        }
+        FacesContext facesContext = clayContext.getFacesContext();
+        if (facesContext == null) {
+            throw new NullPointerException(getMessages().getMessage("clay.null.facesContext"));
+        }
+
+        if (attributeBean.getName().equals("converter") && attributeBean.getValue() != null) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="22" tokens="151">
+<file line="253" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/AbstractCommand.java"/>
+<file line="316" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/AbstractCommand.java"/>
+<codefragment>
+<![CDATA[
+            i = (wasReplacementMade ? buff.indexOf("@") : i);
+            if (i == -1) {
+              break replace;
+            }
+
+            next: while (i > -1 && i <= (buff.length() - key.length())) {
+
+                int n = -1;
+                indexOf: for (int s = i; s <= (buff.length() - key.length()); s++) {
+                    for (int c = 0; c < key.length(); c++) {
+                        char skey = Character.toLowerCase(key.charAt(c));
+                        char tkey = Character.toLowerCase(buff.charAt(s + c));
+                        if (skey != tkey) {
+                            continue indexOf;
+                        }
+                    }
+                    // match found
+                    n = s;
+                    break indexOf;
+                }
+
+                if (n > -1) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="42" tokens="144">
+<file line="65" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/parser/builder/SelectManyMenuBuilder.java"/>
+<file line="66" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/parser/builder/SelectOneMenuBuilder.java"/>
+<codefragment>
+<![CDATA[
+    }
+
+    /**
+     * <p>
+     * Returns a <code>true</code> value indicating that the target JSF
+     * component can have children.
+     * </p>
+     *
+     * @return <code>true</code>
+     */
+    public boolean isChildrenAllowed() {
+        return true;
+    }
+
+
+    /**
+     * <p>Remove any child nodes that are not "option" nodes.</p>
+     *
+     * @param node markup
+     * @param target child node
+     * @param root child's parent
+     */
+    protected void encodeBegin(Node node, ElementBean target, ComponentBean root) {
+
+        //remove any children that are not option nodes
+        ArrayList delList = new ArrayList();
+        Iterator ci = node.getChildren().iterator();
+        while (ci.hasNext()) {
+           Node child = (Node) ci.next();
+           if (child.getName() == null || !child.getName().equalsIgnoreCase("option")) {
+              delList.add(child);
+           }
+        }
+        for (int i = 0; i < delList.size(); i++) {
+           node.getChildren().remove(delList.get(i));
+        }
+        delList.clear();
+
+        super.encodeBegin(node, target, root);
+    }
+
+}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="37" tokens="143">
+<file line="51" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/PropertyActionCommand.java"/>
+<file line="51" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/PropertyActionListenerCommand.java"/>
+<file line="52" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/PropertyValidatorCommand.java"/>
+<codefragment>
+<![CDATA[
+        log = LogFactory.getLog(PropertyValidatorCommand.class);
+    }
+
+    /**
+     * <p>
+     * Looks to see if the {@link AttributeBean} on the {@link ClayContext} is a
+     * <code>validator</code> attribute. If it is, create a
+     * <code>MethodBinding</code> and assign it to the component returning a
+     * <code>true</code> value. Otherwise, return a <code>false</code>
+     * value.
+     * </p>
+     *
+     * @param context common chains
+     * @return <code>true</code> if the chain is complete
+     * @exception Exception propagated up to the top of the chain
+     */
+    public boolean execute(Context context) throws Exception {
+
+        boolean isFinal = false;
+
+        ClayContext clayContext = (ClayContext) context;
+        if (clayContext == null) {
+            throw new NullPointerException(getMessages().getMessage("clay.null.clayContext"));
+        }
+        AttributeBean attributeBean = clayContext.getAttribute();
+        if (attributeBean == null) {
+            throw new NullPointerException(getMessages().getMessage("clay.null.attributeBean"));
+        }
+        ComponentBean displayElement = clayContext.getDisplayElement();
+        if (displayElement == null) {
+            throw new NullPointerException(getMessages().getMessage("clay.null.componentBean"));
+        }
+        FacesContext facesContext = clayContext.getFacesContext();
+        if (facesContext == null) {
+            throw new NullPointerException(getMessages().getMessage("clay.null.facesContext"));
+        }
+        if (attributeBean.getName().equals("validator") && attributeBean.getValue() != null) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="43" tokens="129">
+<file line="299" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/parser/builder/Builder.java"/>
+<file line="388" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/parser/builder/ElementBuilder.java"/>
+<codefragment>
+<![CDATA[
+        target.setId(id);
+
+        // look to see if this node should be bound to a component
+        if (target.getJsfid() != null) {
+            // lookup the ConfigBean that handles the id
+            ConfigBean config = ConfigBeanFactory.findConfig(target.getJsfid());
+            // disconnect component type
+            target.setComponentType(null);
+
+
+            try {
+               //assign the parent
+               config.assignParent(target);
+               // resolve inheritance
+               config.realizingInheritance(target);
+            } catch (RuntimeException e) {
+                log.error(e);
+                throw new RuntimeException(
+                        messages.getMessage("parser.unresolved",
+                        new Object[] {node.getToken(), node.getToken().getRawText()}));
+            }
+
+            // if the inheritance is broken, toggle back to the default
+            if (target.getComponentType() == null) {
+                target.setComponentType(this.getComponentType(node));
+            }
+
+        }
+
+        // HTML attributes will override the declarative component
+        assignAttributes(node, target);
+
+    }
+
+
+    /**
+     * <p>Test the value of the node and returns <code>true</code> if
+     * the value is only whitespace.</p>
+     *
+     * @param node markup node
+     * @return <code>true</code> if value of the node is only whitespace
+     */
+    protected boolean isNodeWhitespace(Node node) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="26" tokens="114">
+<file line="221" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/parser/builder/ElementBuilder.java"/>
+<file line="165" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/parser/builder/JsfDefaultBuilder.java"/>
+<codefragment>
+<![CDATA[
+                && child.getName().equals("validatorVar")) {
+
+                String name = (String) child.getAttributes().get("name");
+                String value = (String) child.getAttributes().get("value");
+                String bindingType = (String) child.getAttributes().get("bindingType");
+
+                AttributeBean attr = target.getAttribute(name);
+                if (attr != null) {
+                    createAttribute(attr, value, target);
+                } else {
+                    attr = new AttributeBean();
+                    attr.setName(name);
+                    attr.setValue(value);
+                    attr.setBindingType(bindingType);
+                    target.addAttribute(attr);
+                }
+            }
+        }
+    }
+
+    /**
+     * @inheritDoc
+     * @param node markup
+     * @param target child config bean
+     */
+    protected void addValidator(Node node, ElementBean target) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="35" tokens="111">
+<file line="52" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/AssignActionListenersCommand.java"/>
+<file line="50" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/AssignConverterCommand.java"/>
+<file line="52" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/AssignValidatorsCommand.java"/>
+<file line="54" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/AssignValueChangeListenersCommand.java"/>
+<codefragment>
+<![CDATA[
+        log = LogFactory.getLog(AssignValueChangeListenersCommand.class);
+    }
+
+    /**
+     * <p>
+     * Uses the <code>Globals.ADD_VALUE_CHANGE_LISTENER_COMMAND_NAME</code>
+     * command to create a <code>ValueChangeListener</code>.</p>
+     *
+     * @param context common chains
+     * @return <code>true</code> if the chain is complete
+     * @exception Exception propagated up to the top of the chain
+     */
+    public boolean execute(Context context) throws Exception {
+
+        boolean isFinal = false;
+
+        ClayContext clayContext = (ClayContext) context;
+        if (clayContext == null) {
+            throw new NullPointerException(getMessages()
+                    .getMessage("clay.null.clayContext"));
+        }
+
+        UIComponent child = (UIComponent) clayContext.getChild();
+        if (child == null) {
+            throw new NullPointerException(getMessages()
+                    .getMessage("clay.null.childComponent"));
+        }
+
+        ComponentBean displayElement = clayContext.getDisplayElement();
+        if (displayElement == null) {
+            throw new NullPointerException(getMessages()
+                    .getMessage("clay.null.componentBean"));
+        }
+
+        if (displayElement.getValueChangeListeners().size() > 0) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="9" tokens="109">
+<file line="571" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/parser/Parser.java"/>
+<file line="587" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/parser/Parser.java"/>
+<codefragment>
+<![CDATA[
+    public static final Rule[] BEGIN_CDATA_RULES = {new Rule('<', true, 0, true),
+        new Rule('!', true, 1, true),
+        new Rule('[', true, 2, true),
+        new Rule('C', true, 3, true),
+        new Rule('D', true, 4, true),
+        new Rule('A', true, 5, true),
+        new Rule('T', true, 6, true),
+        new Rule('A', true, 7, true),
+        new Rule('[', true, 8, true)};
+]]>
+</codefragment>
+</duplication>
+<duplication lines="34" tokens="107">
+<file line="52" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/AssignActionListenersCommand.java"/>
+<file line="52" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/CreateActionListenerCommand.java"/>
+<file line="54" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/CreateConverterCommand.java"/>
+<file line="50" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/CreateValidatorCommand.java"/>
+<codefragment>
+<![CDATA[
+        log = LogFactory.getLog(CreateValidatorCommand.class);
+    }
+
+    /**
+     * <p>
+     * Creates a faces validator object that is registered in the
+     * <strong>faces-config.xml</strong> file and assigns it to the parent.
+     * </p>
+     *
+     * @param context commons chains
+     * @return <code>true</code> if the chain is final
+     * @exception Exception propagated to the top chain
+     */
+    public boolean execute(Context context) throws Exception {
+
+        boolean isFinal = false;
+
+        ClayContext clayContext = (ClayContext) context;
+        if (clayContext == null) {
+            throw new NullPointerException(getMessages()
+                    .getMessage("clay.null.clayContext"));
+        }
+
+        UIComponent child = (UIComponent) clayContext.getChild();
+        if (child == null) {
+            throw new NullPointerException(getMessages()
+                    .getMessage("clay.null.childComponent"));
+        }
+
+        ComponentBean displayElement = clayContext.getDisplayElement();
+        if (displayElement == null) {
+            throw new NullPointerException(getMessages()
+                    .getMessage("clay.null.componentBean"));
+        }
+]]>
+</codefragment>
+</duplication>
+<duplication lines="28" tokens="101">
+<file line="66" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/parser/builder/IgnoreBuilder.java"/>
+<file line="68" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/parser/builder/VerbatimBuilder.java"/>
+<codefragment>
+<![CDATA[
+        attr.setBindingType(AttributeBean.BINDING_TYPE_VALUE);
+        attr.setName("value");
+        attr.setValue(value.toString());
+        target.addAttribute(attr);
+
+        attr = new AttributeBean();
+        attr.setBindingType(AttributeBean.BINDING_TYPE_NONE);
+        attr.setName("escape");
+        attr.setValue(Boolean.FALSE.toString());
+        target.addAttribute(attr);
+
+        attr = new AttributeBean();
+        attr.setBindingType(AttributeBean.BINDING_TYPE_NONE);
+        attr.setName("isTransient");
+        attr.setValue(Boolean.TRUE.toString());
+        target.addAttribute(attr);
+
+    }
+
+    /**
+     * <p>
+     * Returns a JSF component type of <code>javax.faces.HtmlOutputText</code>.
+     * </p>
+     *
+     * @param node markup
+     * @return component type
+     */
+    protected String getComponentType(Node node) {
+]]>
+</codefragment>
+</duplication>
+<duplication lines="31" tokens="100">
+<file line="51" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/PropertyActionCommand.java"/>
+<file line="52" path="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-clay/src/main/java/org/apache/shale/clay/component/chain/PropertyValueChangeListenerCommand.java"/>
+<codefragment>
+<![CDATA[
+        log = LogFactory.getLog(PropertyValueChangeListenerCommand.class);
+    }
+
+    /**
+     * <p>
+     * Looks to see if the {@link AttributeBean} on the {@link ClayContext} is a
+     * <code>valueChangeListener</code> attribute. If it is, create a
+     * <code>methodBinding</code> and assign it to the component returning a
+     * <code>true</code> value. Otherwise, return a <code>false</code>
+     * value.
+     * </p>
+     *
+     * @param context common chains
+     * @return <code>true</code> if the chain is complete
+     * @exception Exception propagated up to the top of the chain
+     */
+    public boolean execute(Context context) throws Exception {
+
+        boolean isFinal = false;
+
+        ClayContext clayContext = (ClayContext) context;
+        if (clayContext == null) {
+            throw new NullPointerException(getMessages().getMessage("clay.null.clayContext"));
+        }
+        AttributeBean attributeBean = clayContext.getAttribute();
+        if (attributeBean == null) {
+            throw new NullPointerException(getMessages().getMessage("clay.null.attributeBean"));
+        }
+        ComponentBean displayElement = clayContext.getDisplayElement();
+        if (displayElement == null) {
+            throw new NullPointerException(getMessages().getMessage("clay.null.childComponent"));
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.1" timestamp="2008-06-02T11:04:30.294">
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-dialog-scxml/src/main/java/org/apache/shale/dialog/scxml/Globals.java">
+<violation beginline="20" endline="20" begincolumn="1" endcolumn="67" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.dialog.scxml" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.dialog.scxml.impl.DefaultDialogStateMapper'
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-dialog-scxml/src/main/java/org/apache/shale/dialog/scxml/SCXMLDialogManager.java">
+<violation beginline="28" endline="28" begincolumn="1" endcolumn="44" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.dialog.scxml" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.commons.scxml.model.SCXML'
+</violation>
+<violation beginline="31" endline="31" begincolumn="1" endcolumn="52" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.dialog.scxml" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.dialog.DialogContextManager'
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-dialog-scxml/src/main/java/org/apache/shale/dialog/scxml/SCXMLLifecycleListener.java">
+<violation beginline="201" endline="205" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.dialog.scxml" class="SCXMLLifecycleListener" method="contextInitialized" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+</pmd>

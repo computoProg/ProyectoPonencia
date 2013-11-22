@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.1" timestamp="2008-06-02T10:58:36.228">
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-core/src/main/java/org/apache/shale/faces/ShaleConstants.java">
+<violation beginline="20" endline="20" begincolumn="1" endcolumn="44" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.faces" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.util.TokenProcessor'
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-core/src/main/java/org/apache/shale/taglib/TokenTag.java">
+<violation beginline="25" endline="25" begincolumn="1" endcolumn="40" rule="UnusedImports" ruleset="Import Statement Rules" package="org.apache.shale.taglib" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.apache.shale.component.Token'
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-core/src/main/java/org/apache/shale/util/Tags.java">
+<violation beginline="149" endline="149" begincolumn="21" endcolumn="47" rule="BooleanInstantiation" ruleset="Basic Rules" package="org.apache.shale.util" class="Tags" method="setBoolean" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#BooleanInstantiation" priority="2">
+Avoid instantiating Boolean objects; reference Boolean.TRUE or Boolean.FALSE or call Boolean.valueOf() instead.
+</violation>
+<violation beginline="382" endline="382" begincolumn="24" endcolumn="48" rule="BooleanInstantiation" ruleset="Basic Rules" package="org.apache.shale.util" class="Tags" method="evalBoolean" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#BooleanInstantiation" priority="2">
+Avoid instantiating Boolean objects; reference Boolean.TRUE or Boolean.FALSE or call Boolean.valueOf() instead.
+</violation>
+<violation beginline="385" endline="385" begincolumn="20" endcolumn="42" rule="BooleanInstantiation" ruleset="Basic Rules" package="org.apache.shale.util" class="Tags" method="evalBoolean" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#BooleanInstantiation" priority="2">
+Avoid instantiating Boolean objects; reference Boolean.TRUE or Boolean.FALSE or call Boolean.valueOf() instead.
+</violation>
+</file>
+</pmd>

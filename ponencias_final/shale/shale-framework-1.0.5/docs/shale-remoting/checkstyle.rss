@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>Shale Remoting - Checkstyle report</title>
+    <link>http://shale.apache.org/shale-remoting</link>
+    <description>Shale Remoting - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2004 - 2008 The Apache Software Foundation</copyright>
+    <item>
+      <title>File: 28,
+             Errors: 137,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://shale.apache.org/shale-remoting/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://shale.apache.org/shale-remoting/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.impl.MappingsImpl.java">org/apache/shale/remoting/impl/MappingsImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.XhtmlHelper.java">org/apache/shale/remoting/XhtmlHelper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.impl.MappingImpl.java">org/apache/shale/remoting/impl/MappingImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.logger.AbstractLogger.java">org/apache/shale/remoting/logger/AbstractLogger.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.faces.RemotingPhaseListener.java">org/apache/shale/remoting/faces/RemotingPhaseListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.impl.MethodBindingProcessor.java">org/apache/shale/remoting/impl/MethodBindingProcessor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.logger.Logger.java">org/apache/shale/remoting/logger/Logger.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  19
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.Mappings.java">org/apache/shale/remoting/Mappings.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  15
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.impl.ChainProcessor.java">org/apache/shale/remoting/impl/ChainProcessor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.Constants.java">org/apache/shale/remoting/Constants.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.logger.CommonsLogger.java">org/apache/shale/remoting/logger/CommonsLogger.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.logger.JdkLogger.java">org/apache/shale/remoting/logger/JdkLogger.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.impl.package.html">org/apache/shale/remoting/impl/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.impl.WebResourceProcessor.java">org/apache/shale/remoting/impl/WebResourceProcessor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.faces.BasicResponseWriter.java">org/apache/shale/remoting/faces/BasicResponseWriter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.impl.ClassResourceProcessor.java">org/apache/shale/remoting/impl/ClassResourceProcessor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.faces.MappingsHelper.java">org/apache/shale/remoting/faces/MappingsHelper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.package.html">org/apache/shale/remoting/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.Mapping.java">org/apache/shale/remoting/Mapping.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.logger.package.html">org/apache/shale/remoting/logger/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.impl.AbstractResourceProcessor.java">org/apache/shale/remoting/impl/AbstractResourceProcessor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  17
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.faces.package.html">org/apache/shale/remoting/faces/package.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.Mechanism.java">org/apache/shale/remoting/Mechanism.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.impl.ChainContext.java">org/apache/shale/remoting/impl/ChainContext.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.faces.ResponseFactory.java">org/apache/shale/remoting/faces/ResponseFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.impl.FilteringProcessor.java">org/apache/shale/remoting/impl/FilteringProcessor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.Processor.java">org/apache/shale/remoting/Processor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://shale.apache.org/shale-remoting/checkstyle.html#org.apache.shale.remoting.logger.DefaultLogger.java">org/apache/shale/remoting/logger/DefaultLogger.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

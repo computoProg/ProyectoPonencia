@@ -57,13 +57,28 @@
                              required="true"
                              requiredMessage="El nombre de la ponencia es obligatorio."/>
                 
+                <h:outputText value="* Pais" style="font-weight:bold"  />  
+                 <h:selectOneMenu id="pais" 
+                                  value="#{Pais.idPais}"
+                                     title="Pais de la ponencia"
+                                     required="true"
+                                     requiredMessage="El Pais de la ponencia es obligatoria.">
+                        <f:selectItem itemLabel="#{messages['comun.selectOneMenu.seleccione']}" itemValue="-1" />
+                        <f:selectItems value="#{Pais.paisItemsSelectOne}"/>
+                        
+                         
+                    </h:selectOneMenu>
+                
                 <h:outputText value="* Ciudad" style="font-weight:bold"  />                    
                     <h:selectOneMenu id="ciudad" 
                                      value="#{ponencia.ponencia.ciudadidCiudad}"
                                      title="Ciudad de la ponencia"
                                      required="true"
                                      requiredMessage="La ciudad de la ponencia es obligatoria.">
+                        <f:selectItem itemLabel="#{messages['comun.selectOneMenu.seleccione']}" itemValue="-1" />
                         <f:selectItems value="#{Ciudad.ciudadItemsAvailableSelectOne}"/>
+                        
+                         
                     </h:selectOneMenu>
                 
                 <h:outputText value="* Tipo:" style="font-weight:bold"/>

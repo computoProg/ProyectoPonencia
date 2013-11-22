@@ -1,5 +1,6 @@
 package beans.util;
 
+import beans.Pais;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -13,6 +14,22 @@ import javax.faces.convert.Converter;
 import javax.faces.model.SelectItem;
 
 public class JsfUtil {
+    
+    //metodo realizado el 24/1o/2013 obtener SelectItem con los datos de la 
+    // base de datos especificando si es pais, ciudad o departamento
+    public static SelectItem[]getSelectItems(List<?> entities, int b){
+        int size = entities.size();
+        SelectItem[] items = new SelectItem[size];
+       
+        if(b==0){
+           Pais p;
+        for(int i=0; i<size; i++){
+            p = (Pais)entities.get(i);
+            items[i] = new SelectItem((p.getIdPais()+""), (p.getNombre()+""));
+        }
+        }
+        return items;
+    }
     
     public static SelectItem[] getSelectItems(List<?> entities, boolean selectOne) {
         int size = selectOne ? entities.size() + 1 : entities.size();

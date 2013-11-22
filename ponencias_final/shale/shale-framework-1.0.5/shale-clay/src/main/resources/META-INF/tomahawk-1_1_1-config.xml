@@ -1,0 +1,1473 @@
+<?xml version='1.0' encoding="UTF-8"?>
+
+<!--
+
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+-->
+    <!DOCTYPE view PUBLIC
+      "-//Apache Software Foundation//DTD Shale Clay View Configuration 1.0//EN"
+      "http://struts.apache.org/dtds/shale-clay-config_1_0.dtd">
+
+<view>
+
+<!--  tomahawk components -->
+<component jsfid="t:aliasBean"
+	componentType="org.apache.myfaces.AliasBean">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="alias" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:aliasBeansScope"
+	componentType="org.apache.myfaces.AliasBeansScope">
+	<attributes>
+		<set name="id" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:buffer" componentType="org.apache.myfaces.Buffer">
+	<attributes>
+		<set name="into" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:checkbox"
+	componentType="org.apache.myfaces.HtmlCheckbox">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="rendered" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="for" bindingType="VB" />
+		<set name="index" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:collapsiblePanel"
+	componentType="org.apache.myfaces.HtmlCollapsiblePanel"
+	extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="collapsed" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:column"
+	componentType="org.apache.myfaces.HtmlColumn" extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="headerdir" bindingType="VB" />
+		<set name="headerlang" bindingType="VB" />
+		<set name="headerstyle" bindingType="VB" />
+		<set name="headertitle" bindingType="VB" />
+		<set name="headerstyleClass" bindingType="VB" />
+		<set name="headeronclick" bindingType="VB" />
+		<set name="headerondblclick" bindingType="VB" />
+		<set name="headeronmousedown" bindingType="VB" />
+		<set name="headeronmouseup" bindingType="VB" />
+		<set name="headeronmouseover" bindingType="VB" />
+		<set name="headeronmousemove" bindingType="VB" />
+		<set name="headeronmouseout" bindingType="VB" />
+		<set name="headeronkeypress" bindingType="VB" />
+		<set name="headeronkeydown" bindingType="VB" />
+		<set name="headeronkeyup" bindingType="VB" />
+		<set name="footerdir" bindingType="VB" />
+		<set name="footerlang" bindingType="VB" />
+		<set name="footerstyle" bindingType="VB" />
+		<set name="footertitle" bindingType="VB" />
+		<set name="footerstyleClass" bindingType="VB" />
+		<set name="footeronclick" bindingType="VB" />
+		<set name="footerondblclick" bindingType="VB" />
+		<set name="footeronmousedown" bindingType="VB" />
+		<set name="footeronmouseup" bindingType="VB" />
+		<set name="footeronmouseover" bindingType="VB" />
+		<set name="footeronmousemove" bindingType="VB" />
+		<set name="footeronmouseout" bindingType="VB" />
+		<set name="footeronkeypress" bindingType="VB" />
+		<set name="footeronkeydown" bindingType="VB" />
+		<set name="footeronkeyup" bindingType="VB" />
+		<set name="width" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:columns"
+	componentType="org.apache.myfaces.HtmlColumns" extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+		<set name="var" bindingType="VB" />
+		<set name="headerdir" bindingType="VB" />
+		<set name="headerlang" bindingType="VB" />
+		<set name="headerstyle" bindingType="VB" />
+		<set name="headertitle" bindingType="VB" />
+		<set name="headerstyleClass" bindingType="VB" />
+		<set name="headeronclick" bindingType="VB" />
+		<set name="headerondblclick" bindingType="VB" />
+		<set name="headeronmousedown" bindingType="VB" />
+		<set name="headeronmouseup" bindingType="VB" />
+		<set name="headeronmouseover" bindingType="VB" />
+		<set name="headeronmousemove" bindingType="VB" />
+		<set name="headeronmouseout" bindingType="VB" />
+		<set name="headeronkeypress" bindingType="VB" />
+		<set name="headeronkeydown" bindingType="VB" />
+		<set name="headeronkeyup" bindingType="VB" />
+		<set name="footerdir" bindingType="VB" />
+		<set name="footerlang" bindingType="VB" />
+		<set name="footerstyle" bindingType="VB" />
+		<set name="footertitle" bindingType="VB" />
+		<set name="footerstyleClass" bindingType="VB" />
+		<set name="footeronclick" bindingType="VB" />
+		<set name="footerondblclick" bindingType="VB" />
+		<set name="footeronmousedown" bindingType="VB" />
+		<set name="footeronmouseup" bindingType="VB" />
+		<set name="footeronmouseover" bindingType="VB" />
+		<set name="footeronmousemove" bindingType="VB" />
+		<set name="footeronmouseout" bindingType="VB" />
+		<set name="footeronkeypress" bindingType="VB" />
+		<set name="footeronkeydown" bindingType="VB" />
+		<set name="footeronkeyup" bindingType="VB" />
+		<set name="width" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:commandButton"
+	componentType="org.apache.myfaces.HtmlCommandButton"
+	extends="baseAction">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="accesskey" bindingType="VB" />
+		<set name="alt" bindingType="VB" />
+		<set name="disabled" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onchange" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="onselect" bindingType="VB" />
+		<set name="size" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="type" bindingType="VB" />
+		<set name="image" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:commandLink"
+	componentType="org.apache.myfaces.HtmlCommandLink"
+	extends="baseAction">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="accesskey" bindingType="VB" />
+		<set name="charset" bindingType="VB" />
+		<set name="coords" bindingType="VB" />
+		<set name="hreflang" bindingType="VB" />
+		<set name="rel" bindingType="VB" />
+		<set name="rev" bindingType="VB" />
+		<set name="shape" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="type" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="target" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:commandNavigation"
+	componentType="org.apache.myfaces.HtmlCommandNavigation"
+	extends="baseAction">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="accesskey" bindingType="VB" />
+		<set name="charset" bindingType="VB" />
+		<set name="coords" bindingType="VB" />
+		<set name="hreflang" bindingType="VB" />
+		<set name="rel" bindingType="VB" />
+		<set name="rev" bindingType="VB" />
+		<set name="shape" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="type" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="target" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:commandNavigation2"
+	componentType="org.apache.myfaces.HtmlCommandNavigationItem"
+	extends="baseAction">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="accesskey" bindingType="VB" />
+		<set name="charset" bindingType="VB" />
+		<set name="coords" bindingType="VB" />
+		<set name="hreflang" bindingType="VB" />
+		<set name="rel" bindingType="VB" />
+		<set name="rev" bindingType="VB" />
+		<set name="shape" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="type" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="target" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:commandSortHeader"
+	componentType="org.apache.myfaces.HtmlCommandSortHeader"
+	extends="baseAction">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="accesskey" bindingType="VB" />
+		<set name="charset" bindingType="VB" />
+		<set name="coords" bindingType="VB" />
+		<set name="hreflang" bindingType="VB" />
+		<set name="rel" bindingType="VB" />
+		<set name="rev" bindingType="VB" />
+		<set name="shape" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="type" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="target" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="columnName" bindingType="VB" />
+		<set name="arrow" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:dataList"
+	componentType="org.apache.myfaces.HtmlDataList" extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+		<set name="var" bindingType="VB" />
+		<set name="rows" bindingType="VB" />
+		<set name="first" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="layout" bindingType="VB" />
+		<set name="rowIndexVar" bindingType="VB" />
+		<set name="rowCountVar" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:dataScroller"
+	componentType="org.apache.myfaces.HtmlDataScroller">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="rendered" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="for" bindingType="VB" />
+		<set name="fastStep" bindingType="VB" />
+		<set name="pageIndexVar" bindingType="VB" />
+		<set name="pageCountVar" bindingType="VB" />
+		<set name="rowsCountVar" bindingType="VB" />
+		<set name="displayedRowsCountVar" bindingType="VB" />
+		<set name="firstRowIndexVar" bindingType="VB" />
+		<set name="lastRowIndexVar" bindingType="VB" />
+		<set name="styleClass" bindingType="VB" />
+		<set name="style" bindingType="VB" />
+		<set name="paginator" bindingType="VB" />
+		<set name="paginatorMaxPages" bindingType="VB" />
+		<set name="paginatorTableClass" bindingType="VB" />
+		<set name="paginatorTableStyle" bindingType="VB" />
+		<set name="paginatorColumnClass" bindingType="VB" />
+		<set name="paginatorColumnStyle" bindingType="VB" />
+		<set name="paginatorActiveColumnClass" bindingType="VB" />
+		<set name="paginatorActiveColumnStyle" bindingType="VB" />
+		<set name="renderFacetsIfSinglePage" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="actionListener" bindingType="MB" />
+	</attributes>
+</component>
+<component jsfid="t:dataTable"
+	componentType="org.apache.myfaces.HtmlDataTable" extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="align" bindingType="VB" />
+		<set name="border" bindingType="VB" />
+		<set name="bgcolor" bindingType="VB" />
+		<set name="cellpadding" bindingType="VB" />
+		<set name="cellspacing" bindingType="VB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="frame" bindingType="VB" />
+		<set name="rules" bindingType="VB" />
+		<set name="summary" bindingType="VB" />
+		<set name="width" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+		<set name="var" bindingType="VB" />
+		<set name="rows" bindingType="VB" />
+		<set name="first" bindingType="VB" />
+		<set name="columnClasses" bindingType="VB" />
+		<set name="footerClass" bindingType="VB" />
+		<set name="headerClass" bindingType="VB" />
+		<set name="rowClasses" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="preserveDataModel" bindingType="VB" />
+		<set name="forceIdIndexFormula" bindingType="VB" />
+		<set name="sortColumn" bindingType="VB" />
+		<set name="sortAscending" bindingType="VB" />
+		<set name="preserveSort" bindingType="VB" />
+		<set name="renderedIfEmpty" bindingType="VB" />
+		<set name="rowIndexVar" bindingType="VB" />
+		<set name="rowCountVar" bindingType="VB" />
+		<set name="previousRowDataVar" bindingType="VB" />
+		<set name="rowOnClick" bindingType="VB" />
+		<set name="rowOnDblClick" bindingType="VB" />
+		<set name="rowOnMouseDown" bindingType="VB" />
+		<set name="rowOnMouseUp" bindingType="VB" />
+		<set name="rowOnMouseOver" bindingType="VB" />
+		<set name="rowOnMouseMove" bindingType="VB" />
+		<set name="rowOnMouseOut" bindingType="VB" />
+		<set name="rowOnKeyPress" bindingType="VB" />
+		<set name="rowOnKeyDown" bindingType="VB" />
+		<set name="rowOnKeyUp" bindingType="VB" />
+		<set name="rowId" bindingType="VB" />
+		<set name="rowStyleClass" bindingType="VB" />
+		<set name="rowStyle" bindingType="VB" />
+		<set name="rendererType" bindingType="VB"
+			value="org.apache.myfaces.Table" />
+	</attributes>
+</component>
+<component jsfid="t:div" componentType="org.apache.myfaces.Div">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="rendered" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="style" bindingType="VB" />
+		<set name="styleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:graphicImage"
+	componentType="org.apache.myfaces.HtmlGraphicImage"
+	extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="url" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+		<set name="align" bindingType="VB" />
+		<set name="border" bindingType="VB" />
+		<set name="hspace" bindingType="VB" />
+		<set name="vspace" bindingType="VB" />
+		<set name="alt" bindingType="VB" />
+		<set name="height" bindingType="VB" />
+		<set name="ismap" bindingType="VB" />
+		<set name="longdesc" bindingType="VB" />
+		<set name="usemap" bindingType="VB" />
+		<set name="width" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:htmlTag"
+	componentType="org.apache.myfaces.HtmlTag">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="rendered" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+		<set name="style" bindingType="VB" />
+		<set name="styleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:inputCalendar"
+	componentType="org.apache.myfaces.HtmlInputCalendar"
+	extends="baseOutput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="accesskey" bindingType="VB" />
+		<set name="align" bindingType="VB" />
+		<set name="alt" bindingType="VB" />
+		<set name="disabled" bindingType="VB" />
+		<set name="maxlength" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onchange" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="onselect" bindingType="VB" />
+		<set name="readonly" bindingType="VB" />
+		<set name="size" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="monthYearRowClass" bindingType="VB" />
+		<set name="weekRowClass" bindingType="VB" />
+		<set name="dayCellClass" bindingType="VB" />
+		<set name="currentDayCellClass" bindingType="VB" />
+		<set name="renderAsPopup" bindingType="VB" />
+		<set name="addResources" bindingType="VB" />
+		<set name="popupDateFormat" bindingType="VB" />
+		<set name="popupButtonString" bindingType="VB" />
+		<set name="popupGotoString" bindingType="VB" />
+		<set name="popupTodayString" bindingType="VB" />
+		<set name="popupWeekString" bindingType="VB" />
+		<set name="popupScrollLeftMessage" bindingType="VB" />
+		<set name="popupScrollRightMessage" bindingType="VB" />
+		<set name="popupSelectMonthMessage" bindingType="VB" />
+		<set name="popupSelectYearMessage" bindingType="VB" />
+		<set name="popupSelectDateMessage" bindingType="VB" />
+		<set name="renderPopupButtonAsImage" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:inputDate"
+	componentType="org.apache.myfaces.HtmlInputDate"
+	extends="baseOutput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="accesskey" bindingType="VB" />
+		<set name="align" bindingType="VB" />
+		<set name="alt" bindingType="VB" />
+		<set name="disabled" bindingType="VB" />
+		<set name="maxlength" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onchange" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="onselect" bindingType="VB" />
+		<set name="readonly" bindingType="VB" />
+		<set name="size" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="type" bindingType="VB" />
+		<set name="popupCalendar" bindingType="VB" />
+		<set name="timeZone" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:inputFileUpload"
+	componentType="org.apache.myfaces.HtmlInputFileUpload"
+	extends="baseOutput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="accesskey" bindingType="VB" />
+		<set name="align" bindingType="VB" />
+		<set name="alt" bindingType="VB" />
+		<set name="disabled" bindingType="VB" />
+		<set name="maxlength" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onchange" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="onselect" bindingType="VB" />
+		<set name="readonly" bindingType="VB" />
+		<set name="size" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="accept" bindingType="VB" />
+		<set name="storage" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:inputHidden"
+	componentType="org.apache.myfaces.HtmlInputHidden">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="rendered" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+		<set name="converter" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:inputHtml"
+	componentType="org.apache.myfaces.InputHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="rendered" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+		<set name="converter" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+		<set name="style" bindingType="VB" />
+		<set name="styleClass" bindingType="VB" />
+		<set name="fallback" bindingType="VB" />
+		<set name="type" bindingType="VB" />
+		<set name="allowEditSource" bindingType="VB" />
+		<set name="allowExternalLinks" bindingType="VB" />
+		<set name="addKupuLogo" bindingType="VB" />
+		<set name="showAllToolBoxes" bindingType="VB" />
+		<set name="showPropertiesToolBox" bindingType="VB" />
+		<set name="showLinksToolBox" bindingType="VB" />
+		<set name="showImagesToolBox" bindingType="VB" />
+		<set name="showTablesToolBox" bindingType="VB" />
+		<set name="showCleanupExpressionsToolBox" bindingType="VB" />
+		<set name="showDebugToolBox" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:inputSecret"
+	componentType="org.apache.myfaces.HtmlInputSecret"
+	extends="baseInput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="maxlength" bindingType="VB" />
+		<set name="size" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+		<set name="redisplay" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:inputText"
+	componentType="org.apache.myfaces.HtmlInputText" extends="baseInput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="maxlength" bindingType="VB" />
+		<set name="size" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:inputTextHelp"
+	componentType="org.apache.myfaces.HtmlInputTextHelp"
+	extends="baseOutput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="accesskey" bindingType="VB" />
+		<set name="align" bindingType="VB" />
+		<set name="alt" bindingType="VB" />
+		<set name="disabled" bindingType="VB" />
+		<set name="maxlength" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onchange" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="onselect" bindingType="VB" />
+		<set name="readonly" bindingType="VB" />
+		<set name="size" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+		<set name="helpText" bindingType="VB" />
+		<set name="selectText" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:inputTextarea"
+	componentType="org.apache.myfaces.HtmlInputTextarea"
+	extends="baseOutput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="accesskey" bindingType="VB" />
+		<set name="cols" bindingType="VB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="disabled" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onchange" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="onselect" bindingType="VB" />
+		<set name="readonly" bindingType="VB" />
+		<set name="rows" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:jsValueChangeListener"
+	componentType="org.apache.myfaces.JsValueChangeListener">
+	<attributes>
+		<set name="for" bindingType="VB" />
+		<set name="property" bindingType="VB" />
+		<set name="expressionValue" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:jsValueSet"
+	componentType="org.apache.myfaces.HtmlJsValueSet">
+	<attributes>
+		<set name="name" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:jscookMenu"
+	componentType="org.apache.myfaces.JSCookMenu">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="rendered" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="javascriptLocation" bindingType="VB" />
+		<set name="imageLocation" bindingType="VB" />
+		<set name="styleLocation" bindingType="VB" />
+		<set name="layout" bindingType="VB" />
+		<set name="theme" bindingType="VB" />
+		<set name="rendererType" value="org.apache.myfaces.JSCookMenu" bindingType="None" />
+	</attributes>
+</component>
+<component jsfid="t:message"
+	componentType="org.apache.myfaces.HtmlMessage" extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="for" bindingType="VB" />
+		<set name="showSummary" bindingType="VB" />
+		<set name="showDetail" bindingType="VB" />
+		<set name="infoClass" bindingType="VB" />
+		<set name="infoStyle" bindingType="VB" />
+		<set name="warnClass" bindingType="VB" />
+		<set name="warnStyle" bindingType="VB" />
+		<set name="errorClass" bindingType="VB" />
+		<set name="errorStyle" bindingType="VB" />
+		<set name="fatalClass" bindingType="VB" />
+		<set name="fatalStyle" bindingType="VB" />
+		<set name="tooltip" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="summaryFormat" bindingType="VB" />
+		<set name="detailFormat" bindingType="VB" />
+		<set name="replaceIdWithLabel" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:messages"
+	componentType="org.apache.myfaces.HtmlMessages" extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="showSummary" bindingType="VB" />
+		<set name="showDetail" bindingType="VB" />
+		<set name="globalOnly" bindingType="VB" />
+		<set name="infoClass" bindingType="VB" />
+		<set name="infoStyle" bindingType="VB" />
+		<set name="warnClass" bindingType="VB" />
+		<set name="warnStyle" bindingType="VB" />
+		<set name="errorClass" bindingType="VB" />
+		<set name="errorStyle" bindingType="VB" />
+		<set name="fatalClass" bindingType="VB" />
+		<set name="fatalStyle" bindingType="VB" />
+		<set name="layout" bindingType="VB" />
+		<set name="tooltip" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="summaryFormat" bindingType="VB" />
+		<set name="globalSummaryFormat" bindingType="VB" />
+		<set name="detailFormat" bindingType="VB" />
+		<set name="replaceIdWithLabel" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:navigationMenuItem"
+	componentType="org.apache.myfaces.NavigationMenuItem">
+	<attributes>
+		<set name="binding" bindingType="VB" />
+		<set name="itemDisabled" bindingType="VB" />
+		<set name="id" bindingType="VB" />
+		<set name="itemDescription" bindingType="VB" />
+		<set name="itemLabel" bindingType="VB" />
+		<set name="itemValue" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="icon" bindingType="VB" />
+		<set name="split" bindingType="VB" />
+		<set name="action" bindingType="MB" />
+		<set name="rendered" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:navigationMenuItems"
+	componentType="org.apache.myfaces.HtmlCommandNavigationItem">
+	<attributes>
+		<set name="binding" bindingType="VB" />
+		<set name="id" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:newspaperTable"
+	componentType="org.apache.myfaces.HtmlNewspaperTable"
+	extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="align" bindingType="VB" />
+		<set name="border" bindingType="VB" />
+		<set name="bgcolor" bindingType="VB" />
+		<set name="cellpadding" bindingType="VB" />
+		<set name="cellspacing" bindingType="VB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="frame" bindingType="VB" />
+		<set name="rules" bindingType="VB" />
+		<set name="summary" bindingType="VB" />
+		<set name="width" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+		<set name="var" bindingType="VB" />
+		<set name="rows" bindingType="VB" />
+		<set name="first" bindingType="VB" />
+		<set name="columnClasses" bindingType="VB" />
+		<set name="footerClass" bindingType="VB" />
+		<set name="headerClass" bindingType="VB" />
+		<set name="rowClasses" bindingType="VB" />
+		<set name="newspaperColumns" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:outputLabel"
+	componentType="org.apache.myfaces.HtmlOutputLabel"
+	extends="baseOutput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="accesskey" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="for" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:outputText"
+	componentType="org.apache.myfaces.HtmlOutputText"
+	extends="baseOutput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="escape" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:panelGrid"
+	componentType="org.apache.myfaces.HtmlPanelGrid" extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="align" bindingType="VB" />
+		<set name="border" bindingType="VB" />
+		<set name="bgcolor" bindingType="VB" />
+		<set name="cellpadding" bindingType="VB" />
+		<set name="cellspacing" bindingType="VB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="frame" bindingType="VB" />
+		<set name="rules" bindingType="VB" />
+		<set name="summary" bindingType="VB" />
+		<set name="width" bindingType="VB" />
+		<set name="columnClasses" bindingType="VB" />
+		<set name="columns" bindingType="VB" />
+		<set name="footerClass" bindingType="VB" />
+		<set name="headerClass" bindingType="VB" />
+		<set name="rowClasses" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:panelGroup"
+	componentType="org.apache.myfaces.HtmlPanelGroup" extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:panelLayout"
+	componentType="org.apache.myfaces.HtmlPanelLayout"
+	extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="align" bindingType="VB" />
+		<set name="border" bindingType="VB" />
+		<set name="bgcolor" bindingType="VB" />
+		<set name="cellpadding" bindingType="VB" />
+		<set name="cellspacing" bindingType="VB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="frame" bindingType="VB" />
+		<set name="rules" bindingType="VB" />
+		<set name="summary" bindingType="VB" />
+		<set name="width" bindingType="VB" />
+		<set name="layout" bindingType="VB" />
+		<set name="headerClass" bindingType="VB" />
+		<set name="navigationClass" bindingType="VB" />
+		<set name="bodyClass" bindingType="VB" />
+		<set name="footerClass" bindingType="VB" />
+		<set name="headerStyle" bindingType="VB" />
+		<set name="navigationStyle" bindingType="VB" />
+		<set name="bodyStyle" bindingType="VB" />
+		<set name="footerStyle" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:panelNavigation"
+	componentType="org.apache.myfaces.HtmlPanelNavigation"
+	extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="align" bindingType="VB" />
+		<set name="border" bindingType="VB" />
+		<set name="bgcolor" bindingType="VB" />
+		<set name="cellpadding" bindingType="VB" />
+		<set name="cellspacing" bindingType="VB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="frame" bindingType="VB" />
+		<set name="rules" bindingType="VB" />
+		<set name="summary" bindingType="VB" />
+		<set name="width" bindingType="VB" />
+		<set name="itemClass" bindingType="VB" />
+		<set name="openItemClass" bindingType="VB" />
+		<set name="activeItemClass" bindingType="VB" />
+		<set name="separatorClass" bindingType="VB" />
+		<set name="itemStyle" bindingType="VB" />
+		<set name="openItemStyle" bindingType="VB" />
+		<set name="activeItemStyle" bindingType="VB" />
+		<set name="separatorStyle" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:panelNavigation2"
+	componentType="org.apache.myfaces.HtmlPanelNavigationMenu"
+	extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="align" bindingType="VB" />
+		<set name="border" bindingType="VB" />
+		<set name="bgcolor" bindingType="VB" />
+		<set name="cellpadding" bindingType="VB" />
+		<set name="cellspacing" bindingType="VB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="frame" bindingType="VB" />
+		<set name="rules" bindingType="VB" />
+		<set name="summary" bindingType="VB" />
+		<set name="width" bindingType="VB" />
+		<set name="itemClass" bindingType="VB" />
+		<set name="openItemClass" bindingType="VB" />
+		<set name="activeItemClass" bindingType="VB" />
+		<set name="separatorClass" bindingType="VB" />
+		<set name="itemStyle" bindingType="VB" />
+		<set name="openItemStyle" bindingType="VB" />
+		<set name="activeItemStyle" bindingType="VB" />
+		<set name="separatorStyle" bindingType="VB" />
+		<set name="layout" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:panelStack"
+	componentType="org.apache.myfaces.HtmlPanelStack">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="selectedPanel" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:panelTab"
+	componentType="org.apache.myfaces.HtmlPanelTab" extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="label" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:panelTabbedPane"
+	componentType="org.apache.myfaces.HtmlPanelTabbedPane"
+	extends="baseHtml">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="align" bindingType="VB" />
+		<set name="border" bindingType="VB" />
+		<set name="bgcolor" bindingType="VB" />
+		<set name="cellpadding" bindingType="VB" />
+		<set name="cellspacing" bindingType="VB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="frame" bindingType="VB" />
+		<set name="rules" bindingType="VB" />
+		<set name="summary" bindingType="VB" />
+		<set name="width" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="selectedIndex" bindingType="VB" />
+		<set name="activeTabStyleClass" bindingType="VB" />
+		<set name="inactiveTabStyleClass" bindingType="VB" />
+		<set name="disabledTabStyleClass" bindingType="VB" />
+		<set name="activeSubStyleClass" bindingType="VB" />
+		<set name="inactiveSubStyleClass" bindingType="VB" />
+		<set name="tabContentStyleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:popup" componentType="org.apache.myfaces.HtmlPopup"
+	extends="baseHtml">
+	<attributes>
+		<set name="displayAtDistanceX" bindingType="VB" />
+		<set name="displayAtDistanceY" bindingType="VB" />
+		<set name="closePopupOnExitingElement" bindingType="VB" />
+		<set name="closePopupOnExitingPopup" bindingType="VB" />
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:radio"
+	componentType="org.apache.myfaces.HtmlRadio">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="rendered" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="for" bindingType="VB" />
+		<set name="index" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:saveState"
+	componentType="org.apache.myfaces.SaveState">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:selectBooleanCheckbox"
+	componentType="org.apache.myfaces.HtmlSelectBooleanCheckbox"
+	extends="baseOutput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="accesskey" bindingType="VB" />
+		<set name="alt" bindingType="VB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="disabled" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onchange" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="onselect" bindingType="VB" />
+		<set name="readonly" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:selectManyCheckbox"
+	componentType="org.apache.myfaces.HtmlSelectManyCheckbox"
+	extends="baseOutput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="accesskey" bindingType="VB" />
+		<set name="alt" bindingType="VB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="disabled" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onchange" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="onselect" bindingType="VB" />
+		<set name="readonly" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="layout" bindingType="VB" />
+		<set name="enabledClass" bindingType="VB" />
+		<set name="disabledClass" bindingType="VB" />
+		<set name="layoutWidth" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:selectManyListbox"
+	componentType="org.apache.myfaces.HtmlSelectManyListbox"
+	extends="baseOutput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="disabled" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onchange" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="readonly" bindingType="VB" />
+		<set name="size" bindingType="VB" />
+		<set name="enabledClass" bindingType="VB" />
+		<set name="disabledClass" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:selectManyMenu"
+	componentType="org.apache.myfaces.HtmlSelectManyMenu"
+	extends="baseOutput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="disabled" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onchange" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="readonly" bindingType="VB" />
+		<set name="enabledClass" bindingType="VB" />
+		<set name="disabledClass" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:selectOneCountry"
+	componentType="org.apache.myfaces.SelectOneCountry"
+	extends="baseOutput">
+	<attributes>
+		<set name="maxLength" bindingType="VB" />
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="disabled" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onchange" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="readonly" bindingType="VB" />
+		<set name="enabledClass" bindingType="VB" />
+		<set name="disabledClass" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:selectOneLanguage"
+	componentType="org.apache.myfaces.SelectOneLanguage"
+	extends="baseOutput">
+	<attributes>
+		<set name="maxLength" bindingType="VB" />
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="disabled" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onchange" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="readonly" bindingType="VB" />
+		<set name="enabledClass" bindingType="VB" />
+		<set name="disabledClass" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:selectOneListbox"
+	componentType="org.apache.myfaces.HtmlSelectOneListbox"
+	extends="baseOutput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="disabled" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onchange" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="readonly" bindingType="VB" />
+		<set name="size" bindingType="VB" />
+		<set name="enabledClass" bindingType="VB" />
+		<set name="disabledClass" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:selectOneMenu"
+	componentType="org.apache.myfaces.HtmlSelectOneMenu"
+	extends="baseOutput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="disabled" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onchange" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="readonly" bindingType="VB" />
+		<set name="enabledClass" bindingType="VB" />
+		<set name="disabledClass" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:selectOneRadio"
+	componentType="org.apache.myfaces.HtmlRadio" extends="baseOutput">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="immediate" bindingType="VB" />
+		<set name="required" bindingType="VB" />
+		<set name="validator" bindingType="MB" />
+		<set name="valueChangeListener" bindingType="MB" />
+		<set name="accesskey" bindingType="VB" />
+		<set name="alt" bindingType="VB" />
+		<set name="datafld" bindingType="VB" />
+		<set name="datasrc" bindingType="VB" />
+		<set name="dataformatas" bindingType="VB" />
+		<set name="disabled" bindingType="VB" />
+		<set name="onblur" bindingType="VB" />
+		<set name="onchange" bindingType="VB" />
+		<set name="onfocus" bindingType="VB" />
+		<set name="onselect" bindingType="VB" />
+		<set name="readonly" bindingType="VB" />
+		<set name="tabindex" bindingType="VB" />
+		<set name="layout" bindingType="VB" />
+		<set name="border" bindingType="VB" />
+		<set name="enabledClass" bindingType="VB" />
+		<set name="disabledClass" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="forceId" bindingType="VB" />
+		<set name="forceIdIndex" bindingType="VB" />
+		<set name="displayValueOnly" bindingType="VB" />
+		<set name="displayValueOnlyStyle" bindingType="VB" />
+		<set name="displayValueOnlyStyleClass" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:stylesheet"
+	componentType="org.apache.myfaces.Stylesheet">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="rendered" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="enabledOnUserRole" bindingType="VB" />
+		<set name="visibleOnUserRole" bindingType="VB" />
+		<set name="path" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:swapImage"
+	componentType="org.apache.myfaces.HtmlSwapImage">
+	<attributes>
+		<set name="swapImageUrl" bindingType="VB" />
+		<set name="activeImageUrl" bindingType="VB" />
+		<set name="id" bindingType="VB" />
+		<set name="rendered" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="url" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+		<set name="dir" bindingType="VB" />
+		<set name="lang" bindingType="VB" />
+		<set name="style" bindingType="VB" />
+		<set name="title" bindingType="VB" />
+		<set name="styleClass" bindingType="VB" />
+		<set name="align" bindingType="VB" />
+		<set name="border" bindingType="VB" />
+		<set name="hspace" bindingType="VB" />
+		<set name="vspace" bindingType="VB" />
+		<set name="alt" bindingType="VB" />
+		<set name="height" bindingType="VB" />
+		<set name="ismap" bindingType="VB" />
+		<set name="longdesc" bindingType="VB" />
+		<set name="usemap" bindingType="VB" />
+		<set name="width" bindingType="VB" />
+		<set name="onclick" bindingType="VB" />
+		<set name="ondblclick" bindingType="VB" />
+		<set name="onkeypress" bindingType="VB" />
+		<set name="onkeydown" bindingType="VB" />
+		<set name="onkeyup" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:tree" componentType="org.apache.myfaces.HtmlTree">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="value" bindingType="None" />
+		<set name="var" bindingType="VB" />
+		<set name="styleClass" bindingType="VB" />
+		<set name="nodeClass" bindingType="VB" />
+		<set name="selectedNodeClass" bindingType="VB" />
+		<set name="headerClass" bindingType="VB" />
+		<set name="footerClass" bindingType="VB" />
+		<set name="rowClasses" bindingType="VB" />
+		<set name="columnClasses" bindingType="VB" />
+		<set name="iconClass" bindingType="VB" />
+		<set name="iconLine" bindingType="VB" />
+		<set name="iconNoline" bindingType="VB" />
+		<set name="iconChildFirst" bindingType="VB" />
+		<set name="iconChildMiddle" bindingType="VB" />
+		<set name="iconChildLast" bindingType="VB" />
+		<set name="iconNodeOpen" bindingType="VB" />
+		<set name="iconNodeOpenFirst" bindingType="VB" />
+		<set name="iconNodeOpenMiddle" bindingType="VB" />
+		<set name="iconNodeOpenLast" bindingType="VB" />
+		<set name="iconNodeClose" bindingType="VB" />
+		<set name="iconNodeCloseFirst" bindingType="VB" />
+		<set name="iconNodeCloseMiddle" bindingType="VB" />
+		<set name="iconNodeCloseLast" bindingType="VB" />
+		<set name="expandRoot" bindingType="VB" />
+		<set name="expireListeners" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:tree2"
+	componentType="org.apache.myfaces.HtmlTree2">
+	<attributes>
+		<set name="value" bindingType="VB" />
+		<set name="var" bindingType="VB" />
+		<set name="varNodeToggler" bindingType="VB" />
+		<set name="showNav" bindingType="VB" />
+		<set name="showLines" bindingType="VB" />
+		<set name="clientSideToggle" bindingType="VB" />
+		<set name="showRootNode" bindingType="VB" />
+		<set name="preserveToggle" bindingType="VB" />
+		<set name="javascriptLocation" bindingType="VB" />
+		<set name="imageLocation" bindingType="VB" />
+		<set name="styleLocation" bindingType="VB" />
+		<set name="id" bindingType="VB" />
+		<set name="rendered" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+		<set name="org.apache.myfaces.tree2.CLIENT_SIDE_TOGGLE"
+			bindingType="VB" />
+		<set name="org.apache.myfaces.tree2.PRESERVE_TOGGLE"
+			bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:treeCheckbox"
+	componentType="org.apache.myfaces.HtmlTreeCheckbox">
+	<attributes>
+		<set name="binding" bindingType="VB" />
+		<set name="itemDisabled" bindingType="VB" />
+		<set name="id" bindingType="VB" />
+		<set name="itemDescription" bindingType="VB" />
+		<set name="itemLabel" bindingType="VB" />
+		<set name="itemValue" bindingType="VB" />
+		<set name="value" bindingType="VB" />
+		<set name="for" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:treeColumn"
+	componentType="org.apache.myfaces.HtmlTreeColumn">
+	<attributes>
+		<set name="id" bindingType="VB" />
+		<set name="rendered" bindingType="VB" />
+		<set name="binding" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:dateTimeConverter"
+	componentType="javax.faces.DateTime">
+	<attributes>
+		<set name="dateStyle" bindingType="VB" />
+		<set name="locale" bindingType="VB" />
+		<set name="pattern" bindingType="VB" />
+		<set name="timeStyle" bindingType="VB" />
+		<set name="timeZone" bindingType="VB" />
+		<set name="type" bindingType="VB" />
+	</attributes>
+</component>
+<component jsfid="t:equalValidator"
+	componentType="org.apache.myfaces.validator.Equal">
+	<attributes>
+		<set name="for" bindingType="VB" />
+	</attributes>
+</component>
+<!--  end tomahawk components -->
+
+</view>
+

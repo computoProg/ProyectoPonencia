@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+  $Id: shale-builder-config.xml 473459 2006-11-10 20:30:12Z gvanmatre $
+
+-->
+
+<catalog           name="builder">
+
+  <chain           name="default-namespace">
+    <command  className="org.apache.shale.clay.parser.builder.chain.DirectiveBuilderRule"/>
+    <command  className="org.apache.shale.clay.parser.builder.chain.InputBuilderRule"/>
+    <command  className="org.apache.shale.clay.parser.builder.chain.FormBuilderRule"/>
+    <command  className="org.apache.shale.clay.parser.builder.chain.SelectBuilderRule"/>
+    <command  className="org.apache.shale.clay.parser.builder.chain.OptionBuilderRule"/>
+    <command  className="org.apache.shale.clay.parser.builder.chain.LabelBuilderRule"/>
+    <command  className="org.apache.shale.clay.parser.builder.chain.AnchorBuilderRule"/>		
+    <command  className="org.apache.shale.clay.parser.builder.chain.TextareaBuilderRule"/>	 	    	
+    <command  className="org.apache.shale.clay.parser.builder.chain.SpanBuilderRule"/>	
+    <command  className="org.apache.shale.clay.parser.builder.chain.DefaultBuilderRule"/>		
+  </chain>
+
+  <chain           name="unknown-namespace">
+    <command className   = "org.apache.shale.clay.utils.PluggableLookupCommand"
+             catalogName = "clayCustomization"
+             name        = "#{requestScope.XMLNS}"
+             optional    = "true"/>
+
+    <command  className="org.apache.shale.clay.parser.builder.chain.DirectiveBuilderRule"/>  
+    <command  className="org.apache.shale.clay.parser.builder.chain.DefaultBuilderRule"/>
+  </chain>
+
+  <chain           name="http://java.sun.com/jsf/core">
+    <command  className="org.apache.shale.clay.parser.builder.chain.JsfDefaultBuilderRule" prefix="f"/>
+  </chain>
+
+  <chain           name="http://java.sun.com/jsf/html">
+    <command  className="org.apache.shale.clay.parser.builder.chain.JsfDefaultBuilderRule" prefix="h"/>
+  </chain>
+
+  <chain           name="http://shale.apache.org/core">
+    <command  className="org.apache.shale.clay.parser.builder.chain.JsfDefaultBuilderRule" prefix="s"/>
+  </chain>
+
+  <chain           name="http://shale.apache.org/view">
+    <command  className="org.apache.shale.clay.parser.builder.chain.JsfDefaultBuilderRule" prefix="view"/>
+  </chain>
+
+  <chain           name="http://shale.apache.org/validator">
+    <command  className="org.apache.shale.clay.parser.builder.chain.JsfDefaultBuilderRule" prefix="val"/>
+  </chain>
+
+  <chain           name="http://shale.apache.org/xml/clay">
+    <command  className="org.apache.shale.clay.parser.builder.chain.ClayNamespaceBuilderRule"/>
+  </chain>
+
+  <chain           name="http://shale.apache.org/clay">
+    <command  className="org.apache.shale.clay.parser.builder.chain.JsfDefaultBuilderRule" prefix="clay"/>
+  </chain>
+
+  <chain           name="http://myfaces.apache.org/tomahawk">
+    <command  className="org.apache.shale.clay.parser.builder.chain.JsfDefaultBuilderRule" prefix="t"/>
+  </chain>
+
+
+</catalog>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ $Id: test-config-3.xml 464373 2006-10-16 04:21:54Z rahul $
+
+-->
+
+<!DOCTYPE faces-config PUBLIC
+ '-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN'
+ 'http://java.sun.com/dtd/web-facesconfig_1_1.dtd'>
+
+<faces-config>
+
+    <!-- Configure bean properties with value binding expressions -->
+    <managed-bean>
+        <managed-bean-name>bean3</managed-bean-name>
+        <managed-bean-class>org.apache.shale.tiger.config.TestBean</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+        <managed-property>
+            <property-name>byteProperty</property-name>
+            <property-class>byte</property-class>
+            <value>#{bean1.byteProperty}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>charProperty</property-name>
+            <property-class>char</property-class>
+            <value>#{bean1.charProperty}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>doubleProperty</property-name>
+            <property-class>double</property-class>
+            <value>#{bean1.doubleProperty}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>floatProperty</property-name>
+            <property-class>float</property-class>
+            <value>#{bean1.floatProperty}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>intProperty</property-name>
+            <property-class>int</property-class>
+            <value>#{bean1.intProperty}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>longProperty</property-name>
+            <property-class>long</property-class>
+            <value>#{bean1.longProperty}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>shortProperty</property-name>
+            <property-class>short</property-class>
+            <value>#{bean1.shortProperty}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>stringProperty</property-name>
+            <property-class>java.lang.String</property-class>
+            <value>#{bean1.stringProperty}</value>
+        </managed-property>
+    </managed-bean>
+
+</faces-config>

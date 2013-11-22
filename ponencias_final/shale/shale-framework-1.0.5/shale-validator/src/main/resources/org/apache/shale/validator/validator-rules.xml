@@ -1,0 +1,419 @@
+<!DOCTYPE form-validation PUBLIC 
+ "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN" 
+ "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to you under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<!--
+  This resource defines the standard Apache Commons Validator validators
+  that are supported by the shale-validator Validator Integration module.
+  The set of recognized validators can be customized, as described in the
+  documentation, by providing your own additional definition resource.
+-->
+
+<form-validation>
+
+
+    <global>
+
+        <validator       name="byte"
+                    classname="org.apache.commons.validator.GenericValidator"
+                       method="isByte"
+                 methodParams="java.lang.String"
+                          msg="errors.byte"
+               jsFunctionName="validateByte"
+                   jsFunction="org.apache.commons.validator.javascript.validateByte"			
+                      depends=""/>
+
+        <validator       name="creditCard"
+                    classname="org.apache.commons.validator.GenericValidator"
+                       method="isCreditCard"
+                 methodParams="java.lang.String"
+                          msg="errors.creditcard"
+               jsFunctionName="validateCreditCard"
+                   jsFunction="org.apache.commons.validator.javascript.validateCreditCard"			
+                      depends=""/>
+
+        <validator       name="date"
+                    classname="org.apache.shale.validator.CommonsValidator"
+                       method="isDate"
+                 methodParams="java.lang.String,java.lang.String"
+                          msg="errors.date"
+               jsFunctionName="validateDate"
+                   jsFunction="org.apache.commons.validator.javascript.validateDate"			
+                      depends=""/>
+
+        <validator       name="double"
+                    classname="org.apache.commons.validator.GenericValidator"
+                       method="isDouble"
+                 methodParams="java.lang.String"
+                          msg="errors.double"
+                      depends=""/>
+
+        <validator       name="doubleRange"
+                    classname="org.apache.commons.validator.GenericValidator"
+                       method="isInRange"
+                 methodParams="double,double,double"
+                          msg="errors.range"
+                      depends="double"/>
+
+        <validator       name="email"
+                    classname="org.apache.commons.validator.GenericValidator"
+                       method="isEmail"
+                 methodParams="java.lang.String"
+                          msg="errors.email"
+               jsFunctionName="validateEmail"
+                   jsFunction="org.apache.commons.validator.javascript.validateEmail"			
+                      depends=""/>
+
+        <validator       name="float"
+                    classname="org.apache.commons.validator.GenericValidator"
+                       method="isFloat"
+                 methodParams="java.lang.String"
+                          msg="errors.float"
+               jsFunctionName="validateFloat"
+                   jsFunction="org.apache.commons.validator.javascript.validateFloat"			
+                      depends=""/>
+
+        <validator       name="floatRange"
+                    classname="org.apache.commons.validator.GenericValidator"
+                       method="isInRange"
+                 methodParams="float,float,float"
+                          msg="errors.range"
+               jsFunctionName="validateFloatRange"
+                   jsFunction="org.apache.commons.validator.javascript.validateFloatRange"			
+                      depends="float"/>
+
+        <!-- Pseudo validator to load common JavaScript utilities -->
+        <validator       name="includeJavaScriptUtilities"
+                    classname=""
+                       method=""
+                 methodParams=""
+                          msg=""
+                   jsFunction="org.apache.shale.validator.validateUtilities"
+                      depends=""/>
+
+        <validator       name="integer"
+                    classname="org.apache.commons.validator.GenericValidator"
+                       method="isInt"
+                 methodParams="java.lang.String"
+                          msg="errors.integer"
+               jsFunctionName="validateInteger"
+                   jsFunction="org.apache.commons.validator.javascript.validateInteger"			
+                      depends=""/>
+
+        <validator       name="intRange"
+                    classname="org.apache.commons.validator.GenericValidator"
+                       method="isInRange"
+                 methodParams="int,int,int"
+                          msg="errors.range"
+               jsFunctionName="validateIntRange"
+                   jsFunction="org.apache.commons.validator.javascript.validateIntRange"			
+                      depends="integer"/>
+
+        <validator       name="long"
+                    classname="org.apache.commons.validator.GenericValidator"
+                       method="isLong"
+                 methodParams="java.lang.String"
+                          msg="errors.long"
+                      depends=""/>
+
+        <validator       name="mask"
+                    classname="org.apache.commons.validator.GenericValidator"
+                       method="matchRegexp"
+                 methodParams="java.lang.String,java.lang.String"
+                          msg="errors.invalid"
+               jsFunctionName="validateMask"
+                   jsFunction="org.apache.commons.validator.javascript.validateMask"			
+                      depends=""/>
+
+        <validator       name="maxlength"
+                    classname="org.apache.commons.validator.GenericValidator"
+                       method="maxLength"
+                 methodParams="java.lang.String,int"
+                          msg="errors.maxlength"
+               jsFunctionName="validateMaxLength"
+                   jsFunction="org.apache.commons.validator.javascript.validateMaxLength"
+                      depends=""/>
+
+        <validator       name="minlength"
+                    classname="org.apache.commons.validator.GenericValidator"
+                       method="minLength"
+                 methodParams="java.lang.String,int"
+                          msg="errors.minlength"
+               jsFunctionName="validateMinLength"
+                   jsFunction="org.apache.commons.validator.javascript.validateMinLength"
+                      depends=""/>
+
+        <validator       name="required"
+                    classname="org.apache.shale.validator.CommonsValidator"
+                       method="isSupplied"
+                 methodParams="java.lang.String"
+                          msg="errors.required"
+                   jsFunction="org.apache.commons.validator.javascript.validateRequired" 
+               jsFunctionName="validateRequired"
+                      depends=""/>
+
+        <validator       name="short"
+                    classname="org.apache.commons.validator.GenericValidator"
+                       method="isShort"
+                 methodParams="java.lang.String"
+                          msg="errors.short"
+               jsFunctionName="validateShort"
+                   jsFunction="org.apache.commons.validator.javascript.validateShort"			
+                      depends=""/>
+
+        <validator       name="url"
+                    classname="org.apache.commons.validator.GenericValidator"
+                       method="isUrl"
+                 methodParams="java.lang.String"
+                          msg="errors.url"
+                      depends=""/>
+
+    </global>
+
+
+    <formset>
+
+        <form            name="org.apache.shale.validator.byte">
+            <field   property="byte">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="jscallback" key="ByteValidations"/>
+
+            </field>
+        </form>
+
+        <form            name="org.apache.shale.validator.creditCard">
+            <field   property="creditCard">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+
+            </field>
+        </form>
+
+        <form name="org.apache.shale.validator.date">
+            <field property="date">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="submittedValue" resource="false"/>
+                <arg position="2" name="message" key="datePatternStrict" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+                <arg position="1" name="parameter" key="datePatternStrict" resource="false"/>
+
+                <arg position="0" name="jscallback" key="DateValidations"/>
+
+            </field>
+        </form>
+
+        <form            name="org.apache.shale.validator.double">
+            <field   property="double">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+
+            </field>      
+        </form>  
+      
+        <form            name="org.apache.shale.validator.doubleRange">
+            <field   property="doubleRange">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="min" resource="false"/>
+                <arg position="2" name="message" key="max" resource="false"/>
+                <arg position="3" name="message" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+                <arg position="1" name="parameter" key="min" resource="false"/>
+                <arg position="2" name="parameter" key="max" resource="false"/>
+
+            </field>
+        </form>
+
+        <form name="org.apache.shale.validator.email">
+            <field property="email">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+
+            </field>
+        </form>
+
+        <form            name="org.apache.shale.validator.float">
+            <field   property="float">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="submittedValue" resource="false"/>
+              
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="jscallback" key="FloatValidations"/>
+
+            </field>
+        </form>
+
+        <form            name="org.apache.shale.validator.floatRange">
+            <field   property="floatRange">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="min" resource="false"/>
+                <arg position="2" name="message" key="max" resource="false"/>
+                <arg position="3" name="message" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+                <arg position="1" name="parameter" key="min" resource="false"/>
+                <arg position="2" name="parameter" key="max" resource="false"/>
+
+            </field>
+        </form>
+
+        <form            name="org.apache.shale.validator.integer">
+            <field   property="integer">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="jscallback" key="IntegerValidations"/>
+
+            </field>
+        </form>
+
+        <form            name="org.apache.shale.validator.intRange">
+            <field   property="intRange">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="min" resource="false"/>
+                <arg position="2" name="message" key="max" resource="false"/>
+                <arg position="3" name="message" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+                <arg position="1" name="parameter" key="min" resource="false"/>
+                <arg position="2" name="parameter" key="max" resource="false"/>
+
+            </field>
+        </form>
+
+        <form            name="org.apache.shale.validator.long">
+            <field   property="long">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+
+            </field>
+        </form>
+      
+        <form            name="org.apache.shale.validator.mask">
+            <field   property="mask">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="mask" resource="false"/>
+                <arg position="2" name="message" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+                <arg position="1" name="parameter" key="mask" resource="false"/>
+
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value></var-value>
+                    <var-jstype>regexp</var-jstype>
+                </var> 
+
+            </field>
+        </form>
+      
+        <form            name="org.apache.shale.validator.maxlength">
+            <field   property="maxlength">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="maxlength" resource="false"/>
+                <arg position="2" name="message" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+                <arg position="1" name="parameter" key="maxlength" resource="false"/>
+
+            </field>
+        </form>
+
+        <form            name="org.apache.shale.validator.minlength">
+            <field   property="minlength">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="minlength" resource="false"/>
+                <arg position="2" name="message" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+                <arg position="1" name="parameter" key="minlength" resource="false"/>
+
+            </field>
+        </form>
+
+        <form            name="org.apache.shale.validator.required">
+            <field   property="required">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+
+            </field>
+        </form>
+
+        <form            name="org.apache.shale.validator.short">
+            <field   property="short">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="jscallback" key="ShortValidations"/>
+
+            </field>
+        </form>
+
+        <form            name="org.apache.shale.validator.url">
+            <field   property="url">
+
+                <arg position="0" name="message" key="arg" resource="false"/>
+                <arg position="1" name="message" key="submittedValue" resource="false"/>
+
+                <arg position="0" name="parameter" key="submittedValue" resource="false"/>
+
+            </field>
+        </form>
+
+    </formset>
+
+
+</form-validation>

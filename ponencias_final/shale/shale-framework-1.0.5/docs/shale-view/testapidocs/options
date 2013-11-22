@@ -1,0 +1,29 @@
+-classpath '/Users/greddin/develop/shale-1_0_x/target/checkout/shale-view/target/classes:/Users/greddin/develop/shale-1_0_x/target/checkout/shale-view/target/test-classes:/Users/greddin/.m2/repository/commons-lang/commons-lang/2.1/commons-lang-2.1.jar:/Users/greddin/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar:/Users/greddin/.m2/repository/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar:/Users/greddin/.m2/repository/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar:/Users/greddin/.m2/repository/org/apache/shale/shale-test/1.0.5/shale-test-1.0.5.jar:/Users/greddin/.m2/repository/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar:/Users/greddin/.m2/repository/org/apache/shale/shale-core/1.0.5/shale-core-1.0.5.jar:/Users/greddin/.m2/repository/javax/servlet/jstl/1.1.2/jstl-1.1.2.jar:/Users/greddin/.m2/repository/org/apache/myfaces/core/myfaces-api/1.1.5/myfaces-api-1.1.5.jar:/Users/greddin/.m2/repository/commons-logging/commons-logging/1.1/commons-logging-1.1.jar:/Users/greddin/.m2/repository/commons-digester/commons-digester/1.8/commons-digester-1.8.jar'
+ -protected
+-sourcepath
+'/Users/greddin/develop/shale-1_0_x/target/checkout/shale-view/src/test/java'
+-author
+-bottom
+'Copyright © 2004-2008 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.'
+-charset
+'ISO-8859-1'
+-d
+'/Users/greddin/develop/shale-1_0_x/target/checkout/shale-view/target/site/testapidocs'
+-doctitle
+'Shale View Controller 1.0.5 Test API'
+-link
+'http://java.sun.com/j2se/1.4.2/docs/api'
+-link
+'http://java.sun.com/j2ee/sdk_1.2.1/techdocs/api'
+-link
+'http://commons.apache.org/chain/apidocs'
+-link
+'http://commons.apache.org/digester/commons-digester-1.8/docs/api'
+-link
+'http://commons.apache.org/logging/commons-logging-1.1/apidocs'
+-link
+'http://commons.apache.org/validator/api-release'
+-use
+-version
+-windowtitle
+'Shale View Controller 1.0.5 Test API'

@@ -1,0 +1,320 @@
+<?xml version="1.0"?>
+<document>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+  <properties>
+    <title>Shale Tiger Extensions</title>
+  </properties>
+
+  <body>
+    
+    <section name="Shale Tiger Extensions">
+    <a name="tiger"/>
+
+      <a name="tiger-introduction"/>
+      <subsection name="Introduction">
+
+        <p>Are you running your web container on a Java SE 5 (code named
+        "Tiger") or later JVM?  If so, you can take advantage of several
+        Shale features that are enabled by this underlying platform:</p>
+        <ul>
+          <li>The ability to declare managed bean configuration
+              with annotations, rather than requiring configuration
+              in a <code>faces-config.xml</code> resource.</li>
+          <li>The ability of a backing bean to receive
+              <a href="features-view-controller.html">View Controller</a>
+              event callbacks to arbitrary methods declared with annotations,
+              rather than requiring the backing bean to implement the
+              <code>ViewController</code> interface and provide methods
+              with the names defined by this interface.</li>
+          <li>The ability for JavaServer Faces components, converters,
+              renderers,and validators to register themselves with the
+              runtime system, without having to be declared in a
+              <code>faces-config.xml</code> resource.</li>
+        </ul>
+
+        <p>These features are enabled automatically if you include
+        <code>shale-tiger.jar</code> in your web application.</p>
+
+      </subsection>
+
+      <a name="tiger-services"/>
+      <subsection name="Services Provided">
+
+        <h4>Annotated Managed Beans</h4>
+
+        <p>In a traditional JavaServer Faces application, managed
+        beans must be declared in a <code>faces-config.xml</code>
+        resource supplied by the application.  In many cases, the
+        supplied values are effectively constant -- for example, the
+        name that the managed bean is known by is a dependency for
+        other elements of the application (such as value binding
+        expressions).  In such cases, it would be very useful to
+        be able to configure the managed bean name, and the scope
+        this bean should be stored in, directly in the bean source
+        code itself.</p>
+
+        <p>In addition to defining the characteristics of the managed
+        bean itself, you can also use the <code>@Value</code>
+        annotation to establish the initial value to which a
+        field should be set.  (You must supply a corresponding public
+        property setter method.)  This is not particularly useful
+        for setting literal values, because you can accomplish the
+        same result with a Java initialization expression on the
+        instance variable itself.  However, it is very useful when
+        you want to specify an application-specific value binding
+        expression, without requiring the developer to explicitly
+        include the configuration in a <code>faces-config.xml</code>
+        resource.</p>
+
+        <p>In some scenarios, an application developer will still want
+        to override the characteristics that are specified via annotations.
+        For this reason, any configuration information in a
+        <code>faces-config.xml</code> resource, for a particular
+        managed bean name, will <em>override</em> the corresponding
+        settings defined by annotations.</p>
+
+        <h4>Annotated View Controllers</h4>
+
+        <p>The <a href="features-view-controller.html">View Controller</a>
+        feature of Shale provides event callback services for several
+        interesting lifecycle events:</p>
+
+        <ul>
+          <li><code>init</code> - Called when the view corresponding
+              to this class has been created or restored.</li>
+          <li><code>preprocess</code> - Called if this view is the one
+              that will process a form submit.</li>
+          <li><code>prerender</code> - Called immediately before this
+              view will be asked to render itself.</li>
+          <li><code>destroy</code> - Called after rendering, for all
+              instances where <code>init</code> was called.</li>
+        </ul>
+
+        <p>In the standard Shale implementation, this functionality is
+        provided in the traditional way -- the backing bean interested
+        in these callbacks is required to implement the
+        <code>org.apache.shale.view.ViewController</code> interface,
+        with fixed method names for each callback.  With the Shale Tiger
+        Extensions, however, this is no longer required (although it is,
+        of course, still supported).</p>
+
+        <p>Instead, you implement a backing bean class with no requirements
+        on extending a particular base class, or implementing a particular
+        interface.  Instead, you use the <code>@View</code> annotation on
+        the class itself to say that it is interested in view controller
+        callback events.  Then, on any public method that takes no arguments,
+        you use the <code>@Init</code>, <code>@Preprocess</code>,
+        <code>@Prerender</code>, or <code>@Destroy</code> annotations
+        to request callbacks, to that particular method, when the corresponding
+        lifecycle event occurs.  You are <strong>NOT</strong> required
+        to use a particular method name for these callbacks.  In addition,
+        if your backing bean logic is not interested in one or more of the
+        view controller callbacks, you are <code>NOT</code> required to
+        provide a method that is marked with the corresponding annotation.</p>
+
+        <h4>Annotated Component Registration</h4>
+
+        <p>A standard JavaServer Faces runtime environment allows an
+        application, or a component library, to register custom classes
+        as JavaServer Faces components, converters, renderers,and validators,
+        using the <code>&lt;component&gt;</code>, <code>&lt;converter&gt;</code>,
+        <code>&lt;renderer&gt;</code>, and <code>&lt;validator&gt;</code>
+        elements, respectively, in a <code>faces-config.xml</code> resource.
+        The Shale Tiger extensions allow the implementation classes for these
+        objects to register themselves by virtue of the existence of an
+        annotation on the class, without requiring a configuration resource
+        to be present.  In each case, the class being registered must still
+        implement the corresponding JavaServer Faces API (for example, a
+        converter registered in this manner must still implement the
+        <code>javax.faces.convert.Converter</code> interface).</p>
+
+      </subsection>
+
+      <a name="tiger-using"/>
+      <subsection name="Using The Tiger Extensions">
+
+        <p>To use any of the Shale Tiger Extensions in your application,
+        you <strong>MUST</strong> run your web container on a Java SE 5
+        or later container, and <strong>MUST</strong> include the
+        <code>shale-tiger.jar</code> resource in your web application.</p>
+
+        <p>To optimize performance at application startup, the Shale Tiger
+        Extensions will <strong>ONLY</strong> examine classes (to see if
+        they include the appropriate annotations) in the following lcoations:</p>
+        <ul>
+            <li>Any class under <code>/WEB-INF/classes</code>.</li>
+            <li>Any class in a JAR file under <code>/WEB-INF/lib</code> that
+                includes a <code>META-INF/faces-config.xml</code> resource,
+                indicating that this JAR file is relevant to JavaServer Faces.</li>
+        </ul>
+
+        <h4>Using Annotated Managed Beans</h4>
+
+        <p>To use the <em>Annotated Managed Beans</em> feature, you must
+        use the <code>@Bean</code> annotation on the class itself, and
+        set the managed bean name (required) and scope (optional).  These
+        elements correspond to the <code>&lt;managed-bean-name&gt;</code>
+        and <code>&lt;managed-bean-scope&gt;</code> elements in a
+        <code>faces-config.xml</code> resource.  Then, within the class,
+        you can optionally use the <code>@Value</code> annotation on a
+        field to provide a literal value, or value binding expression,
+        that will provide the initial value for the corresponding property.</p>
+
+        <p>Putting it all together, you might end up with a class that
+        looks like this:</p>
+
+<source>
+    package com.mycompany.mypackage;
+
+    import org.apache.shale.tiger.managed.Bean;
+    import org.apache.shale.tiger.managed.Scope;
+    import org.apache.shale.tiger.managed.Property;
+
+    // Define a managed bean named "mybean" to be put in session scope
+    &#64;Bean(name="mybean", scope=Scope.SESSION)
+    public class MyBeanClass { // No required superclass or interface
+
+        // Name a property that will be initialized via expression
+        &#64;Property(value="#{otherBean.otherProperty}")
+        private String name = null;
+        
+        public String getName() { return this.name; }
+        public void setName(String name) { this.name = name; }
+
+    }
+</source>
+        
+        <h4>Using Annotated View Controllers</h4>
+
+        <p>To use the <em>Annotated View Controllers</em> feature,
+        you must use the <code>@View</code> annotation on the class
+        itself.  Then, you can use the <code>@Init</code>,
+        <code>@Preprocess</code>, <code>@Prerender</code>, and
+        <code>@Destroy</code> annotations on the methods that you
+        wish to have notified when the corresponding lifecycle trips
+        occur.  You need to implement only the callbacks you are
+        interested in (unlike the traditional implementation of an
+        interface, where you must provide implementations for all of
+        the defined method signatures).</p>
+
+        <p>A class that wishes to receive view controller callbacks
+        via these annotations might look like this:</p>
+
+<source>
+    package com.mycompany.mypackage;
+
+    import org.apache.shale.tiger.view.Init;
+    import org.apache.shale.tiger.view.Preprocess;
+    import org.apache.shale.tiger.view.View;
+
+    &#64;View public class MyBean { // No required superclass or interface
+
+        // Name your init() method whatever you want
+        &#64;Init public void myInit() { ... }
+
+        // Same with the prerender() method
+        &#64;Prerender public void justBeforeRendering() { ... }
+
+        // This class is not interested in preprocess or destroy
+        // methods, so they are not defined
+
+    }
+</source>
+
+        <h4>Using Annotated Component Registration</h4>
+
+        <p>To use the <em>Annotated Component Registration</em> feature,
+        you must use annotations from the <code>org.apache.shale.tiger.register</code>
+        package, as illustrated below:</p>
+
+        <p>An annotated component registration should look like this:</p>
+
+<source>
+    package com.mycompany.mypackage;
+    
+    import javax.faces.component.UIComponentBase;
+    import org.apache.shale.tiger.register.FacesComponent;
+
+    &#64;FacesComponent("my.component.type")
+    public class MyComponent extends UIComponentBase {
+    
+        ...
+        
+    }
+</source>
+
+        <p>An annotated converter registration should look like this:</p>
+
+<source>
+    package com.mycompany.mypackage;
+    
+    import javax.faces.convert.Converter;
+    import org.apache.shale.tiger.register.FacesConverter;
+
+    &#64;FacesConverter("my.converter.id")
+    public class MyConverter implements Converter {
+    
+        ...
+        
+    }
+</source>
+
+        <p>An annotated renderer registration should look like this
+        (if the <code>renderKitId</code> attribute is not specified,
+        the renderer will be registered with the standard HTML Basic
+        renderkit):</p>
+
+<source>
+    package com.mycompany.mypackage;
+    
+    import javax.faces.render.Renderer;
+    import org.apache.shale.tiger.register.FacesRenderer;
+
+    &#64;FacesRenderer(renderKitId="my.render.kit.id",
+                       componentFamily="my.component.family",
+                       rendererType="my.renderer.type")
+    public class MyRenderer extends Renderer {
+    
+        ...
+        
+    }
+</source>
+
+        <p>An annotated validator registration should look like this:</p>
+
+<source>
+    package com.mycompany.mypackage;
+    
+    import javax.faces.validator.Validator;
+    import org.apache.shale.tiger.register.FacesValidator;
+
+    &#64;FacesValidator("my.validator.id")
+    public class MyValidator implements Validator {
+    
+        ...
+        
+    }
+</source>
+
+      </subsection>
+
+    </section>
+
+  </body>
+
+</document>

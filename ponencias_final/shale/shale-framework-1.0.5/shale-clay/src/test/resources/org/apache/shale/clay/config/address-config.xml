@@ -1,0 +1,290 @@
+<?xml version='1.0' encoding="UTF-8"?>
+
+  <!DOCTYPE view PUBLIC
+      "-//Apache Software Foundation//DTD Shale Clay View Configuration 1.0//EN"
+      "http://shale.apache.org/dtds/clay-config_1_0.dtd">
+
+<!-- ### clay:remove ### -->
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!-- ### /clay:remove ### -->
+<view>
+		
+	<component jsfid="testActionListener" componentType="org.apache.shale.clay.config.TestActionListener"/>
+	<component jsfid="testValueChangeListener" componentType="org.apache.shale.clay.config.TestValueChangeListener"/>
+		
+	<component jsfid="baseLabel" extends="outputLabel" allowBody="false">
+	   <attributes>
+	       <set name="style" value="color:blue"/>
+	   </attributes>
+	</component>
+	<component jsfid="baseMessage" extends="message" allowBody="false">
+	   <attributes>
+	       <set name="style" value="color:red"/>	       
+	   </attributes>
+	</component>
+	
+	<component jsfid="cityLabel" extends="baseLabel"> 
+		   <attributes>
+			  <set name="value" value="City:" />		
+			  <set name="for"   value="city" />
+		   </attributes>
+	</component>				
+	<component jsfid="city" extends="inputText" id="city"> 
+		   <attributes>
+		      <set name="value" value="#{@managed-bean-name.city}" />		
+			  <set name="size" value="20" />
+			  <set name="maxlength" value="30" />
+			  <set name="required" value="true" />
+		   </attributes>
+	</component>
+	<component jsfid="cityMessage" extends="baseMessage" > 
+		   <attributes>
+		      <set name="for" value="city" />		
+		   </attributes>
+	</component>
+	
+	<!-- state label, input field and message -->	
+	<component jsfid="stateLabel" extends="baseLabel"> 
+		   <attributes>
+			  <set name="value" value="State:" />		
+			  <set name="for"   value="state" />
+		   </attributes>
+	</component>				
+	<component jsfid="state" extends="selectOneMenu" id="state"> 
+       <attributes>
+	      <set name="value" value="#{@managed-bean-name.state}" />
+		  <set name="required" value="true" />	      
+ 	   </attributes>
+ 
+	   <element renderId="0" jsfid="selectItem"> 
+		   <attributes>
+		      <set name="itemLabel" value="Colorado" />
+			  <set name="itemValue" value="CO" />
+ 	       </attributes>
+	   </element>
+	   <element renderId="1" jsfid="selectItem"> 
+		   <attributes>
+		      <set name="itemLabel" value="Illinois" />
+			  <set name="itemValue" value="IL" />
+ 	       </attributes>
+	   </element>	
+	</component>
+	<component jsfid="stateMessage" extends="baseMessage"> 
+		   <attributes>
+		      <set name="for" value="state" />		
+		   </attributes>
+	</component>
+
+	<!-- zip code label, input field and message -->
+	<component jsfid="zipLabel" extends="baseLabel"> 
+		   <attributes>
+			  <set name="value" value="Zip:" />		
+			  <set name="for"   value="zip" />
+		   </attributes>
+	</component>					
+	<component jsfid="zip" id="zip" extends="inputText"> 
+       <attributes>
+	      <set name="value" value="#{@managed-bean-name.zip}" />
+		  <set name="maxlength" value="9" />
+		  <set name="size" value="5"/>
+		  <set name="valueChangeListener" value="#{@managed-bean-name.zipValueChange}" />
+		</attributes>
+	
+		<converter jsfid="integerConverter" />
+	    <validator jsfid="longRangeValidator">
+		   <attributes>
+		      <set name="minimum" value="80000" />
+			  <set name="maximum" value="80125" />
+		    </attributes>	
+	     </validator>
+		 <valueChangeListener jsfid="testValueChangeListener" />
+	</component> 
+	<component jsfid="zipMessage" extends="baseMessage"> 
+		   <attributes>
+		      <set name="for" value="zip" />		
+		   </attributes>
+	</component>
+
+    <!-- defines a field template type def for street address -->
+	<component jsfid="streetInput" extends="inputText">
+		<attributes>
+			<set name="size" value="35" />
+			<set name="maxlength" value="50" />
+			<set name="value" />
+		</attributes>
+    </component>
+
+	<!-- street 1 label, input field and message -->
+	<component jsfid="street1Label" extends="baseLabel"> 
+		   <attributes>
+			  <set name="value" value="Street 1:" />		
+			  <set name="for"   value="street1" />
+		   </attributes>
+	</component>				
+	<component jsfid="street1" extends="streetInput" id="street1"> 
+        <attributes>
+		   <set name="value" value="#{@managed-bean-name.address1}" />		
+		   <set name="required" value="true"  />		
+		</attributes>
+	</component>
+	<component jsfid="street1Message" extends="baseMessage"> 
+		   <attributes>
+		      <set name="for" value="street1" />		
+		   </attributes>
+	</component>
+	
+	<!-- street 2 label, input field and message -->
+	<component jsfid="street2Label" extends="baseLabel"> 
+		   <attributes>
+			  <set name="value" value="Street 2:" />		
+			  <set name="for"   value="street2" />
+		   </attributes>
+	</component>				
+	<component jsfid="street2" extends="streetInput" id="street2"> 
+        <attributes>
+		   <set name="value" value="#{@managed-bean-name.address2}" />		
+		   <set name="required" value="true"  />		
+		</attributes>
+	</component>
+	<component jsfid="street2Message" extends="baseMessage"> 
+		   <attributes>
+		      <set name="for" value="street2" />		
+		   </attributes>
+	</component>
+
+    <!-- submit button to save the form -->
+    <component jsfid="saveCommand" extends="commandButton"> 
+	   <attributes>
+	      <set name="value" value="Save" />		
+		  <set name="action" value="#{@managed-bean-name.save}"  />	
+		  <set name="actionListener" value="#{@managed-bean-name.saveAction}"  />			   	
+	   </attributes>
+	   <actionListener jsfid="testActionListener" />
+    </component>
+
+    <!-- address table contains 5 rows of three columns -->    
+	<component jsfid="addressPanel" extends="panelGrid">
+		<attributes>
+			<set name="columns" value="3" />
+		</attributes>
+
+		<element renderId="1" jsfid="street1Label"/>
+		<element renderId="2" jsfid="street1" componentType="javax.faces.HtmlOutputText"/>
+		<element renderId="3" jsfid="street1Message"/>
+
+		<element renderId="11" jsfid="street2Label"/>
+		<element renderId="12" jsfid="street2"/>
+		<element renderId="13" jsfid="street2Message"/>
+
+		<element renderId="21" jsfid="cityLabel"/>
+		<element renderId="22" jsfid="city"/>
+		<element renderId="23" jsfid="cityMessage"/>
+		 
+		<element renderId="31" jsfid="stateLabel"/>
+		<element renderId="32" jsfid="state"/>
+		<element renderId="33" jsfid="stateMessage"/>
+
+		<element renderId="41" jsfid="zipLabel"/>
+		<element renderId="42" jsfid="zip"/>
+		<element renderId="43" jsfid="zipMessage"/>
+		
+    </component>
+
+    <!-- address contains address table and save submit button -->    
+	<component jsfid="agentAddressForm" extends="form" id="address1">
+		<attributes>
+			<set name="style" value="border-style: inset; background-color: red;" />
+		</attributes>
+		
+        <element renderId="1" jsfid="addressPanel"/> 
+        <element renderId="10" jsfid="saveCommand"/>  
+
+	</component>
+	
+    <component jsfid="layout" extends="outputText">
+        <element id="htmlBegin" renderId="0" jsfid="clayOut"> 
+            <attributes>
+               <set name="value" value="&lt;html&gt;"/>
+            </attributes>
+        </element>
+        <element id="header" renderId="2" jsfid="clayOut"> 
+            <attributes>
+               <set name="value" value="&lt;head&gt;&lt;title&gt;Testing&lt;/title&gt;&lt;/head&gt;"/>
+            </attributes>
+        </element>
+        <element id="bodyBegin" renderId="4" jsfid="clayOut"> 
+            <attributes>
+               <set name="value" value="&lt;body&gt;"/>
+            </attributes>
+        </element>
+     
+        <!--  override body content -->   
+        <element id="content" renderId="10" jsfid="outputText"> 
+            <attributes>
+               <set name="value" value="Hello World"/>
+            </attributes>
+        </element>
+        
+        <element id="bodyEnd" renderId="40" jsfid="clayOut"> 
+            <attributes>
+               <set name="value" value="&lt;/body&gt;"/>
+            </attributes>
+        </element>
+        
+        
+         <element id="htmlEnd" renderId="100" jsfid="clayOut"> 
+            <attributes>
+               <set name="value" value="&lt;/html&gt;"/>
+            </attributes>
+         </element>
+        
+    </component>	
+    
+    <component jsfid="baseSymbolLabel" extends="outputLabel" allowBody="false">
+	   <attributes>
+	       <set name="style" value="@mystyle"/>
+	       <set name="styleClass" value="@class"/>
+	       <set name="size" value="@size"/>
+	   </attributes>
+	   <symbols>
+	       <set name="mystyle" value="color:blue"/>
+	       <set name="class"/>	       
+	       <set name="size"/>	       	       
+	   </symbols>
+	   	   
+	</component>
+
+    <component jsfid="symbol1Label" extends="baseSymbolLabel" allowBody="false"/>
+
+    <component jsfid="symbol2Label" extends="symbol1Label" allowBody="false">
+	   <symbols>
+	       <set name="mystyle" value="color:red"/>
+	   </symbols>	   
+	</component>
+	
+	<component jsfid="symbolPanel" extends="panelGrid">
+	   <element renderId="1" jsfid="symbol1Label" />         
+	   <element renderId="2" jsfid="symbol1Label">
+	   	   <symbols >
+	          <set name="myStyle" value="color:red"/>
+	       </symbols>
+	   </element>	      
+	</component>
+    
+    					
+</view>

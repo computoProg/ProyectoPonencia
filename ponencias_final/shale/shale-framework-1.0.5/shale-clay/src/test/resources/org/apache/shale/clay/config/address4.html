@@ -1,0 +1,56 @@
+<!-- ### clay:remove ### -->
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!-- ### /clay:remove ### -->
+<form>
+  <table xmlns:h="http://java.sun.com/jsf/html">
+     <tr>
+        <td><h:outputLabel extends="street1Label"/></td>
+        <td><h:inputText extends="street1" size="45"/>
+        </td>
+        <td><h:message extends="street1Message"/></td>
+     </tr>
+     <tr>
+        <td><h:outputLabel extends="street2Label"/></td>
+        <td><h:inputText extends="street2" size="45"/>
+        </td>
+        <td><h:message extends="street2Message"/></td>
+     </tr>
+     <tr>
+        <td><h:outputLabel extends="cityLabel"/></td>
+        <td><h:inputText extends="city" size="25"/>
+        </td>
+        <td><h:message extends="cityMessage"/></td>
+     </tr>
+     <tr>
+        <td><h:outputLabel extends="stateLabel"/></td>
+        <td>
+            <h:selectOneMenu extends="state"/> 
+        </td>
+        <td><h:message extends="stateMessage"/></td>
+     </tr>
+     <tr>
+        <td><h:outputLabel extends="zipLabel"/></td>
+        <td><h:inputText extends="zip" size="9"/>
+        </td>
+        <td><h:message extends="zipMessage"/></td>
+     </tr>
+     <tr>
+        <td colspan=3><h:commandButton extends="saveCommand"/></td> 
+     </tr>
+  </table>
+</form>

@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE faces-config PUBLIC
+  "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+  "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+
+<!--
+
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ $Id: faces-config.xml 477032 2006-11-20 04:17:39Z gvanmatre $
+
+-->
+
+
+<!-- ====================== SHALE CONFIGURATION FILE ======================= -->
+
+
+<faces-config>
+
+  <!-- Custom JSF Application Objects -->
+  <application>
+    <action-listener>
+      org.apache.shale.view.faces.ViewActionListener
+    </action-listener>
+    <view-handler>
+      org.apache.shale.view.faces.ViewViewHandler
+    </view-handler>
+  </application>
+
+  <!-- Custom JSF Lifecycle Objects -->
+  <lifecycle>
+    <phase-listener>org.apache.shale.view.faces.ViewPhaseListener</phase-listener>
+  </lifecycle>
+
+  <component>
+      <description>
+        Extending the UIViewRoot to provide specialized exception
+        handling needed for the Shale view controller to enforce the contracts
+        of the callbacks.
+      </description>
+      <component-type>javax.faces.ViewRoot</component-type>
+      <component-class>org.apache.shale.view.faces.ShaleViewRoot</component-class>
+  </component>
+
+  <!-- Custom JSF Components -->
+  <component>
+    <description>
+      The "Subview" component performs the same services provided by the
+      "subview" tag in the JSF Core Tag Library, plus it provides
+      ViewController event callback services for the ViewController
+      whose managed bean name is the same as the "id" value of this component.
+    </description>
+    <display-name>Subview</display-name>
+    <component-type>org.apache.shale.view.Subview</component-type>
+    <component-class>org.apache.shale.view.faces.SubviewComponent</component-class>
+  </component>
+
+  <!-- Default Implementation Managed Beans -->
+  <managed-bean>
+    <description>
+      Default implementation of org.apache.shale.view.ExceptionHandler
+      used to process application-triggered exceptions.
+    </description>
+    <managed-bean-name>org$apache$shale$view$EXCEPTION_HANDLER</managed-bean-name>
+    <managed-bean-class>org.apache.shale.view.impl.DefaultExceptionHandler</managed-bean-class>
+    <managed-bean-scope>application</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <description>
+      Default implementation of org.apache.shale.view.faces.ViewContollerCallbacks
+      used to perform callbacks to the ViewController corresponding to the
+      current view identifier.
+    </description>
+    <managed-bean-name>org$apache$shale$view$VIEW_CALLBACKS</managed-bean-name>
+    <managed-bean-class>org.apache.shale.view.faces.ViewControllerCallbacks</managed-bean-class>
+    <managed-bean-scope>application</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <description>
+      Default implementation of org.apache.shale.view.ViewControllerMapper
+      used to map from view identifiers to the managed bean name of the
+      corresponding view controller bean.
+    </description>
+    <managed-bean-name>org$apache$shale$view$VIEW_MAPPER</managed-bean-name>
+    <managed-bean-class>org.apache.shale.view.impl.DefaultViewControllerMapper</managed-bean-class>
+    <managed-bean-scope>application</managed-bean-scope>
+  </managed-bean>
+
+</faces-config>

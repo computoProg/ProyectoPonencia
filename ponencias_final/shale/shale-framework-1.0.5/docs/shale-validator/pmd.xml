@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.1" timestamp="2008-06-02T11:11:46.278">
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-validator/src/main/java/org/apache/shale/validator/CommonsValidator.java">
+<violation beginline="928" endline="928" begincolumn="20" endcolumn="20" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.validator" class="CommonsValidator" method="getErrorMessage" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-validator/src/main/java/org/apache/shale/validator/faces/ValidatorRenderKit.java">
+<violation beginline="94" endline="97" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.validator.faces" class="ValidatorRenderKit" method="getRenderer" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-validator/src/main/java/org/apache/shale/validator/faces/ValidatorScript.java">
+<violation beginline="290" endline="292" begincolumn="19" endcolumn="19" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.validator.faces" class="ValidatorScript" method="findCommonsValidators" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-validator/src/main/java/org/apache/shale/validator/faces/ValidatorViewHandler.java">
+<violation beginline="64" endline="64" begincolumn="30" endcolumn="32" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.apache.shale.validator.faces" class="ValidatorViewHandler" variable="log" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'log'.
+</violation>
+<violation beginline="70" endline="70" begincolumn="29" endcolumn="36" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="org.apache.shale.validator.faces" class="ValidatorViewHandler" variable="messages" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'messages'.
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-validator/src/main/java/org/apache/shale/validator/validator/AbstractValidator.java">
+<violation beginline="289" endline="289" begincolumn="17" endcolumn="17" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.validator.validator" class="AbstractValidator" method="validate" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+<violation beginline="291" endline="291" begincolumn="17" endcolumn="17" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="org.apache.shale.validator.validator" class="AbstractValidator" method="validate" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-validator/src/main/java/org/apache/shale/validator/validator/DoubleValidator.java">
+<violation beginline="144" endline="151" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.validator.validator" class="DoubleValidator" method="validate" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-validator/src/main/java/org/apache/shale/validator/validator/FloatValidator.java">
+<violation beginline="144" endline="151" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.validator.validator" class="FloatValidator" method="validate" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-validator/src/main/java/org/apache/shale/validator/validator/IntegerValidator.java">
+<violation beginline="144" endline="151" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.validator.validator" class="IntegerValidator" method="validate" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-validator/src/main/java/org/apache/shale/validator/validator/LongValidator.java">
+<violation beginline="144" endline="151" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.validator.validator" class="LongValidator" method="validate" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/Users/greddin/develop/shale-1_0_x/target/checkout/shale-validator/src/main/java/org/apache/shale/validator/validator/ShortValidator.java">
+<violation beginline="144" endline="151" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="org.apache.shale.validator.validator" class="ShortValidator" method="validate" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+</pmd>

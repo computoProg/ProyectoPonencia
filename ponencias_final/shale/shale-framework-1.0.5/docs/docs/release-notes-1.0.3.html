@@ -1,0 +1,326 @@
+<!--
+
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to you under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ $Id: release-notes-1.0.3.html 464748 2006-10-16 23:58:57Z rahul $
+
+-->
+
+
+<html>
+
+  <head>
+    <title>Apache Shale (Version 1.0.3) Release Notes</title>
+  </head>
+
+  <body>
+
+    <div align="center">
+      <h1>Apache Shale (Version 1.0.3) Release Notes</h1>
+    </div>
+
+    <ul>
+    <li><a href="#Introduction">Introduction</a></li>
+    <li><a href="#Included">What Is Included</a></li>
+    <li><a href="#Changes">Changes From Previous Releases</a></li>
+    <li><a href="#Known">Known Issues In This Release</a></li>
+    <li><a href="#Details">Detailed Change Log</a></li>
+    </ul>
+
+    <a name="Introduction"></a>
+    <h3>1.0 Introduction</h3>
+
+    <p>Welcome to the <a href="http://struts.apache.org/struts-shale/">Apache
+    Shale Framework</a>.  Shale is a next generation framework for building web
+    applications using Java technology, and builds upon the framework and
+    component APIs provided by <a href="http://java.sun.com/j2ee/javaserverfaces/">
+    JavaServer Faces</a>.</p>
+
+    <p>To download the binary release artifacts, go
+    <a href="http://FIXME">here</a>, select an appropriate mirror,
+    download the corresponding zip files, and check the checksums and
+    digital signatures.  In addition, the individual JAR files are available
+    in the default Maven 2 repositories, using artifact identifiers described
+    below in Section 2.2.</p>
+
+    <p>This is the third milestone release of Shale, released to encourage
+    experimentation and gather feedback on usage issues and requested features.
+    A final vote on quality has yet to take place for this release, but it will
+    likely be voted to be of "beta" quality due to the following issues:</p>
+    <ul>
+        <li>Outstanding bugs in the Dialog feature implementation.</li>
+        <li>Reliance on a snapshot of the unreleased Standalone Tiles
+            package.</li>
+    </ul>
+
+    <p>However, many of the APIs in Shale are reasonably stable -- for details,
+    see <a href="http://struts.apache.org/struts-shale/api-stability.html">
+    Shale API Target Audiences and Stability Ratings</a>.</p>
+        
+    <p>The largest change in this release is that Shale has switched over to
+    using <a href="http://maven.apache.org/">Maven 2</a> as its build tool.
+    In turn, this has affected the content and format of the release artifacts
+    themselves, and also introduces the availability of individual artifacts
+    in publicly available Maven 2 repositories.  See the following section
+    for more information.</p>
+
+    <a name="Included"></a>
+    <h3>2.0 What Is Included</h3>
+
+    <h4>2.1 Release Artifacts</h4>
+
+    <p>Shale is released as a series of zip files, each of which contains
+    the binary deliverables, as well as the corresponding source code.  In
+    addition, if you have Maven 2 (version 2.0.4 or later) installed, you
+    can <em>rebuild</em> the contents of each zip, by positioning to the
+    top level directory in a command shell, and typing <code>mvn install</code>
+    from there.</p>
+
+    <p>The following release artifacts are available:</p>
+    <ul>
+        <li><strong>shale-framework-1.0.3.zip</strong> - Contains source code,
+            javadocs, and compiled libraries for the standard Shale libraries,
+            plus copies of dependent JAR files that are also required.  The
+            following Shale libraries are included:
+            <ul>
+                <li><em>shale-core-1.0.3.jar</em> - Core Shale features (required
+                    for any application using Shale except one that only
+                    uses Shale Remoting)</li>
+                <li><em>shale-clay-1.0.3.jar</em> - Clay Plugin (required to
+                    use the Clay alternate view handler)</li>
+                <li><em>shale-remoting-1.0.3.jar</em> - Standalone library
+                    supporting static and dynamic resource downloads for
+                    AJAX applications and components</li>
+                <li><em>shale-spring-1.0.3.jar</em> - Library providing
+                    lightweight integration with the dependency injection
+                    capabilities of the <a href="http://springframework.org">
+                    Spring Framework</a></li>
+                <li><em>shale-test-1.0.3.jar</em> - Library of mock objects
+                    and JUnit test case base classes for building unit tests
+                    for JSF-based web applications and components</li>    
+                <li><em>shale-tiger-1.0.3.jar</em> - Optional library providing
+                    additional features for applications running on Java SE 5
+                    "Tiger" or later releases</li>
+                <li><em>shale-tiles-1.0.3.jar</em> - Library providing integration
+                    with the Standalone Tiles package from Struts</li>
+            </ul></li>
+        <li><strong>mailreader-jpa-1.0.3.zip</strong> - Java class library
+            containing Java Persistence Architecture (JPA) entity classes, and
+            a corresponding Persistence Unit configuration, for use by the
+            <code>shale-mailreader-jpa</code> example application.</li>
+        <li><strong>Other shale-xxxxx-1.0.3.zip archives</strong> - Each of the
+            following archives contains the source code and javadocs for a
+            sample application using Shale, plus a WAR file that can be
+            dropped directly into your servlet container to run the sample.
+            The following sample apps are included in this release:
+            <ul>
+                <li><em>shale-blank-1.0.3.zip</em> - Simple base application
+                    that can be used as a starting point for developing your
+                    own application that depends on Shale</li>
+                <li><em>shale-clay-usecases-1.0.3.zip</em> - A simple
+                    "Rolodex" application implemented in several ways to
+                    show off the capabilities of the Clay Plug-In</li>
+                <li><em>shale-mailreader-1.0.3.zip</em> - A transcription of
+                    the canonical Struts "mail reader" example application,
+                    using an XML document to simulate the database.</li>
+                <li><em>shale-mailreader-jpa-1.0.3.zip</em> - A modernized
+                    version of the mail reader example that uses a database
+                    to store the data, and JPA entity classes to access it
+                    (requires a Java EE 5 application server)</li>
+                <li><em>shale-sql-browser-1.0.3.zip</em> - Simple SQL
+                    browser application that illustrates features from
+                    the shale-tiger.jar library, as well as dynamically
+                    building a JSF component tree</li>
+                <li><em>shale-usecases-1.0.3.zip</em> - Contains miniature
+                    sets of pages showcasing various features of the Shale
+                    Core library</li>
+            </ul></li>
+    </ul>
+
+    <h4>2.2 Maven Repository Artifacts</h4>    
+    
+    <p>Beginning with this release, the various JAR files that are included
+    in the framework release artifact have also been published to public
+    Maven 2 repositories.  If you are using Maven 2 to build your apps, you
+    need only declare dependencies on the following identifiers (group id,
+    artifact id, and version number), and Maven 2
+    will automatically download Shale (and its dependencies) for you.</p>
+
+    <ul>
+        <li><em>org.apache.shale:shale-core:1.0.3</em> - for shale-core-1.0.3.jar</li>
+        <li><em>org.apache.shale:shale-clay:1.0.3</em> - for shale-clay-1.0.3.jar</li>
+        <li><em>org.apache.shale:shale-remoting:1.0.3</em> - for shale-remoting-1.0.3.jar</li>
+        <li><em>org.apache.shale:shale-spring:1.0.3</em> - for shale-spring-1.0.3.jar</li>
+        <li><em>org.apache.shale:shale-test:1.0.3</em> - for shale-test-1.0.3.jar</li>
+        <li><em>org.apache.shale:shale-tiger:1.0.3</em> - for shale-tiger-1.0.3.jar</li>
+        <li><em>org.apache.shale:shale-tiles:1.0.3</em> - for shale-tiles-1.0.3.jar</li>
+        <li><em>org.apache.shale.extras:mailreader-jpa:1.0.3</em> - for mailreader-jpa-1.0.3.jar</li>
+    </ul>
+
+    <a name="Changes"></a>
+    <h3>3.0 Changes From Previous Releases</h3>
+
+    <p><a href="#Details">Details</a> on all of the included changes are in
+    Section 5, below.  The following sections highlight the most important
+    changes.</p>
+
+    <h4>3.1 New Features</h4>
+
+    <p><strong>Maven 2 Based Build Environment</strong></b> - Shale now uses
+    Maven 2 to build its constituent artifacts, and is made available in
+    public Maven 2 repositories to facilitate use in applications that are
+    also built with Maven 2.</p>
+
+    <p><strong>New Sample Applications</strong> - New sample applications to
+    illustrate the use of Shale features:</p>
+    <ul>
+        <li><code>shale-clay-usecases</code> - A sample "Rolodex" application
+            implemented in several different ways to illustrate the use of
+            the Clay Plug-In feature of Shale.</li>
+        <li><code>shale-mailreader-jpa</code> - Conversion of the canonical
+            Struts 1.x example "mail reader" application, using a database
+            to store the persistent information, and accessing it using the
+            new Java Persistence Architecture API that is part of the
+            Java EE 5 platform.</i>
+    </ul>
+
+    <h4>3.2 Improvements</h4>
+
+    <p><strong>Exception Handling Strategy</strong> - Exceptions thrown by
+    application event handlers will be accumulated during the request
+    processing lifecycle.  By default, control will be forwarded to the
+    error handler page defined by the application, but this behavior can
+    be customized.</p>
+
+    <p><strong>Additional View Controller Events</strong> - By implementing
+    an appropriate base class, model beans can receive <code>init()</code>
+    and <code>destroy()</code> callbacks for request scope, session scope,
+    or application scope.  If you are using the Tiger Extensions library,
+    these features are also available via annotations.</p>
+
+    <p><strong>Test Framework Support for Cargo</strong> - It is now possible
+    to build unit tests, using the Test Framework, that uses the Cargo
+    Maven plugin to automatically start and stop your servlet container.</p>
+
+    <p><strong>Clay Plug-In Improvements</strong> - FIXME ... identify the
+    highlights of what has improved.</p> 
+
+    <h4>3.2 Bugfix Issues</h4>
+
+    <p><strong>View Controller event callbacks</strong> - Fixed various bugs
+    where event callbacks were being done twice or not at all.</p>
+
+    <p><strong>Token Component</strong> - Fixed issues with the Token component
+    that prevented its use when an application returned to the current page
+    with validation errors.</p>
+
+    <p><strong>Commons Validator issues</strong> - Various problems with the
+    integration of Commons Validator were fixed.</p>
+
+    <a name="Known"></a>
+    <h3>4.0 Known Issues In This Release</h3>
+
+    <p>Follow <a href="https://issues.apache.org/struts/browse/SHALE?report=com.atlassian.jira.plugin.system.project:roadmap-panel">
+    this link</a> for a detailed Road Map of upcoming versions of Shale.  The
+    following paragraphs highlight only the most important issues.</p>
+
+    <p><strong>Dialog Feature</strong> - Several outstanding JIRA issues focus
+    on functional problems with the implementation of the Dialog feature.
+    Fixing these problems will be a high priority goal for the next release
+    of Shale, although they might also require some backwards incompatible
+    changes in the current Dialog APIs.</p>
+
+    <p><strong>Standalone Tiles</strong> - Shale has a dependency on the
+    Standalone Tiles package, currently in the Struts Sandbox and not yet
+    released.  This needs to be resolved before a General Availability
+    release of Shale can occur.</p>
+
+    <a name="Details"></a>
+    <h3>5.0 Detailed Change Log</h3>
+
+<h4>5.1 Bug</h4>
+<ul>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-24'>SHALE-24</a>] - [Shale] No clay component configuration for MyFaces Tomahawk</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-30'>SHALE-30</a>] - ShalePhaseListener executes ViewController.prerender twice after exception</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-41'>SHALE-41</a>] - [shale] Missing binding attribute in clay-config.xml</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-177'>SHALE-177</a>] - s:token tag allows submit after displaying validation error</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-180'>SHALE-180</a>] - [Shale] <s:commonsValidator/> generates JavaScript for components that are not rendered</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-182'>SHALE-182</a>] - s:token tag doesn't allow sending a form, when any validation error occurs on page</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-185'>SHALE-185</a>] - @Value is too restrictive on naming</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-194'>SHALE-194</a>] - javascript validation function errors in Shale 1.0.3</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-195'>SHALE-195</a>] - strange behaviors in rolodex with clay use case example</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-198'>SHALE-198</a>] - Subview Component not compatible with Tiger Extensions handling of view controllers</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-203'>SHALE-203</a>] - Symbol tag generates ClassCastException</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-205'>SHALE-205</a>] - 20060629 nightly missing org/apache/shale/remoting/Bundle.properties</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-206'>SHALE-206</a>] - convertDateTime component throws exception when using the timeZone attribute</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-208'>SHALE-208</a>] - The clay markup parser was not handling a CDATA block.</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-209'>SHALE-209</a>] - Missing tag validator for the clay component.</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-217'>SHALE-217</a>] - Not possible to pass dynamically information from a beans as a shale method parameter.</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-220'>SHALE-220</a>] - init() lifecycle method called twice</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-223'>SHALE-223</a>] - System integration test TokenTestCase fails against the JSF 1.1 RI</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-247'>SHALE-247</a>] - s:validatorScript produces invalid html markup</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-248'>SHALE-248</a>] - [CommonsValidator] missing trim JavaScript function</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-251'>SHALE-251</a>] - Java 1.5 method java.lang.String.replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;) used in org.apache.shale.test.mock.MockValueBinding.parse</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-252'>SHALE-252</a>] - @Prerender and @Preprocess annotated callbacks not called</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-253'>SHALE-253</a>] - JNDI access to data sources configured in Tomcat returns null</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-254'>SHALE-254</a>] - Tiger Extensions do not call back to annotated preprocess/prerender methods</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-255'>SHALE-255</a>] - Subview doing processDecode on beginEncode</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-256'>SHALE-256</a>] - Cannot use annotated managed beans unless ShaleApplicationFilter is configured</li>
+</ul>
+    
+<h4>5.2 Improvement</h4>
+<ul>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-125'>SHALE-125</a>] - [Shale][View] Devise coherent exception handling strategy</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-134'>SHALE-134</a>] - [Shale][Tiger] Implement event callbacks via annotations</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-137'>SHALE-137</a>] - [Shale][View] Event callbacks for servlet lifecycle events</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-170'>SHALE-170</a>] - Clay attributes are not using xml namespaces</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-173'>SHALE-173</a>] - Dialog feature should not hard code "dialog:" prefix on outcome strings</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-174'>SHALE-174</a>] - Implement attribute event support on mock context, request, and session classes</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-176'>SHALE-176</a>] - The Token component doesn't allow to override the message like the validator</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-178'>SHALE-178</a>] - Shale Remoting doesn't support multiple instances of the FacesServlet, for example in the case of AJAX</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-181'>SHALE-181</a>] - Improve the performance of the Clay HTML template processing</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-187'>SHALE-187</a>] - Add the ability for tooling to digest clay component descriptions</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-193'>SHALE-193</a>] - Provide a reusable TestSetup class that starts and stops a servlet container</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-199'>SHALE-199</a>] - MockFacesContext.setCurrentInstance()</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-201'>SHALE-201</a>] - Support 2 pass symbol replacement</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-246'>SHALE-246</a>] - Consistently use managed beans for replaceable functionality components</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-249'>SHALE-249</a>] - Add "throws Exception" to signatures of setUp() and tearDown() in AbstractJsfTestCase</li>
+</ul>
+    
+<h4>5.3 New Feature</h4>
+<ul>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-191'>SHALE-191</a>] - Consider renaming @Value to @Property</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-197'>SHALE-197</a>] - Allow PhaseListeners to be defined with Annotations</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-225'>SHALE-225</a>] - Example application ilustrating Java Persistence Architecture (JPA) integration</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-231'>SHALE-231</a>] - Publish an XML Catalog for Shale defined DTDs and Schemas</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-240'>SHALE-240</a>] - Easier way to exclude content from the HTML template</li>
+</ul>
+    
+<h4>5.4 Task</h4>
+<ul>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-179'>SHALE-179</a>] - Convert the Shale build to Maven 2</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-189'>SHALE-189</a>] - Shale Test is incompatible with HtmlUnit 1.8</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-207'>SHALE-207</a>] - Establish Shale as a top-level Apache project</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-218'>SHALE-218</a>] - Change dtd doctype URLs to shale.apache.org</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-227'>SHALE-227</a>] - Restructure the svn repo to establish a 'sandbox' and separate the 'maven' module from the framework</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-241'>SHALE-241</a>] - Release Shale Master POM in preparation for a 1.0.3 release</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-242'>SHALE-242</a>] - Review dependency version numbers</li>
+<li>[<a href='http://issues.apache.org/struts/browse/SHALE-257'>SHALE-257</a>] - Clean up 1.0.3 release artifacts per developer review</li>
+</ul>
+
+    </body>
+
+</html>
